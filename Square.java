@@ -22,4 +22,8 @@ public class Square {
   public int getYcor(){
     return ycor;
   }
+
+  public String toString(){
+    return "+===+\n|   |\n+===+";
+  }
 }
