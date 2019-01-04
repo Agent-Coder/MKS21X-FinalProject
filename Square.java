@@ -15,4 +15,11 @@ public class Square {
   public void setYcor(int y){
     ycor = y;
   }
+
+  public int getXcor(){
+    return xcor;
+  }
+  public int getYcor(){
+    return ycor;
+  }
 }
