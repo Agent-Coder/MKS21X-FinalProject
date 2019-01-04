@@ -9,5 +9,10 @@ public class Square {
     ycor = y;
   }
 
-  //public 
+  public void setXcor(int x){
+    xcor = x;
+  }
+  public void setYcor(int y){
+    ycor = y;
+  }
 }
