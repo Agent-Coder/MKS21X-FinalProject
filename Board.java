@@ -1,4 +1,10 @@
 public class Board{
+  private int[][] board;
+  private int spotCount;
+  private int blockCount;
+  private int score;
+
+
   public static String StartGame(){
     String s="";
     int c=10;
@@ -22,4 +28,5 @@ public class Board{
   public static void main(String[] args) {
     System.out.println(StartGame());
   }
+  //looping thorugh and adding the layout of the obard for background
 }
