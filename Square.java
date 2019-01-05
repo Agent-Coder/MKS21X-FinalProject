@@ -24,6 +24,6 @@ public class Square {
   }
 
   public String toString(){
-    return "+===+\n|   |\n+===+";
+    return "+===+\n| @ |\n+===+";
   }
 }
