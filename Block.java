@@ -63,7 +63,12 @@ public class Block {
             s+=a;
           }
           else{
-            s+="     ";
+            if (y==0){
+              s+="     ";
+            }
+            else{
+              s+="    ";
+            }
           }
         }
         entire+=s+"\n";
