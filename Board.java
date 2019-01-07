@@ -22,14 +22,42 @@ public class Board{
   public static void drawBoard(Terminal t){
     Square[][] board = new Square[10][10];
 
-    for (int x = 0; x < 20; x++){
-      for (int y = 0; y < 10; y++){
-        t.moveCursor(x,y);
-        t.applyBackgroundColor(Terminal.Color.BLACK);
-        t.putCharacter(' ');
-      }
+    String s="";
+    int c=10;
+    while (c!=0){
+          s=s+"+---+---+---+---+---+---+---+---+---+---+\n";
+          if (c==7){
+            s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:0\n";
+          }
+          else if(c==5){
+            s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press R to restart)\n";
+          }
+          else{
+          s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
+        }
+        c--;
     }
+    s=s+"+---+---+---+---+---+---+---+---+---+---+\n"+"\n"+"\n";
+    s=s+"PRESS ENTER TO START GAME";
+
+
+    //t.moveCursor(0,0);
+    //t.applyBackgroundColor(Terminal.Color.WHITE);
+    t.applyForegroundColor(Terminal.Color.BLACK);
+    t.moveCursor(0,0);
+		for(int i = 0; i < s.length();i++){
+			t.putCharacter(s.charAt(i));
+		}
+
+
   }
+
+  public static void putString(int r, int c,Terminal t, String s){
+		t.moveCursor(r,c);
+		for(int i = 0; i < s.length();i++){
+			t.putCharacter(s.charAt(i));
+		}
+	}
 
   /*public static String startGame(int x, int y){
     String s="";
@@ -53,13 +81,6 @@ public class Board{
 
 
   }*/
-
-  public static void putString(int r, int c,Terminal t, String s){
-		t.moveCursor(r,c);
-		for(int i = 0; i < s.length();i++){
-			t.putCharacter(s.charAt(i));
-		}
-	}
 
   public static void main(String[] args) {
     int x = 0;
