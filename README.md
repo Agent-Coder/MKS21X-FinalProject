@@ -18,3 +18,6 @@ I added all the private variables for Board class and fixed the Startgame Method
 
 AZ;01-06-19;
 Big Progress!:) I finished the constructor of the block class and added new instance variable to make it easier to do the toString. I also finished the toString and everytime u rerun the program and make a block its a different one. However-big obstance!-some of the randomly generated blocks are disjointed! So we are going to have to come up with an algorithm to generate different JOINTED blocks.
+
+AC;01-06-19;
+Board is now on lantera! After some experimenting, I added the lanterna functionality to the game. However, I believe that the Board class is suppose to be our driver class? We will clarify this after a discussion.
