@@ -100,17 +100,24 @@ public class Board{
 
       terminal.moveCursor(x,y);
 
-      terminal.applyBackgroundColor(Terminal.Color.WHITE);
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
 
 
       Key key = terminal.readInput();
 
 			if (key != null){
+
 				if (key.getKind() == Key.Kind.Escape) {
 					terminal.exitPrivateMode();
 					running = false;
 				}
+
+        if (key.getKind() == Key.Kind.Enter){
+          for (int i = 0; i < 25; i++){
+            terminal.moveCursor(i,24);
+            terminal.putCharacter(' ');
+          }
+        }
       }
 
     }
