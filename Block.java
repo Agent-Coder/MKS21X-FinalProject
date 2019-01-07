@@ -1,11 +1,19 @@
-public class Block {
+Abstract class Block {
 
   private Square[][] block;
   private boolean[][] map;
-  private int blockType;
+  private int numBlock;
   private int pos;
+  private int blockType;
+  private int size;
 
   public Block(){
+    blockType=(int)(Math.random()*100)%4;
+    pos=(int)(Math.random()*100)%4;
+    if blockType=0{
+      size=(int)(Math.random()*100)%3;
+      Block x=new FullBlock(pos,size);
+    }
     /*block=new Square[3][3];
     map=new boolean[7][3];
     block[0][0]=new Square("WHITE",0,0);
@@ -37,7 +45,7 @@ public class Block {
       }
     }
     pos=((int)(Math.random()*100))%4;*/
-    block=new Square[5][5];
+  /*  block=new Square[5][5];
     map = new boolean[11][5];
 
     blockType = 3;//(int)(Math.random() * 9 + 1);
@@ -184,4 +192,7 @@ public static void main(String[] args) {
   System.out.println(d.getBlockType());
   System.out.println(d);
  }
+}
+public class FullBlock extends Block{
+
 }
