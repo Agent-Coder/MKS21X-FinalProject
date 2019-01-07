@@ -14,14 +14,25 @@ import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Board{
-  private int[][] board;
-  private int spotCount;
-  private int blockCount;
-  private int score;
+  int spotCount;
+  int blockCount;
+  int score;
 
 
-  public static String StartGame(int x, int y){
-    /*String s="";
+  public static void drawBoard(Terminal t){
+    Square[][] board = new Square[10][10];
+
+    for (int x = 0; x < 20; x++){
+      for (int y = 0; y < 10; y++){
+        t.moveCursor(x,y);
+        t.applyBackgroundColor(Terminal.Color.BLACK);
+        t.putCharacter(' ');
+      }
+    }
+  }
+
+  /*public static String startGame(int x, int y){
+    String s="";
     int c=10;
     while (c!=0){
           s=s+"+---+---+---+---+---+---+---+---+---+---+\n";
@@ -38,11 +49,10 @@ public class Board{
     }
     s=s+"+---+---+---+---+---+---+---+---+---+---+\n"+"\n"+"\n";
     s=s+"PRESS ENTER TO START GAME";
-    return s;*/
-    return "";
+    return s;
 
 
-  }
+  }*/
 
   public static void putString(int r, int c,Terminal t, String s){
 		t.moveCursor(r,c);
@@ -50,7 +60,7 @@ public class Board{
 			t.putCharacter(s.charAt(i));
 		}
 	}
-  
+
   public static void main(String[] args) {
     int x = 0;
 		int y = 0;
@@ -63,13 +73,15 @@ public class Board{
 
     boolean running = true;
 
-    StartGame(x,y);
+    drawBoard(terminal);
 
     while(running){
+
       terminal.moveCursor(x,y);
+
       terminal.applyBackgroundColor(Terminal.Color.WHITE);
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
-      terminal.putCharacter('\u00a4');
+
 
       Key key = terminal.readInput();
 
@@ -79,6 +91,7 @@ public class Board{
 					running = false;
 				}
       }
+
     }
 
   }
