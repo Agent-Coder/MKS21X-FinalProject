@@ -22,7 +22,7 @@ public class Board{
   public static void drawBoard(Terminal t){
     Square[][] board = new Square[10][10];
 
-    String s="";
+    String s="";//this is the string containing the entire board
     int c=10;
     while (c!=0){
           s=s+"+---+---+---+---+---+---+---+---+---+---+\n";
@@ -41,9 +41,7 @@ public class Board{
     s=s+"PRESS ENTER TO START GAME";
 
 
-    //t.moveCursor(0,0);
-    //t.applyBackgroundColor(Terminal.Color.WHITE);
-    t.applyForegroundColor(Terminal.Color.BLACK);
+    t.applyForegroundColor(Terminal.Color.BLACK);//the color of the board will be black
     t.moveCursor(0,0);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
@@ -83,7 +81,7 @@ public class Board{
   }*/
 
   public static void main(String[] args) {
-    int x = 0;
+    int x = 0;//coordinates for the cursor
 		int y = 0;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -94,7 +92,7 @@ public class Board{
 
     boolean running = true;
 
-    drawBoard(terminal);
+    drawBoard(terminal);//the board will be drawn once only
 
     while(running){
 
@@ -112,7 +110,7 @@ public class Board{
 					running = false;
 				}
 
-        if (key.getKind() == Key.Kind.Enter){
+        if (key.getKind() == Key.Kind.Enter){//the first enter will erase the text
           for (int i = 0; i < 25; i++){
             terminal.moveCursor(i,24);
             terminal.putCharacter(' ');
