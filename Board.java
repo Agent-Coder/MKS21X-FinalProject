@@ -13,6 +13,10 @@ public class Board {
     }
   }
 
+  public Square getSquare(int x, int y){
+    return board[x][y];
+  }
+
   public String toString(){
     String s="";//this is the string containing the entire board
     int c=10;
