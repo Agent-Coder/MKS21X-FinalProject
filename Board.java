@@ -17,7 +17,7 @@ public class Board {
     return board[x][y];
   }
 
-  public String toString(){
+  public String getBoard(){
     String s="";//this is the string containing the entire board
     int c=10;
     while (c!=0){
