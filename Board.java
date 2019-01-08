@@ -30,7 +30,7 @@ public class Board{
             s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:0\n";
           }
           else if(c==5){
-            s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press R to restart)\n";
+            s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press M for Menu)\n";
           }
           else{
           s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
@@ -91,6 +91,7 @@ public class Board{
 		terminal.setCursorVisible(false);
 
     boolean running = true;
+    int mode = 0;
 
     drawBoard(terminal);//the board will be drawn once only
 
@@ -104,18 +105,32 @@ public class Board{
       Key key = terminal.readInput();
 
 			if (key != null){
-
-				if (key.getKind() == Key.Kind.Escape) {
-					terminal.exitPrivateMode();
-					running = false;
-				}
-
-        if (key.getKind() == Key.Kind.Enter){//the first enter will erase the text
-          for (int i = 0; i < 25; i++){
-            terminal.moveCursor(i,24);
-            terminal.putCharacter(' ');
-          }
+        if (mode == 0) {
+          if (key.getKind() == Key.Kind.Space) {
+  					mode = 1;
+  				}
         }
+
+        if (mode == 1){
+          if (key.getKind() == Key.Kind.Space) {
+  					mode = 1;
+  				}
+        }
+
+        if (mode == 2){
+          if (key.getKind() == Key.Kind.Escape) {
+  					terminal.exitPrivateMode();
+  					running = false;
+  				}
+        }
+
+
+          if (key.getKind() == Key.Kind.Enter){//the first enter will erase the text
+            for (int i = 0; i < 25; i++){
+              terminal.moveCursor(i,24);
+              terminal.putCharacter(' ');
+            }
+          }
       }
 
     }
