@@ -12,7 +12,26 @@ public class Board {
       }
     }
   }
-
+public static Block generateBlock(){
+    int roll=(int)(Math.random()*100)%3;
+    int length;
+    Block random;
+    if(roll==0){
+      roll=(int)(Math.random()*100)%3+1;
+      random=new FullBlock(roll);
+    }
+    else if(roll==1){
+      roll=(int)(Math.random()*100)%2;
+      length=(int)(Math.random()*100)%4+2;
+      random=new LongBlock(length,roll);
+    }
+    else{
+      roll=(int)(Math.random()*100)%4;
+      length=(int)(Math.random()*100)%2+2;
+      random=new LBlock(length,roll);
+    }
+    return random;
+  }
   public Square getSquare(int x, int y){
     return board[x][y];
   }
