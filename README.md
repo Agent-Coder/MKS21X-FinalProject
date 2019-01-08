@@ -24,3 +24,6 @@ Board is now on lantera! After some experimenting, I added the lanterna function
 
 AC;01-07-19;
 Changed Board class so it is not the driver; drive is now a new class called game. When running the game, there is now three modes: the start screen, the game screen, and the pause screen. I will design the start and pause screen in the future. The game screen displays the board.
+
+AZ;01-07-19;
+We decided to make the block class have three little child block classes that are three types: Full, Long, and L-shaped. I finished creating the three block classes and we are able to print it out in main after constructin them.
