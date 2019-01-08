@@ -1,8 +1,8 @@
 public class Board {
-  int spotCount;
-  int blockCount;
-  int score;
-  Square[][] board;
+  private int spotCount;
+  private int blockCount;
+  private int score;
+  private Square[][] board;
 
   public Board(){
     Square[][] board = new Square[10][10];
