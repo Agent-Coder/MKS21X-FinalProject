@@ -21,3 +21,6 @@ Big Progress!:) I finished the constructor of the block class and added new inst
 
 AC;01-06-19;
 Board is now on lantera! After some experimenting, I added the lanterna functionality to the game. However, I believe that the Board class is suppose to be our driver class? We will clarify this after a discussion.
+
+AC;01-07-19;
+Changed Board class so it is not the driver; drive is now a new class called game. When running the game, there is now three modes: the start screen, the game screen, and the pause screen. I will design the start and pause screen in the future. The game screen displays the board.
