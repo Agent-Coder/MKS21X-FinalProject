@@ -8,7 +8,7 @@ public class Board {
     Square[][] board = new Square[10][10];
     for (int i = 0; i < board.length; i++){
       for (int j = 0; j < board[0].length; j++){
-        board[i][j] = new Square("black", 0, 0);
+        board[i][j] = new Square("black", i, j);
       }
     }
   }
