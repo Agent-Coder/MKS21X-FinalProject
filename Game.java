@@ -14,7 +14,6 @@ import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Game{
-  Board game = new Board();
 
   public static void putString(int r, int c,Terminal t, String s){
 		t.moveCursor(r,c);
@@ -23,8 +22,11 @@ public class Game{
 		}
 	}
 
-  public static String startGame(Terminal t){
-    String s = game.toString();
+  public static void drawStartingScreen(Terminal t){
+
+  }
+
+  public static void startGame(Terminal t, String s){
     t.applyForegroundColor(Terminal.Color.BLACK);//the color of the board will be black
     t.moveCursor(0,0);
 		for(int i = 0; i < s.length();i++){
@@ -35,6 +37,8 @@ public class Game{
   }
 
   public static void main(String[] args) {
+    Board game = new Board();
+
     int x = 0;//coordinates for the cursor
 		int y = 0;
 
@@ -47,7 +51,7 @@ public class Game{
     boolean running = true;
     int mode = 0;
 
-    drawBoard(terminal);//the board will be drawn once only
+    //drawBoard(terminal);//the board will be drawn once only
 
     while(running){
 
@@ -59,15 +63,19 @@ public class Game{
       Key key = terminal.readInput();
 
 			if (key != null){
+
         if (mode == 0) {
+          drawStartingScreen(terminal);
           if (key.getKind() == Key.Kind.Enter) {
+            startGame(terminal, game.toString());
   					mode = 1;
   				}
         }
 
         if (mode == 1){
-          if (key.getKind() == Key.Kind.Enter) {
-  					mode = 1;
+
+          if (key.getKind() == Key.Kind.Tab) {
+  					mode = 2;
   				}
         }
 

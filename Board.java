@@ -17,7 +17,7 @@ public class Board {
     return board[x][y];
   }
 
-  public String getBoard(){
+  public String toString(){
     String s="";//this is the string containing the entire board
     int c=10;
     while (c!=0){
@@ -26,7 +26,7 @@ public class Board {
             s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:0\n";
           }
           else if(c==5){
-            s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press M for Menu)\n";
+            s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Tab for Menu)\n";
           }
           else{
           s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
