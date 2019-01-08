@@ -184,14 +184,22 @@ abstract class Block {
   }
 
 public static void main(String[] args) {
-  LongBlock a=new LongBlock(2,0);
-  LongBlock c=new LongBlock(3,1);
-  LongBlock b=new LongBlock(4,0);
-  LongBlock d=new LongBlock(5,1);
+  LBlock a=new LBlock(2,0);
+  LBlock b=new LBlock(2,1);
+  LBlock c=new LBlock(2,2);
+  LBlock d=new LBlock(2,3);
+  LBlock e=new LBlock(3,0);
+  LBlock f=new LBlock(3,1);
+  LBlock g=new LBlock(3,2);
+  LBlock h=new LBlock(3,3);
   System.out.println(a);
-  System.out.println(c);
   System.out.println(b);
+  System.out.println(c);
   System.out.println(d);
+  System.out.println(e);
+  System.out.println(f);
+  System.out.println(g);
+  System.out.println(h);
  }
 }
 class FullBlock extends Block{
@@ -305,22 +313,55 @@ class LongBlock extends Block{
     }
 }
 class LBlock extends Block{
-  private Square[][] block;
+  public Square[][] block;
   private boolean[][] map;
-  public LBlock(int size){
+  public LBlock(int size,int pos){
+    int row,col1;
     block=new Square[size][size];
+    map=new boolean[2*size+1][size];
+    if(pos==0){
+      row=0;
+      col1=0;
+    }
+    else if(pos==1){
+      row=size-1;
+      col1=0;
+    }
+    else if(pos==2){
+      row=size-1;
+      col1=size-1;
+    }
+    else{
+      row=0;
+      col1=size-1;
+    }
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
+        if (x==row||y==col1){
           block[x][y]=new Square("WHITE",x,y);
         }
       }
-      map=new boolean[2*size+1][size];
-      for (int a=0;a<map.length;a++){
-        for (int b=0;b<map[0].length;b++){
+    }
+    for (int a=0;a<map.length;a++){
+      for (int b=0;b<size;b++){
+        if (pos==0&&a>=3&&b>0){
+          map[a][b]=false;
+        }
+        else if(pos==1&&a<map.length-3&&b>0){
+          map[a][b]=false;
+        }
+        else if(pos==2&&a<map.length-3&&b<size-1){
+          map[a][b]=false;
+        }
+        else if(pos==3&&a>=3&&b<size-1){
+          map[a][b]=false;
+        }
+        else{
           map[a][b]=true;
         }
       }
     }
+  }
     public String toString(){
       String entire="";
       for (int x=0;x<map.length;x++){
