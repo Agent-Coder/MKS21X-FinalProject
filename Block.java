@@ -150,6 +150,10 @@ abstract class Block {
     return blockType;
   }
 
+  public Square[][] getBlock(){
+    return block;
+  }
+
   public String toString(){
     String entire="";
     for (int x=0;x<map.length;x++){

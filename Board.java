@@ -17,6 +17,32 @@ public class Board {
     return board[x][y];
   }
 
+  public boolean placeBlock(Block b, int x, int y){
+    if (placeable(b, x, y)){
+      for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+          board[x][y] = b.getBlock()[i][j];
+          y++;
+        }
+        x++;
+      }
+    }
+  }
+
+  public boolean placeable(Block bl, int x, int y){
+    int a = 0;
+    int b = 0;
+    for (int i = x; i < x+5; i++){
+      for (int j = y; y < y+5; j++){
+        if (bl.getBlock()[a][b] != null && board[i][j] != null){
+          return false;
+        }
+        b++;
+      }
+      a++;
+    }
+  }
+
   public String toString(){
     String s="";//this is the string containing the entire board
     int c=10;
