@@ -23,6 +23,10 @@ public class Square {
     return ycor;
   }
 
+  public String getColor(){
+    return color;
+  }
+
   public String toString(){
     return "+===+\n| @ |\n+===+";
   }
