@@ -26,7 +26,9 @@ public class Board {
         }
         x++;
       }
+      return true;
     }
+    return false;
   }
 
   public boolean placeable(Block bl, int x, int y){
@@ -34,6 +36,8 @@ public class Board {
     int b = 0;
     for (int i = x; i < x+5; i++){
       for (int j = y; y < y+5; j++){
+        System.out.println("a: " + a + "\nb: " + b + "\ni: " + i + "\nj: " + j);
+        System.out.println(bl.getBlock()[a][b] != null);
         if (bl.getBlock()[a][b] != null && board[i][j] != null){
           return false;
         }
@@ -41,6 +45,7 @@ public class Board {
       }
       a++;
     }
+    return true;
   }
 
   public String toString(){
