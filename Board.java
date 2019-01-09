@@ -109,8 +109,8 @@ public static Block generateBlock(){
 
   public boolean placeBlock(Block b, int x, int y){
     if (placeable(b, x, y)){
-      for (int i = 0; i < 5; i++){
-        for (int j = 0; j < 5; j++){
+      for (int i = 0; i < b.getLength(); i++){
+        for (int j = 0; j < b.getWidth(); j++){
           board[x][y] = b.getBlock()[i][j];
           y++;
         }
@@ -121,7 +121,7 @@ public static Block generateBlock(){
     return false;
   }
 
-  public boolean placeable(Block bl, int x, int y){
+  private boolean placeable(Block bl, int x, int y){
     int a = 0;
     int b = 0;
     //System.out.println(board.length);
