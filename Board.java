@@ -12,6 +12,38 @@ public class Board {
       }
     }
   }
+  public static String PrintSelection(boolean[][] selection){
+      String entire="";
+      for (int x=0;x<selection.length;x++){
+        String s="";
+        String a="";
+        for (int y=0;y<selection[0].length;y++){
+            if (x%2==1){
+              a="|   |";
+            }
+            else{
+              a="+---+";
+            }
+            if (selection[x][y]){
+              if (y!=0){
+                s=s.substring(0,s.length()-1);
+              }
+              s+=a;
+            }
+            else{
+              if (y==0){
+                s+="     ";
+              }
+              else{
+                s+="    ";
+              }
+            }
+          }
+          entire+=s+"\n";
+        }
+
+      return entire;
+    }
 public static Block generateBlock(){
     int roll=(int)(Math.random()*100)%3;
     int length;
@@ -34,6 +66,41 @@ public static Block generateBlock(){
   }
   public Square getSquare(int x, int y){
     return board[x][y];
+  }
+  public static boolean[][] blockSelection(Block a,Block b, Block c){
+    boolean[][] selection=new boolean[11][a.getCol()+b.getCol()+c.getCol()+4];
+    int x=0,y=0;
+    for(;x<11;x++){
+      for(;y<selection[0].length;y++){
+          selection[x][y]=false;
+      }
+    }
+    x=0;
+    y=0;
+
+    for(;x<a.getRow();x++){
+      y=0;
+      for(;y<a.getCol();y++){
+        selection [x][y]=a.getmap(x,y);
+      }
+    }
+    x=0;
+    y+=2;
+    int z=y;
+    for(;x<b.getRow();x++){
+      z=y;
+      for(;z<(b.getCol()+a.getCol()+2);z++){
+        selection [x][z]=b.getmap(x,z-y);
+      }
+    }
+    x=0;
+    z+=2;
+    for(;x<c.getRow();x++){
+      for(int w=z;w<selection[0].length;w++){
+        selection [x][w]=c.getmap(x,w-z);
+      }
+    }
+    return selection;
   }
 
   public String toString(){
@@ -64,5 +131,11 @@ public static Block generateBlock(){
 
 
   }
-
+  public static void main(String[] args) {
+    Block a=generateBlock();
+    Block b=generateBlock();
+    Block c=generateBlock();
+    boolean[][] f=blockSelection(a,b,c);
+    System.out.println(PrintSelection(f));
+  }
 }
