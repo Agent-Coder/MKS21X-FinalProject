@@ -103,6 +103,37 @@ public static Block generateBlock(){
     return selection;
   }
 
+  public boolean placeBlock(Block b, int x, int y){
+    if (placeable(b, x, y)){
+      for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+          board[x][y] = b.getBlock()[i][j];
+          y++;
+        }
+        x++;
+      }
+      return true;
+    }
+    return false;
+  }
+
+  public boolean placeable(Block bl, int x, int y){
+    int a = 0;
+    int b = 0;
+    for (int i = x; i < x+5; i++){
+      for (int j = y; y < y+5; j++){
+        System.out.println("a: " + a + "\nb: " + b + "\ni: " + i + "\nj: " + j);
+        System.out.println(bl.getBlock()[a][b] != null);
+        if (bl.getBlock()[a][b] != null && board[i][j] != null){
+          return false;
+        }
+        b++;
+      }
+      a++;
+    }
+    return true;
+  }
+
   public String toString(){
     String s="";//this is the string containing the entire board
     int c=10;
