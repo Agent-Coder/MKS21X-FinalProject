@@ -27,3 +27,6 @@ Changed Board class so it is not the driver; drive is now a new class called gam
 
 AZ;01-07-19;
 We decided to make the block class have three little child block classes that are three types: Full, Long, and L-shaped. I finished creating the three block classes and we are able to print it out in main after constructin them.
+
+AZ;01-08-19;
+I finished creating the method of generating random blocks and creating the display of selection blocks and added instance variables in the block classes to make it easier to create the selection block and also adjusted the constructors. 
