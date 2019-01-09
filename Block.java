@@ -6,14 +6,24 @@ abstract class Block {
   private int pos;
   private int blockType;
   private int size;
+  private int c;
+  private int r;
+
+  public int getRow(){
+    return r;
+  }
+  public int getCol(){
+    return c;
+  }
 
   public Block(){
-    blockType=(int)(Math.random()*100)%4;
-    pos=(int)(Math.random()*100)%4;
-    if (blockType==0){
-      size=(int)(Math.random()*100)%3;
-      Block x=new FullBlock(1);
+    block=new Square[1][1];
+    map=new boolean[2][2];
     }
+
+  public boolean getmap(int row, int col){
+    return this.map[row][col];
+  }
     /*block=new Square[3][3];
     map=new boolean[7][3];
     block[0][0]=new Square("WHITE",0,0);
@@ -137,8 +147,8 @@ abstract class Block {
           map[i][j] = false;
         }
       }
-    }*/
-  }
+    }
+  }*/
   //block constructor has to have at least one square
   //thus first cell of array has to have a square (for now using a 3by3 as max)
   //then loop through and randomize with 50% chance
@@ -151,80 +161,11 @@ abstract class Block {
   }
 
   public String toString(){
-    String entire="";
-    for (int x=0;x<map.length;x++){
-      String s="";
-      String a="";
-      for (int y=0;y<map[0].length;y++){
-          if (x%2==1){
-            a="|   |";
-          }
-          else{
-            a="+---+";
-          }
-          if (map[x][y]){
-            if (y!=0){
-              s=s.substring(0,s.length()-1);
-            }
-            s+=a;
-          }
-          else{
-            if (y==0){
-              s+="     ";
-            }
-            else{
-              s+="    ";
-            }
-          }
-        }
-        entire+=s+"\n";
-      }
-
-    return entire;
-  }
-
-public static void main(String[] args) {
-  LBlock a=new LBlock(2,0);
-  LBlock b=new LBlock(2,1);
-  LBlock c=new LBlock(2,2);
-  LBlock d=new LBlock(2,3);
-  LBlock e=new LBlock(3,0);
-  LBlock f=new LBlock(3,1);
-  LBlock g=new LBlock(3,2);
-  LBlock h=new LBlock(3,3);
-  System.out.println(a);
-  System.out.println(b);
-  System.out.println(c);
-  System.out.println(d);
-  System.out.println(e);
-  System.out.println(f);
-  System.out.println(g);
-  System.out.println(h);
- }
-}
-class FullBlock extends Block{
-  private Square[][] block;
-  private boolean[][] map;
-  public FullBlock(int size){
-    block=new Square[size][size];
-    for (int x=0;x<size;x++){
-      for (int y=0;y<size;y++){
-          block[x][y]=new Square("WHITE",x,y);
-        }
-      }
-      map=new boolean[2*size+1][size];
-      for (int a=0;a<map.length;a++){
-        for (int b=0;b<map[0].length;b++){
-          map[a][b]=true;
-        }
-      }
-    }
-    public String toString(){
       String entire="";
-      for (int x=0;x<map.length;x++){
+      for (int x=0;x<this.map.length;x++){
         String s="";
         String a="";
-        for (int y=0;y<map[0].length;y++){
+        for (int y=0;y<this.map[0].length;y++){
             if (x%2==1){
               a="|   |";
             }
@@ -252,9 +193,85 @@ class FullBlock extends Block{
       return entire;
     }
 }
+class FullBlock extends Block{
+  private Square[][] block;
+  private boolean[][] map;
+  private int c;
+  private int r;
+
+  public int getRow(){
+    return r;
+  }
+  public int getCol(){
+    return c;
+  }
+  public boolean getmap(int row, int col){
+    return map[row][col];
+  }
+  public FullBlock(int size){
+    block=new Square[size][size];
+    for (int x=0;x<size;x++){
+      for (int y=0;y<size;y++){
+          block[x][y]=new Square("WHITE",x,y);
+        }
+      }
+      map=new boolean[2*size+1][size];
+      for (int a=0;a<map.length;a++){
+        for (int b=0;b<map[0].length;b++){
+          map[a][b]=true;
+        }
+      }
+      r=map.length;
+      c=map[0].length;
+    }
+    public String toString(){
+        String entire="";
+        for (int x=0;x<map.length;x++){
+          String s="";
+          String a="";
+          for (int y=0;y<map[0].length;y++){
+              if (x%2==1){
+                a="|   |";
+              }
+              else{
+                a="+---+";
+              }
+              if (map[x][y]){
+                if (y!=0){
+                  s=s.substring(0,s.length()-1);
+                }
+                s+=a;
+              }
+              else{
+                if (y==0){
+                  s+="     ";
+                }
+                else{
+                  s+="    ";
+                }
+              }
+            }
+            entire+=s+"\n";
+          }
+
+        return entire;
+      }
+}
 class LongBlock extends Block{
   private Square[][] block;
   private boolean[][] map;
+  private int c;
+  private int r;
+
+  public int getRow(){
+    return r;
+  }
+  public int getCol(){
+    return c;
+  }
+  public boolean getmap(int row, int col){
+    return this.map[row][col];
+  }
   public LongBlock(int size,int pos){
     if (pos==1){
       block=new Square[size][1];
@@ -278,8 +295,10 @@ class LongBlock extends Block{
         }
       }
     }
+    r=map.length;
+    c=map[0].length;
   }
-    public String toString(){
+  public String toString(){
       String entire="";
       for (int x=0;x<map.length;x++){
         String s="";
@@ -315,6 +334,18 @@ class LongBlock extends Block{
 class LBlock extends Block{
   public Square[][] block;
   private boolean[][] map;
+  private int c;
+  private int r;
+
+  public int getRow(){
+    return r;
+  }
+  public int getCol(){
+    return c;
+  }
+  public boolean getmap(int row, int col){
+    return this.map[row][col];
+  }
   public LBlock(int size,int pos){
     int row,col1;
     block=new Square[size][size];
@@ -361,8 +392,10 @@ class LBlock extends Block{
         }
       }
     }
+    r=map.length;
+    c=map[0].length;
   }
-    public String toString(){
+  public String toString(){
       String entire="";
       for (int x=0;x<map.length;x++){
         String s="";
