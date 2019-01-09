@@ -26,7 +26,10 @@ AC;01-07-19;
 Changed Board class so it is not the driver; drive is now a new class called game. When running the game, there is now three modes: the start screen, the game screen, and the pause screen. I will design the start and pause screen in the future. The game screen displays the board.
 
 AZ;01-07-19;
-We decided to make the block class have three little child block classes that are three types: Full, Long, and L-shaped. I finished creating the three block classes and we are able to print it out in main after constructin them.
+We decided to make the block class have three little child block classes that are three types: Full, Long, and L-shaped. I finished creating the three block classes and we are able to print it out in main after constructing them.
 
 AZ;01-08-19;
-I finished creating the method of generating random blocks and creating the display of selection blocks and added instance variables in the block classes to make it easier to create the selection block and also adjusted the constructors. 
+I finished creating the method of generating random blocks and creating the display of selection blocks and added instance variables in the block classes to make it easier to create the selection block and also adjusted the constructors.
+
+AC;01-08-29;
+I wrote the two commands placeable() which checks to see if a block can be placed on the board and placeBlock() which modifies the board to place the block. I tested the methods in a separate driver file to see if they worked. I also changed the constructor for board so it will not have any squares unless a player places a block.
