@@ -29,11 +29,12 @@ public class Game{
     int c = 0;
 
     t.applyForegroundColor(Terminal.Color.BLACK);
-    //t.moveCursor(s.getColumns(),0);
     putString(r,c,t,text);
     r = s.getColumns()/2 - text2.length()/2;
     c = 10;
+    t.applySGR(Terminal.SGR.ENTER_BLINK);
     putString(r,c,t,text2);
+    t.applySGR(Terminal.SGR.EXIT_BLINK);
   }
 
   public static void drawBoard(Terminal t, String s){
