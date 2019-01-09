@@ -24,6 +24,10 @@ abstract class Block {
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
+
+  public Square[][] getBlock(){
+    return block;
+  }
     /*block=new Square[3][3];
     map=new boolean[7][3];
     block[0][0]=new Square("WHITE",0,0);
@@ -160,8 +164,11 @@ abstract class Block {
     return blockType;
   }
 
-  public Square[][] getBlock(){
-    return block;
+  public int getLength(){
+    return block.length;
+  }
+  public int getWidth(){
+    return block[0].length;
   }
 
   public String toString(){
@@ -208,6 +215,15 @@ class FullBlock extends Block{
   }
   public int getCol(){
     return c;
+  }
+  public Square[][] getBlock(){
+    return block;
+  }
+  public int getLength(){
+    return block.length;
+  }
+  public int getWidth(){
+    return block[0].length;
   }
   public boolean getmap(int row, int col){
     return map[row][col];
@@ -272,6 +288,15 @@ class LongBlock extends Block{
   }
   public int getCol(){
     return c;
+  }
+  public Square[][] getBlock(){
+    return block;
+  }
+  public int getLength(){
+    return block.length;
+  }
+  public int getWidth(){
+    return block[0].length;
   }
   public boolean getmap(int row, int col){
     return this.map[row][col];
@@ -346,6 +371,15 @@ class LBlock extends Block{
   }
   public int getCol(){
     return c;
+  }
+  public Square[][] getBlock(){
+    return block;
+  }
+  public int getLength(){
+    return block.length;
+  }
+  public int getWidth(){
+    return block[0].length;
   }
   public boolean getmap(int row, int col){
     return this.map[row][col];

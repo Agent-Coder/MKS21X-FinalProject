@@ -5,13 +5,15 @@ public class Board {
   private Square[][] board;
 
   public Board(){
-    Square[][] board = new Square[10][10];
-    for (int i = 0; i < board.length; i++){
-      for (int j = 0; j < board[0].length; j++){
+    board = new Square[10][10];
+    /*for (int i = 0; i < 10; i++){
+      for (int j = 0; j < 10; j++){
         board[i][j] = new Square("black", i, j);
+        //System.out.println(board[i][j]);
       }
-    }
+    }*/
   }
+
   public static String PrintSelection(boolean[][] selection){
       String entire="";
       for (int x=0;x<selection.length;x++){
@@ -64,9 +66,11 @@ public static Block generateBlock(){
     }
     return random;
   }
+
   public Square getSquare(int x, int y){
     return board[x][y];
   }
+
   public static boolean[][] blockSelection(Block a,Block b, Block c){
     boolean[][] selection=new boolean[11][a.getCol()+b.getCol()+c.getCol()+4];
     int x=0,y=0;
@@ -120,11 +124,16 @@ public static Block generateBlock(){
   public boolean placeable(Block bl, int x, int y){
     int a = 0;
     int b = 0;
-    for (int i = x; i < x+5; i++){
-      for (int j = y; y < y+5; j++){
-        System.out.println("a: " + a + "\nb: " + b + "\ni: " + i + "\nj: " + j);
-        System.out.println(bl.getBlock()[a][b] != null);
-        if (bl.getBlock()[a][b] != null && board[i][j] != null){
+    //System.out.println(board.length);
+    //System.out.println(y+bl.getWidth());
+    for (int i = x; a < bl.getLength() && i < x+bl.getLength(); i++){
+      a = 0;
+      for (int j = y; b < bl.getWidth() && j < y+bl.getWidth(); j++){
+        b = 0;
+        //System.out.println("a: " + a + "\nb: " + b + "\ni: " + i + "\nj: " + j);
+        //System.out.println(board[0][0]);
+        //System.out.println(bl.getBlock()[a][b] != null);
+        if (board[i][j] != null && bl.getBlock()[a][b] != null){
           return false;
         }
         b++;
@@ -167,6 +176,6 @@ public static Block generateBlock(){
     Block b=generateBlock();
     Block c=generateBlock();
     boolean[][] f=blockSelection(a,b,c);
-    System.out.println(PrintSelection(f));
+    System.out.println(a);
   }
 }
