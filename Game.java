@@ -81,27 +81,22 @@ public class Game{
           }
 				}
       }
-      
-      if (key != null){
 
-        if (mode == 1){
-          runGame(terminal, game);
+
+      if (mode == 1){
+        runGame(terminal, game);
+        if (key != null){
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
-            mode = 2;
-  				}
-          if (key.getKind() == Key.Kind.Tab) {
-            terminal.clearScreen();
-            mode = 2;
-  				}
+            mode = 1;
+          }
+
         }
+      }
 
-        if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-          running = false;
-        }
-
-
+      if (key.getKind() == Key.Kind.Escape) {
+        terminal.exitPrivateMode();
+        running = false;
       }
 
     }
