@@ -187,6 +187,28 @@ public class Board {
       }
     }
 
+    public void ClearRow(){
+      int full=0;
+        for (int a=0;a<10;a++){
+          full=0;
+          for (int b=0;b<10;b++){
+            if(this.board[b][a]!=null){
+              full++;
+            }
+          if (full==10){
+            for (int c=0;c<10;c++){
+              this.board[c][a]=null;
+            }
+            for (int d=0;d<21;d++){
+              this.layout[a][d]=false;
+            }
+            this.score+=100;
+            this.spotCount+=10;
+          }
+        }
+      }
+    }
+
     public String toString(){
       String s="";//this is the string containing the entire board
       int c=10;
