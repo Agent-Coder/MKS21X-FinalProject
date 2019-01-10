@@ -1,4 +1,4 @@
-abstract class Block {
+public class Block {
 
   private Square[][] block;
   private boolean[][] map;
