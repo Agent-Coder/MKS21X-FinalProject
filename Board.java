@@ -13,13 +13,13 @@ public class Board {
         layout[a][b]=false;
       }
     }
-    score=0
-    spotCount=100
-    blockCount=0;
+    this.score=0
+    this.spotCount=100
+    this.blockCount=0;
   }
 
   public int getScore(){
-    return score;
+    return this.score;
   }
 
   public static String PrintSelection(boolean[][] selection){
@@ -29,7 +29,7 @@ public class Board {
         String a="";
         for (int y=0;y<selection[0].length;y++){
             if (x%2==1){
-              a="|   |";
+              a="| @ |";
             }
             else{
               a="+---+";
@@ -74,7 +74,7 @@ public class Board {
         random=new LBlock(length,roll);
       }
       return random;
-      blockCount++;
+      this.blockCount++;
     }
 
     public Square getSquare(int x, int y){
@@ -126,8 +126,8 @@ public class Board {
             board[tempx][tempy] = b.getBlock()[i][j];
             tempy++;
             if (b.getBlock()[i][j]!=null){
-              spotCount--;
-              score++;
+              this.spotCount--;
+              this.score++;
             }
           }
           tempx++;

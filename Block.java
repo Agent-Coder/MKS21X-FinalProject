@@ -178,7 +178,7 @@ abstract class Block {
         String a="";
         for (int y=0;y<this.map[0].length;y++){
             if (x%2==1){
-              a="|   |";
+              a="| @ |";
             }
             else{
               a="+---+";
@@ -251,7 +251,7 @@ class FullBlock extends Block{
           String a="";
           for (int y=0;y<map[0].length;y++){
               if (x%2==1){
-                a="|   |";
+                a="| @ |";
               }
               else{
                 a="+---+";
@@ -334,7 +334,7 @@ class LongBlock extends Block{
         String a="";
         for (int y=0;y<map[0].length;y++){
             if (x%2==1){
-              a="|   |";
+              a="| @ |";
             }
             else{
               a="+---+";
@@ -440,7 +440,7 @@ class LBlock extends Block{
         String a="";
         for (int y=0;y<map[0].length;y++){
             if (x%2==1){
-              a="|   |";
+              a="| @ |";
             }
             else{
               a="+---+";
