@@ -34,5 +34,8 @@ I finished creating the method of generating random blocks and creating the disp
 AC;01-08-29;
 I wrote the two commands placeable() which checks to see if a block can be placed on the board and placeBlock() which modifies the board to place the block. I tested the methods in a separate driver file to see if they worked. I also changed the constructor for board so it will not have any squares unless a player places a block.
 
-AZ;01-08-19;
+AZ;01-09-19;
 I finished writing the ClearCol and ClearRow methods that clear the rows and columns when the blocks fill a row or column of the board and then the spotCount increases and the score increases. Also, I fixed the design and corrected much of the "this" stuff needed for the board thing to compile. Also added a couple of instance variables such as Layout a boolean[][] for easier printing for the board.
+
+AC;01-09-19;
+I was able to print the block selection onto lantera. I also took out the pause screen and merged the features onto the game screen. Something went wrong while branching and my commits for today were lost.
