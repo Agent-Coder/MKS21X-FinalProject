@@ -55,8 +55,6 @@ public class Game{
 
     while(running){
 
-      terminal.moveCursor(x,y);
-
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
 
 
