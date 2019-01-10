@@ -187,7 +187,7 @@ public class Board {
       }
     }
 
-    public void ClearRow(){
+    public void ClearCol(){
       int full=0;
         for (int a=0;a<10;a++){
           full=0;
