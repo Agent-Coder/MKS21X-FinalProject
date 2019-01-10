@@ -40,7 +40,10 @@ public class Game{
   public static void drawBoard(Terminal t, String s){
     t.applyForegroundColor(Terminal.Color.BLACK);//the color of the board will be black
     putString(0,0,t,s);
+  }
 
+  public static void runGame(Terminal t, Board b){
+    drawBoard(t, b.toString());
 
   }
 
@@ -59,8 +62,6 @@ public class Game{
     boolean running = true;
     int mode = 0;
 
-    drawStartingScreen(terminal, size);
-
     while(running){
 
       terminal.moveCursor(x,y);
@@ -70,41 +71,37 @@ public class Game{
 
       Key key = terminal.readInput();
 
-			if (key != null){
 
-        if (mode == 0) {
+      if (mode == 0) {
+        drawStartingScreen(terminal, size);
+        if (key != null){
           if (key.getKind() == Key.Kind.Enter) {
             terminal.clearScreen();
   					mode = 1;
-  				}
-        }
+          }
+				}
+      }
+      
+      if (key != null){
 
         if (mode == 1){
-          drawBoard(terminal, game.toString());
+          runGame(terminal, game);
+          if (key.getKind() == Key.Kind.Tab) {
+            terminal.clearScreen();
+            mode = 2;
+  				}
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 2;
   				}
         }
 
-        if (mode == 2){
-          if (key.getKind() == Key.Kind.Enter) {
-            terminal.clearScreen();
-  					mode = 1;
-  				}
-          if (key.getKind() == Key.Kind.Escape) {
-  					terminal.exitPrivateMode();
-  					running = false;
-  				}
+        if (key.getKind() == Key.Kind.Escape) {
+          terminal.exitPrivateMode();
+          running = false;
         }
 
 
-          if (key.getKind() == Key.Kind.Enter){//the first enter will erase the text
-            for (int i = 0; i < 25; i++){
-              terminal.moveCursor(i,24);
-              terminal.putCharacter(' ');
-            }
-          }
       }
 
     }
