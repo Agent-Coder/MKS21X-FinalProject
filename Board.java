@@ -13,8 +13,8 @@ public class Board {
         this.layout[a][b]=false;
       }
     }
-    this.score=0
-    this.spotCount=100
+    this.score=0;
+    this.spotCount=100;
     this.blockCount=0;
   }
 
@@ -55,7 +55,7 @@ public class Board {
       return entire;
     }
 
-    public static Block generateBlock(){
+    public Block generateBlock(){
       int roll=(int)(Math.random()*100)%3;
       int length;
       Block random;
@@ -73,8 +73,8 @@ public class Board {
         length=(int)(Math.random()*100)%2+2;
         random=new LBlock(length,roll);
       }
-      return random;
       this.blockCount++;
+      return random;
     }
 
     public Square getSquare(int x, int y){
@@ -166,11 +166,25 @@ public class Board {
     }
 
     public void ClearRow(){
+      int full=0;
         for (int a=0;a<10;a++){
+          full=0;
           for (int b=0;b<10;b++){
-            this.layout
+            if(this.board[a][b]!=null){
+              full++;
+            }
+          if (full==10){
+            for (int c=0;c<10;c++){
+              this.board[a][c]=null;
+            }
+            for (int d=0;d<10;d++){
+              this.layout[2*a+1][d]=false;
+            }
+            this.score+=100;
+            this.spotCount+=10;
           }
         }
+      }
     }
 
     public String toString(){
@@ -194,10 +208,11 @@ public class Board {
     }
 
   public static void main(String[] args) {
-    Block a=generateBlock();
-    Block b=generateBlock();
-    Block c=generateBlock();
+    Board x=new Board();
+    Block a=x.generateBlock();
+    Block b=x.generateBlock();
+    Block c=x.generateBlock();
     boolean[][] f=blockSelection(a,b,c);
-    System.out.println(a);
+    System.out.println(PrintSelection(f));
   }
 }
