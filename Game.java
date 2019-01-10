@@ -42,16 +42,33 @@ public class Game{
     putString(0,0,t,s);
   }
 
-  public static void runGame(Terminal t, Board b){
-    drawBoard(t, b.toString());
+  public static void drawBlockSelection(Terminal t, String s){
+    t.applyForegroundColor(Terminal.Color.GREEN);
+    putString(0,30,t,s);
+  }
 
+  public static int runGame(Terminal t, Board B, int numB){
+    Block a;
+    Block b;
+    Block c;
+    boolean[][] f = new boolean[0][0];
+    int num = numB;
+    if (num == 0){
+      a = B.generateBlock();
+      b = B.generateBlock();
+      c = B.generateBlock();
+      f = B.blockSelection(a,b,c);
+      num = 3;
+    }
+    drawBoard(t, B.toString());
+    drawBlockSelection(t, B.PrintSelection(f));
+    return num;
   }
 
   public static void main(String[] args) {
     Board game = new Board();
 
-    int x = 0;//coordinates for the cursor
-		int y = 0;
+    int numBlocks = 0;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -63,8 +80,6 @@ public class Game{
     int mode = 0;
 
     while(running){
-
-      terminal.moveCursor(x,y);
 
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
 
@@ -84,7 +99,7 @@ public class Game{
 
 
       if (mode == 1){
-        runGame(terminal, game);
+        numBlocks = runGame(terminal, game, numBlocks);
         if (key != null){
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
@@ -93,10 +108,11 @@ public class Game{
 
         }
       }
-
-      if (key.getKind() == Key.Kind.Escape) {
-        terminal.exitPrivateMode();
-        running = false;
+      if (key != null){
+        if (key.getKind() == Key.Kind.Escape) {
+          terminal.exitPrivateMode();
+          running = false;
+        }
       }
 
     }
