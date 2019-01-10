@@ -22,38 +22,6 @@ public class Board {
     return this.score;
   }
 
-  public static String PrintSelection(boolean[][] selection){
-      String entire="";
-      for (int x=0;x<selection.length;x++){
-        String s="";
-        String a="";
-        for (int y=0;y<selection[0].length;y++){
-            if (x%2==1){
-              a="| @ |";
-            }
-            else{
-              a="+---+";
-            }
-            if (selection[x][y]){
-              if (y!=0){
-                s=s.substring(0,s.length()-1);
-              }
-              s+=a;
-            }
-            else{
-              if (y==0){
-                s+="     ";
-              }
-              else{
-                s+="    ";
-              }
-            }
-          }
-          entire+=s+"\n";
-        }
-
-      return entire;
-    }
 
     public Block generateBlock(){
       int roll=(int)(Math.random()*100)%3;
@@ -235,6 +203,5 @@ public class Board {
     Block b=x.generateBlock();
     Block c=x.generateBlock();
     boolean[][] f=blockSelection(a,b,c);
-    System.out.println(PrintSelection(f));
   }
 }
