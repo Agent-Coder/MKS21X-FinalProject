@@ -6,11 +6,11 @@ public class Board {
   private boolean[][] layout;
 
   public Board(){
-    board = new Square[10][10];
-    layout= new boolean[21][10];
-    for (int a=0;a<layout.length;a++){
-      for (int b=0;b<layout[0].length;b++){
-        layout[a][b]=false;
+    this.board = new Square[10][10];
+    this.layout= new boolean[21][10];
+    for (int a=0;a<21;a++){
+      for (int b=0;b<10;b++){
+        this.layout[a][b]=false;
       }
     }
     this.score=0
@@ -78,7 +78,7 @@ public class Board {
     }
 
     public Square getSquare(int x, int y){
-      return board[x][y];
+      return this.board[x][y];
     }
 
     public static boolean[][] blockSelection(Block a,Block b, Block c){
@@ -163,6 +163,14 @@ public class Board {
         a++;
       }
       return true;
+    }
+
+    public void ClearRow(){
+        for (int a=0;a<10;a++){
+          for (int b=0;b<10;b++){
+            this.layout
+          }
+        }
     }
 
     public String toString(){
