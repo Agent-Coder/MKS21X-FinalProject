@@ -230,7 +230,7 @@ public class Board {
     Board x=new Board();
     Block a=x.generateBlock();
     Block b=x.generateBlock();
-    Block c=x.generateBlock();
+    Block c= new emptyBlock();
     System.out.println(a.toString());
     System.out.println(b.toString());
     System.out.println(c.toString());
