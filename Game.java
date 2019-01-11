@@ -179,6 +179,12 @@ public class Game{
             if (selectedBlock == 1){
               putBlock(terminal,a.toString(), 1);
               selectedBlock = 2;
+            } else if (selectedBlock == 2){
+              putBlock(terminal,b.toString(), 2);
+              selectedBlock = 3;
+            } else if (selectedBlock == 3){
+              putBlock(terminal,c.toString(), 3);
+              selectedBlock = 1;
             }
           }
         }
