@@ -186,7 +186,7 @@ public class Board {
               s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:0\n";
             }
             else if(c==5){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Tab for Menu)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Tab to RESTART)\n";
             }
             else{
             s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
