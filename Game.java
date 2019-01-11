@@ -113,6 +113,9 @@ public class Game{
     int numBlocks = 0;
     int selectedBlock = 1;
     Block theChosenOne = new emptyBlock();
+    boolean aEmpty = true;
+    boolean bEmpty = true;
+    boolean cEmpty = true;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -145,8 +148,11 @@ public class Game{
       if (mode == 1){
         if (numBlocks == 0){
           a = game.generateBlock();
+          aEmpty = false;
           b = game.generateBlock();
+          bEmpty = false;
           c = game.generateBlock();
+          cEmpty = false;
           startGame(terminal, game, a, b, c);
           numBlocks = 3;
         } else {
@@ -207,16 +213,19 @@ public class Game{
             if (selectedBlock == 1){
               theChosenOne = a;
               a = new emptyBlock();
+              aEmpty = true;
               //write code to move block around here
               putBlock(terminal,a.toString(), 1);
             } else if (selectedBlock == 2){
               theChosenOne = b;
               b = new emptyBlock();
+              bEmpty = true;
               //write code to move block around here
               putBlock(terminal,b.toString(), 2);
             } else if (selectedBlock == 3){
               theChosenOne = c;
               c = new emptyBlock();
+              cEmpty = true;
               //write code to move block around here
               putBlock(terminal,c.toString(), 3);
             }
