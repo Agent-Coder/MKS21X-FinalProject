@@ -12,6 +12,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
+import com.googlecode.lanterna.screen.Screen;
 
 public class Game{
 
@@ -22,12 +23,26 @@ public class Game{
 		}
 	}
 
+<<<<<<< HEAD
   public static void putBlock(int r, int c, Terminal t, String s){
 		t.moveCursor(r,c);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
 		}
 	}
+=======
+  public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg, Terminal.Color back ){
+    t.moveCursor(r,c);
+    t.applyBackgroundColor(forg);
+    t.applyForegroundColor(Terminal.Color.BLACK);
+
+    for(int i = 0; i < s.length();i++){
+      t.putCharacter(s.charAt(i));
+    }
+    t.applyBackgroundColor(Terminal.Color.DEFAULT);
+    t.applyForegroundColor(Terminal.Color.DEFAULT);
+  }
+>>>>>>> fixingBlocks
 
   public static void drawStartingScreen(Terminal t, TerminalSize s){
     String text = "1010!";
@@ -49,21 +64,59 @@ public class Game{
     putString(0,0,t,s);
   }
 
-  public static void drawBlock(Terminal t, String s, int blockNum){
-    t.applyForegroundColor(Terminal.Color.GREEN);
-    if (blockNum == 1) {
-      putString(0,30,t,s);
+  public static void putBlock(Terminal t, String s, int num){
+    if (num == 1){
+      int x = 0;
+      int y = 30;
+      int count = 1;
+      t.moveCursor(x,y);
+      for(int i = 0; i < s.length();i++){
+        t.putCharacter(s.charAt(i));
+        if (s.charAt(i) == '\n'){
+          t.moveCursor(x,y+count);
+          count++;
+        }
+      }
     }
+<<<<<<< HEAD
     if (blockNum == 2) {
       //putBlock(10,30,t,s);
     }
     if (blockNum == 3) {
       //putBlock(20,30,t,s);
+=======
+    if (num == 2){
+      int x = 22;
+      int y = 30;
+      int count = 1;
+      t.moveCursor(x,y);
+      for(int i = 0; i < s.length();i++){
+        t.putCharacter(s.charAt(i));
+        if (s.charAt(i) == '\n'){
+          t.moveCursor(x,y+count);
+          count++;
+        }
+      }
+    }
+    if (num == 3){
+      int x = 44;
+      int y = 30;
+      int count = 1;
+      t.moveCursor(x,y);
+      for(int i = 0; i < s.length();i++){
+        t.putCharacter(s.charAt(i));
+        if (s.charAt(i) == '\n'){
+          t.moveCursor(x,y+count);
+          count++;
+        }
+      }
+>>>>>>> fixingBlocks
     }
   }
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
+<<<<<<< HEAD
     //putString(0,30,t,a.toString());
     drawBlock(t, a.toString(), 1);
     //drawBlock(t, b.toString(), 2);
@@ -71,6 +124,25 @@ public class Game{
   }
 
   public static void main(String[] args) {
+=======
+    putBlock(t,a.toString(), 1);
+    putBlock(t,b.toString(), 2);
+    putBlock(t,c.toString(), 3);
+  }
+
+  public static void main(String[] args) {
+
+    Board game = new Board();
+    Block a = new emptyBlock();
+    Block b = new emptyBlock();
+    Block c = new emptyBlock();
+    int numBlocks = 0;
+    int selectedBlock = 1;
+    Block theChosenOne = new emptyBlock();
+    boolean aEmpty = true;
+    boolean bEmpty = true;
+    boolean cEmpty = true;
+>>>>>>> fixingBlocks
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -101,6 +173,7 @@ public class Game{
 
 
       if (mode == 1){
+<<<<<<< HEAD
 
         Board game = new Board();
 
@@ -121,13 +194,93 @@ public class Game{
           numBlocks = 3;
         }
         //putString(40, 0, terminal, "" + numBlocks);
+=======
+        if (numBlocks == 0){
+          a = game.generateBlock();
+          aEmpty = false;
+          b = game.generateBlock();
+          bEmpty = false;
+          c = game.generateBlock();
+          cEmpty = false;
+          startGame(terminal, game, a, b, c);
+          numBlocks = 3;
+        } else {
+          if (selectedBlock == 1){
+            terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            putBlock(terminal,a.toString(), selectedBlock);
+            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          }
+          if (selectedBlock == 2){
+            terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            putBlock(terminal,b.toString(), selectedBlock);
+            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          }
+          if (selectedBlock == 3){
+            terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            putBlock(terminal,c.toString(), selectedBlock);
+            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          }
+        }
+
+>>>>>>> fixingBlocks
         if (key != null){
+
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 0;
             numBlocks = 0;
+            game = new Board();
+            selectedBlock = 1;
           }
 
+          if (key.getKind() == Key.Kind.ArrowRight){
+            if (selectedBlock == 1){
+              putBlock(terminal,a.toString(), 1);
+              selectedBlock = 2;
+            } else if (selectedBlock == 2){
+              putBlock(terminal,b.toString(), 2);
+              selectedBlock = 3;
+            } else if (selectedBlock == 3){
+              putBlock(terminal,c.toString(), 3);
+              selectedBlock = 1;
+            }
+          }
+
+          if (key.getKind() == Key.Kind.ArrowLeft) {
+            if (selectedBlock == 1){
+              putBlock(terminal,a.toString(), 1);
+              selectedBlock = 3;
+            } else if (selectedBlock == 2){
+              putBlock(terminal,b.toString(), 2);
+              selectedBlock = 1;
+            } else if (selectedBlock == 3){
+              putBlock(terminal,c.toString(), 3);
+              selectedBlock = 2;
+            }
+          }
+
+          if (key.getKind() == Key.Kind.ArrowUp) {
+            if (selectedBlock == 1){
+              theChosenOne = a;
+              a = new emptyBlock();
+              aEmpty = true;
+              //write code to move block around here
+              putBlock(terminal,a.toString(), 1);
+            } else if (selectedBlock == 2){
+              theChosenOne = b;
+              b = new emptyBlock();
+              bEmpty = true;
+              //write code to move block around here
+              putBlock(terminal,b.toString(), 2);
+            } else if (selectedBlock == 3){
+              theChosenOne = c;
+              c = new emptyBlock();
+              cEmpty = true;
+              //write code to move block around here
+              putBlock(terminal,c.toString(), 3);
+            }
+          }
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
         }
       }
 

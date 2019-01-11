@@ -40,5 +40,10 @@ I finished writing the ClearCol and ClearRow methods that clear the rows and col
 AC;01-09-19;
 I was able to print the block selection onto lantera. I also took out the pause screen and merged the features onto the game screen. Something went wrong while branching and my commits for today were lost.
 
+<<<<<<< HEAD
 AZ;01-09-19;
 I worked on doing the shifts (not finished) and puting the block on the board and outputting the array that would be used to print that. Also reduced the amount of redundancy in the code.
+=======
+AC;01-10-19;
+A lot of progress was made today! The blocks are now printed on the board separately and blinks to show the player which block they are on. When the player presses the up arrow key, they will have officially selected the block. I also wrote another child class of block as a placeholder when a player selects a block to place on the board.
+>>>>>>> fixingBlocks
