@@ -22,6 +22,23 @@ public class Board {
     return this.score;
   }
 
+  public void BlockonBoard(Block a){
+      int r =a.getRow();
+      int c=a.getCol();
+      for (int x=(10-r)/2;x<r+(10-r)/2;x++){
+        for (int y=(10-r)/2;y<c+(10-r)/2;y++){
+          layout[x][y]=a.getmap(r,c);
+        }
+      }
+      r=a.getLength();
+      c=a.getWidth();
+      for (int x=r;x<r;x++){
+        for (int y=c;y<c;y++){
+          a.getBlock(x,y).setXcor(x);
+          a.getBlock(x,y).setYcor(y);
+        }
+      }
+    }
 
     public Block generateBlock(){
       int roll=(int)(Math.random()*100)%3;
