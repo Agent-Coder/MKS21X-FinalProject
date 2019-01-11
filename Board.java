@@ -22,7 +22,34 @@ public class Board {
     return this.score;
   }
 
-  public void BlockonBoard(Block a){
+
+    public Block generateBlock(){
+      int roll=(int)(Math.random()*100)%3;
+      int length;
+      Block random;
+      if(roll==0){
+        roll=(int)(Math.random()*100)%3+1;
+        random=new FullBlock(roll);
+      }
+      else if(roll==1){
+        roll=(int)(Math.random()*100)%2;
+        length=(int)(Math.random()*100)%4+2;
+        random=new LongBlock(length,roll);
+      }
+      else{
+        roll=(int)(Math.random()*100)%4;
+        length=(int)(Math.random()*100)%2+2;
+        random=new LBlock(length,roll);
+      }
+      this.blockCount++;
+      return random;
+    }
+
+    public Square getSquare(int x, int y){
+      return this.board[x][y];
+    }
+
+    public void BlockonBoard(Block a){
       int r =a.getRow();
       int c=a.getCol();
       for (int x=(10-r)/2;x<r+(10-r)/2;x++){
@@ -55,31 +82,6 @@ public class Board {
         for (int y=((10-r)/2)+dir;y<(c+(10-r)/2)+dir;y++){
           layout[x][y]=a.getmap(r,c);
       }
-    }
-    public Block generateBlock(){
-      int roll=(int)(Math.random()*100)%3;
-      int length;
-      Block random;
-      if(roll==0){
-        roll=(int)(Math.random()*100)%3+1;
-        random=new FullBlock(roll);
-      }
-      else if(roll==1){
-        roll=(int)(Math.random()*100)%2;
-        length=(int)(Math.random()*100)%4+2;
-        random=new LongBlock(length,roll);
-      }
-      else{
-        roll=(int)(Math.random()*100)%4;
-        length=(int)(Math.random()*100)%2+2;
-        random=new LBlock(length,roll);
-      }
-      this.blockCount++;
-      return random;
-    }
-
-    public Square getSquare(int x, int y){
-      return this.board[x][y];
     }
 
     public static boolean[][] blockSelection(Block a,Block b, Block c){
@@ -132,12 +134,6 @@ public class Board {
             }
           }
           tempx++;
-        }
-        layout=new boolean[21][10];
-        for (int r=0;r<b.getRow();r++){
-          for (int s=0;s<b.getCol();s++){
-            layout[x][y]=b.getmap(r,s);
-          }
         }
         return true;
       }
