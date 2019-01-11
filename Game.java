@@ -111,6 +111,7 @@ public class Game{
     Block b = game.generateBlock();
     Block c = game.generateBlock();
     int numBlocks = 0;
+    int selectedBlock = 1;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -141,7 +142,6 @@ public class Game{
 
 
       if (mode == 1){
-        int selectedBlock = 1;
         if (numBlocks == 0){
           a = game.generateBlock();
           b = game.generateBlock();
@@ -167,13 +167,20 @@ public class Game{
         }
 
         if (key != null){
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 0;
             numBlocks = 0;
             game = new Board();
+            selectedBlock = 1;
           }
-
+          if (key.getKind() == Key.Kind.ArrowRight) {
+            if (selectedBlock == 1){
+              putBlock(terminal,a.toString(), 1);
+              selectedBlock = 2;
+            }
+          }
         }
       }
 
