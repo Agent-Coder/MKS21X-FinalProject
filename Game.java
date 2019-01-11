@@ -70,13 +70,18 @@ public class Game{
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
-    //putString(0,30,t,a.toString());
-    drawBlock(t, a.toString(), 1);
+    putString(0,30,t,a.toString());
     //drawBlock(t, b.toString(), 2);
     //drawBlock(t, c.toString(), 3);
   }
 
   public static void main(String[] args) {
+
+    Board game = new Board();
+    Block a;
+    Block b;
+    Block c;
+    int numBlocks = 0;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -107,25 +112,15 @@ public class Game{
 
 
       if (mode == 1){
-        Screen s = new Screen(terminal);
-        Board game = new Board();
-
-        Block a;
-        Block b;
-        Block c;
-
-        int numBlocks = 0;
 
         if (numBlocks == 0){
           a = game.generateBlock();
           b = game.generateBlock();
           c = game.generateBlock();
-          //String s = a.toString();
-          //putString(0,0,terminal,""+(s.equals(a.toString())));
-          //startGame(terminal, game, a, b, c);
+          startGame(terminal, game, a, b, c);
           numBlocks = 3;
         }
-        //putString(40, 0, terminal, "" + numBlocks);
+        putString(0, 50, terminal, "" + numBlocks);
         if (key != null){
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
