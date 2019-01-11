@@ -15,14 +15,7 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Game{
 
-  public static void putString(int r, int c, Terminal t, String s){
-		t.moveCursor(r,c);
-		for(int i = 0; i < s.length();i++){
-			t.putCharacter(s.charAt(i));
-		}
-	}
-
-  public static void putBlock(int r, int c, Terminal t, String s){
+  public static void putString(int r, int c,Terminal t, String s){
 		t.moveCursor(r,c);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
@@ -35,7 +28,7 @@ public class Game{
     int r = s.getColumns()/2 - text.length()/2;
     int c = 0;
 
-    t.applyForegroundColor(Terminal.Color.BLACK);
+    t.applyForegroundColor(Terminal.Color.BLUE);
     putString(r,c,t,text);
     r = s.getColumns()/2 - text2.length()/2;
     c = 10;
@@ -45,32 +38,37 @@ public class Game{
   }
 
   public static void drawBoard(Terminal t, String s){
-    t.applyForegroundColor(Terminal.Color.BLACK);//the color of the board will be black
+    t.applyForegroundColor(Terminal.Color.BLUE);//the color of the board will be BLUE
     putString(0,0,t,s);
   }
 
-  public static void drawBlock(Terminal t, String s, int blockNum){
+  public static void drawBlockSelection(Terminal t, String s){
     t.applyForegroundColor(Terminal.Color.GREEN);
-    if (blockNum == 1) {
-      putString(0,30,t,s);
-    }
-    if (blockNum == 2) {
-      //putBlock(10,30,t,s);
-    }
-    if (blockNum == 3) {
-      //putBlock(20,30,t,s);
-    }
+    putString(0,30,t,s);
   }
 
-  public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
+  public static int runGame(Terminal t, Board B, int numB){
+    Block a;
+    Block b;
+    Block c;
+    boolean[][] f = new boolean[0][0];
+    int num = numB;
+    if (num == 0){
+      a = B.generateBlock();
+      b = B.generateBlock();
+      c = B.generateBlock();
+      f = B.blockSelection(a,b,c);
+      num = 3;
+    }
     drawBoard(t, B.toString());
-    //putString(0,30,t,a.toString());
-    drawBlock(t, a.toString(), 1);
-    //drawBlock(t, b.toString(), 2);
-    //drawBlock(t, c.toString(), 3);
+    //drawBlockSelection(t, B.PrintSelection(f));
+    return num;
   }
 
   public static void main(String[] args) {
+    Board game = new Board();
+
+    int numBlocks = 0;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -83,7 +81,7 @@ public class Game{
 
     while(running){
 
-			terminal.applyForegroundColor(Terminal.Color.BLACK);
+			terminal.applyForegroundColor(Terminal.Color.BLUE);
 
 
       Key key = terminal.readInput();
@@ -101,36 +99,15 @@ public class Game{
 
 
       if (mode == 1){
-
-        Board game = new Board();
-
-        Block a;
-        Block b;
-        Block c;
-
-        int numBlocks = 0;
-
-        if (numBlocks == 0){
-          a = game.generateBlock();
-          b = game.generateBlock();
-          c = game.generateBlock();
-          //putString(0,30,terminal,a.toString());
-          String s = a.toString();
-          putString(0,0,terminal,""+(s.equals(a.toString())));
-          //startGame(terminal, game, a, b, c);
-          numBlocks = 3;
-        }
-        //putString(40, 0, terminal, "" + numBlocks);
+        numBlocks = runGame(terminal, game, numBlocks);
         if (key != null){
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
-            mode = 0;
-            numBlocks = 0;
+            mode = 1;
           }
 
         }
       }
-
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
