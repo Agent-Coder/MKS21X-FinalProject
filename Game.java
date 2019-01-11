@@ -167,7 +167,9 @@ public class Game{
         }
 
         if (key != null){
+
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
+
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 0;
@@ -175,7 +177,8 @@ public class Game{
             game = new Board();
             selectedBlock = 1;
           }
-          if (key.getKind() == Key.Kind.ArrowRight) {
+
+          if (key.getKind() == Key.Kind.ArrowRight){
             if (selectedBlock == 1){
               putBlock(terminal,a.toString(), 1);
               selectedBlock = 2;
@@ -185,6 +188,19 @@ public class Game{
             } else if (selectedBlock == 3){
               putBlock(terminal,c.toString(), 3);
               selectedBlock = 1;
+            }
+          }
+
+          if (key.getKind() == Key.Kind.ArrowLeft) {
+            if (selectedBlock == 1){
+              putBlock(terminal,a.toString(), 1);
+              selectedBlock = 3;
+            } else if (selectedBlock == 2){
+              putBlock(terminal,b.toString(), 2);
+              selectedBlock = 1;
+            } else if (selectedBlock == 3){
+              putBlock(terminal,c.toString(), 3);
+              selectedBlock = 2;
             }
           }
         }
