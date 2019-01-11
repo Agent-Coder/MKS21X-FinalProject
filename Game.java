@@ -112,6 +112,7 @@ public class Game{
     Block c = new emptyBlock();
     int numBlocks = 0;
     int selectedBlock = 1;
+    Block theChosenOne = new emptyBlock();
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -202,6 +203,18 @@ public class Game{
             }
           }
 
+          if (key.getKind() == Key.Kind.ArrowUp) {
+            if (selectedBlock == 1){
+              theChosenOne = a;
+              a = new emptyBlock();
+            } else if (selectedBlock == 2){
+              theChosenOne = b;
+              b = new emptyBlock();
+            } else if (selectedBlock == 3){
+              theChosenOne = c;
+              c = new emptyBlock();
+            }
+          }
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
         }
       }
