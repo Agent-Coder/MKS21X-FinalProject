@@ -76,7 +76,11 @@ abstract class Block {
 
 class emptyBlock extends Block{
   public String toString(){
-    return "";
+    String s = "";
+    for (int i = 0; i < 11; i++){
+      s += "                     \n";
+    }
+    return s;
   }
 }
 

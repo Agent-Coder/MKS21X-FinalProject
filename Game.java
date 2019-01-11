@@ -207,12 +207,18 @@ public class Game{
             if (selectedBlock == 1){
               theChosenOne = a;
               a = new emptyBlock();
+              //write code to move block around here
+              putBlock(terminal,a.toString(), 1);
             } else if (selectedBlock == 2){
               theChosenOne = b;
               b = new emptyBlock();
+              //write code to move block around here
+              putBlock(terminal,b.toString(), 2);
             } else if (selectedBlock == 3){
               theChosenOne = c;
               c = new emptyBlock();
+              //write code to move block around here
+              putBlock(terminal,c.toString(), 3);
             }
           }
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
