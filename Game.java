@@ -56,15 +56,43 @@ public class Game{
   }
 
   public static void putBlock(Terminal t, String s, int num){
-    int x = 0;
-    int y = 30;
-    int count = 1;
-    t.moveCursor(x,y);
-    for(int i = 0; i < s.length();i++){
-      t.putCharacter(s.charAt(i));
-      if (s.charAt(i) == '\n'){
-        t.moveCursor(x,y+count);
-        count++;
+    if (num == 1){
+      int x = 0;
+      int y = 30;
+      int count = 1;
+      t.moveCursor(x,y);
+      for(int i = 0; i < s.length();i++){
+        t.putCharacter(s.charAt(i));
+        if (s.charAt(i) == '\n'){
+          t.moveCursor(x,y+count);
+          count++;
+        }
+      }
+    }
+    if (num == 2){
+      int x = 22;
+      int y = 30;
+      int count = 1;
+      t.moveCursor(x,y);
+      for(int i = 0; i < s.length();i++){
+        t.putCharacter(s.charAt(i));
+        if (s.charAt(i) == '\n'){
+          t.moveCursor(x,y+count);
+          count++;
+        }
+      }
+    }
+    if (num == 3){
+      int x = 44;
+      int y = 30;
+      int count = 1;
+      t.moveCursor(x,y);
+      for(int i = 0; i < s.length();i++){
+        t.putCharacter(s.charAt(i));
+        if (s.charAt(i) == '\n'){
+          t.moveCursor(x,y+count);
+          count++;
+        }
       }
     }
   }
@@ -72,8 +100,8 @@ public class Game{
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
     putBlock(t,a.toString(), 1);
-    //putBlock(10,30,t,b.toString(), 2);
-    //drawBlock(t, c.toString(), 3);
+    putBlock(t,b.toString(), 2);
+    putBlock(t,c.toString(), 3);
   }
 
   public static void main(String[] args) {
