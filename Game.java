@@ -55,23 +55,24 @@ public class Game{
     putString(0,0,t,s);
   }
 
-  public static void drawBlock(Terminal t, String s, int blockNum){
-    t.applyForegroundColor(Terminal.Color.GREEN);
-    if (blockNum == 1) {
-      putString(0,30,t,s);
-    }
-    if (blockNum == 2) {
-      //putBlock(10,30,t,s);
-    }
-    if (blockNum == 3) {
-      //putBlock(20,30,t,s);
+  public static void putBlock(Terminal t, String s, int num){
+    int x = 0;
+    int y = 30;
+    int count = 1;
+    t.moveCursor(x,y);
+    for(int i = 0; i < s.length();i++){
+      t.putCharacter(s.charAt(i));
+      if (s.charAt(i) == '\n'){
+        t.moveCursor(x,y+count);
+        count++;
+      }
     }
   }
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
-    putString(0,30,t,a.toString());
-    //drawBlock(t, b.toString(), 2);
+    putBlock(t,a.toString(), 1);
+    //putBlock(10,30,t,b.toString(), 2);
     //drawBlock(t, c.toString(), 3);
   }
 
