@@ -12,6 +12,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
+import com.googlecode.lanterna.screen.Screen;
 
 public class Game{
 
@@ -21,6 +22,18 @@ public class Game{
 			t.putCharacter(s.charAt(i));
 		}
 	}
+
+  public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg, Terminal.Color back ){
+    t.moveCursor(r,c);
+    t.applyBackgroundColor(forg);
+    t.applyForegroundColor(Terminal.Color.BLACK);
+
+    for(int i = 0; i < s.length();i++){
+      t.putCharacter(s.charAt(i));
+    }
+    t.applyBackgroundColor(Terminal.Color.DEFAULT);
+    t.applyForegroundColor(Terminal.Color.DEFAULT);
+  }
 
   public static void drawStartingScreen(Terminal t, TerminalSize s){
     String text = "1010!";
@@ -48,36 +61,22 @@ public class Game{
       putString(0,30,t,s);
     }
     if (blockNum == 2) {
-      putString(10,30,t,s);
+      //putBlock(10,30,t,s);
     }
     if (blockNum == 3) {
-      putString(20,30,t,s);
+      //putBlock(20,30,t,s);
     }
   }
 
-  public static int runGame(Terminal t, Board B, int numB){
-    Block a = new Block();
-    Block b = new Block();
-    Block c = new Block();
-    int num = numB;
-    if (num == 0){
-      a = B.generateBlock();
-      b = B.generateBlock();
-      c = B.generateBlock();
-      num = 3;
-    }
+  public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
-    putString(0,30,t,"" + num);
-    //drawBlock(t, a.toString(), 1);
+    //putString(0,30,t,a.toString());
+    drawBlock(t, a.toString(), 1);
     //drawBlock(t, b.toString(), 2);
     //drawBlock(t, c.toString(), 3);
-    return num;
   }
 
   public static void main(String[] args) {
-    Board game = new Board();
-
-    int numBlocks = 0;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -108,8 +107,25 @@ public class Game{
 
 
       if (mode == 1){
-        numBlocks = runGame(terminal, game, numBlocks);
-        //putString(30, 0, terminal, "" + numBlocks);
+        Screen s = new Screen(terminal);
+        Board game = new Board();
+
+        Block a;
+        Block b;
+        Block c;
+
+        int numBlocks = 0;
+
+        if (numBlocks == 0){
+          a = game.generateBlock();
+          b = game.generateBlock();
+          c = game.generateBlock();
+          //String s = a.toString();
+          //putString(0,0,terminal,""+(s.equals(a.toString())));
+          //startGame(terminal, game, a, b, c);
+          numBlocks = 3;
+        }
+        //putString(40, 0, terminal, "" + numBlocks);
         if (key != null){
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
