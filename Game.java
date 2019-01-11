@@ -107,9 +107,9 @@ public class Game{
   public static void main(String[] args) {
 
     Board game = new Board();
-    Block a = game.generateBlock();
-    Block b = game.generateBlock();
-    Block c = game.generateBlock();
+    Block a = new emptyBlock();
+    Block b = new emptyBlock();
+    Block c = new emptyBlock();
     int numBlocks = 0;
     int selectedBlock = 1;
 
@@ -168,8 +168,6 @@ public class Game{
 
         if (key != null){
 
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
-
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 0;
@@ -203,6 +201,8 @@ public class Game{
               selectedBlock = 2;
             }
           }
+
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
         }
       }
 
