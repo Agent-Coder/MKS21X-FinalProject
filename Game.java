@@ -48,10 +48,10 @@ public class Game{
       putString(0,30,t,s);
     }
     if (blockNum == 2) {
-      putString(5,30,t,s);
+      putString(10,30,t,s);
     }
     if (blockNum == 3) {
-      putString(10,30,t,s);
+      putString(20,30,t,s);
     }
   }
 
@@ -67,7 +67,8 @@ public class Game{
       num = 3;
     }
     drawBoard(t, B.toString());
-    drawBlock(t, a.toString(), 1);
+    putString(0,30,t,"" + num);
+    //drawBlock(t, a.toString(), 1);
     //drawBlock(t, b.toString(), 2);
     //drawBlock(t, c.toString(), 3);
     return num;
@@ -108,6 +109,7 @@ public class Game{
 
       if (mode == 1){
         numBlocks = runGame(terminal, game, numBlocks);
+        //putString(30, 0, terminal, "" + numBlocks);
         if (key != null){
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();

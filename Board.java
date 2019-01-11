@@ -202,6 +202,8 @@ public class Board {
     Block a=x.generateBlock();
     Block b=x.generateBlock();
     Block c=x.generateBlock();
-    boolean[][] f=blockSelection(a,b,c);
+    System.out.println(a.toString());
+    System.out.println(b.toString());
+    System.out.println(c.toString());
   }
 }
