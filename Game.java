@@ -107,9 +107,9 @@ public class Game{
   public static void main(String[] args) {
 
     Board game = new Board();
-    Block a;
-    Block b;
-    Block c;
+    Block a = game.generateBlock();
+    Block b = game.generateBlock();
+    Block c = game.generateBlock();
     int numBlocks = 0;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -141,15 +141,21 @@ public class Game{
 
 
       if (mode == 1){
-
+        int selectedBlock = 1;
         if (numBlocks == 0){
           a = game.generateBlock();
           b = game.generateBlock();
           c = game.generateBlock();
           startGame(terminal, game, a, b, c);
           numBlocks = 3;
+        } else {
+          if (selectedBlock == 1){
+            terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            putBlock(terminal,a.toString(), 1);
+            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          }
         }
-        putString(0, 50, terminal, "" + numBlocks);
+
         if (key != null){
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
