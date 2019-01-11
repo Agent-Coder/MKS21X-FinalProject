@@ -151,7 +151,17 @@ public class Game{
         } else {
           if (selectedBlock == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            putBlock(terminal,a.toString(), 1);
+            putBlock(terminal,a.toString(), selectedBlock);
+            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          }
+          if (selectedBlock == 2){
+            terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            putBlock(terminal,b.toString(), selectedBlock);
+            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          }
+          if (selectedBlock == 3){
+            terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            putBlock(terminal,c.toString(), selectedBlock);
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
         }
@@ -161,6 +171,7 @@ public class Game{
             terminal.clearScreen();
             mode = 0;
             numBlocks = 0;
+            game = new Board();
           }
 
         }
