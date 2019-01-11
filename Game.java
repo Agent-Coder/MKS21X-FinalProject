@@ -23,14 +23,6 @@ public class Game{
 		}
 	}
 
-<<<<<<< HEAD
-  public static void putBlock(int r, int c, Terminal t, String s){
-		t.moveCursor(r,c);
-		for(int i = 0; i < s.length();i++){
-			t.putCharacter(s.charAt(i));
-		}
-	}
-=======
   public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg, Terminal.Color back ){
     t.moveCursor(r,c);
     t.applyBackgroundColor(forg);
@@ -42,7 +34,6 @@ public class Game{
     t.applyBackgroundColor(Terminal.Color.DEFAULT);
     t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
->>>>>>> fixingBlocks
 
   public static void drawStartingScreen(Terminal t, TerminalSize s){
     String text = "1010!";
@@ -78,13 +69,6 @@ public class Game{
         }
       }
     }
-<<<<<<< HEAD
-    if (blockNum == 2) {
-      //putBlock(10,30,t,s);
-    }
-    if (blockNum == 3) {
-      //putBlock(20,30,t,s);
-=======
     if (num == 2){
       int x = 22;
       int y = 30;
@@ -110,21 +94,11 @@ public class Game{
           count++;
         }
       }
->>>>>>> fixingBlocks
     }
   }
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
-<<<<<<< HEAD
-    //putString(0,30,t,a.toString());
-    drawBlock(t, a.toString(), 1);
-    //drawBlock(t, b.toString(), 2);
-    //drawBlock(t, c.toString(), 3);
-  }
-
-  public static void main(String[] args) {
-=======
     putBlock(t,a.toString(), 1);
     putBlock(t,b.toString(), 2);
     putBlock(t,c.toString(), 3);
@@ -142,7 +116,6 @@ public class Game{
     boolean aEmpty = true;
     boolean bEmpty = true;
     boolean cEmpty = true;
->>>>>>> fixingBlocks
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -173,28 +146,6 @@ public class Game{
 
 
       if (mode == 1){
-<<<<<<< HEAD
-
-        Board game = new Board();
-
-        Block a;
-        Block b;
-        Block c;
-
-        int numBlocks = 0;
-
-        if (numBlocks == 0){
-          a = game.generateBlock();
-          b = game.generateBlock();
-          c = game.generateBlock();
-          //putString(0,30,terminal,a.toString());
-          String s = a.toString();
-          putString(0,0,terminal,""+(s.equals(a.toString())));
-          //startGame(terminal, game, a, b, c);
-          numBlocks = 3;
-        }
-        //putString(40, 0, terminal, "" + numBlocks);
-=======
         if (numBlocks == 0){
           a = game.generateBlock();
           aEmpty = false;
@@ -222,7 +173,6 @@ public class Game{
           }
         }
 
->>>>>>> fixingBlocks
         if (key != null){
 
           if (key.getKind() == Key.Kind.Tab) {
