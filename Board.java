@@ -40,6 +40,22 @@ public class Board {
       }
     }
 
+    public void ShiftHorizontal(Block a,int dir){
+      int r=a.getLength();
+      int c=a.getWidth();
+      for (int x=r;x<r;x++){
+        for (int y=c;y<c;y++){
+          a.getBlock(x,y).setXcor(x+dir);
+          a.getBlock(x,y).setYcor(y+dir);
+        }
+      }
+      r =a.getRow();
+      c=a.getCol();
+      for (int x=((10-r)/2)+dir;x<(r+(10-r)/2)+dir;x++){
+        for (int y=((10-r)/2)+dir;y<(c+(10-r)/2)+dir;y++){
+          layout[x][y]=a.getmap(r,c);
+      }
+    }
     public Block generateBlock(){
       int roll=(int)(Math.random()*100)%3;
       int length;
