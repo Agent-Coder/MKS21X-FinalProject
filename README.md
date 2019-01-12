@@ -45,3 +45,6 @@ I worked on doing the shifts (not finished) and puting the block on the board an
 
 AC;01-10-19;
 A lot of progress was made today! The blocks are now printed on the board separately and blinks to show the player which block they are on. When the player presses the up arrow key, they will have officially selected the block. I also wrote another child class of block as a placeholder when a player selects a block to place on the board.
+
+AZ;01-10-19;
+I tried to put the block on the board and make it move around and fixed a few issues with the compiling of the Board and then proceeded to spend most of my time trying to find ways to have lanterna work on my computer. The future is grim.
