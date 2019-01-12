@@ -61,8 +61,8 @@ public class Board {
       c=a.getWidth();
       for (int x=r;x<r;x++){
         for (int y=c;y<c;y++){
-          a.getBlock(x,y).setXcor(x);
-          a.getBlock(x,y).setYcor(y);
+          a.getBlock()[x][y].setXcor(x);
+          a.getBlock()[x][y].setYcor(y);
         }
       }
     }
@@ -72,8 +72,8 @@ public class Board {
       int c=a.getWidth();
       for (int x=r;x<r;x++){
         for (int y=c;y<c;y++){
-          a.getBlock(x,y).setXcor(x+dir);
-          a.getBlock(x,y).setYcor(y+dir);
+          a.getBlock()[x][y].setXcor(x+dir);
+          a.getBlock()[x][y].setYcor(y+dir);
         }
       }
       r =a.getRow();
