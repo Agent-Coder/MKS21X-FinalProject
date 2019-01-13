@@ -105,6 +105,7 @@ public class Game{
   }
 
   public static void moveBlockOnBoard(Terminal t, Block b, int x, int y){
+    int oriX = x;
     Square[][] myBlock = b.getBlock();
     for (int i = 0; i < myBlock.length; i++){
       for (int j = 0; j < myBlock[0].length; j++){
@@ -115,7 +116,25 @@ public class Game{
         }
         x += 4;
         if (j == myBlock[0].length - 1){
-          x = 2;
+          x = oriX;
+          y += 2;
+        }
+      }
+    }
+  }
+
+  public static void eraseBlock(Terminal t, Block b, int x, int y){
+    int oriX = x;
+    Square[][] myBlock = b.getBlock();
+    for (int i = 0; i < myBlock.length; i++){
+      for (int j = 0; j < myBlock[0].length; j++){
+        if (myBlock[i][j] != null){
+          t.moveCursor(x,y);
+          t.putCharacter(' ');
+        }
+        x += 4;
+        if (j == myBlock[0].length - 1){
+          x = oriX;
           y += 2;
         }
       }
@@ -130,11 +149,13 @@ public class Game{
     Block c = new emptyBlock();
     int numBlocks = 0;
     int selectedBlock = 1;
-    //Block theChosenOne = new emptyBlock();
+    Block theChosenOne = new emptyBlock();
     boolean aEmpty = true;
     boolean bEmpty = true;
     boolean cEmpty = true;
     boolean blockOnBoard = false;
+    int blockX = 2;
+    int blockY = 1;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -272,41 +293,54 @@ public class Game{
 
             if (key.getKind() == Key.Kind.ArrowUp) {
               if (selectedBlock == 1){
+                theChosenOne = a;
                 moveBlockOnBoard(terminal, a, 2, 1);
                 a = new emptyBlock();
                 aEmpty = true;
                 putBlock(terminal,a.toString(), 1);
               } else if (selectedBlock == 2){
+                theChosenOne = b;
                 moveBlockOnBoard(terminal, b, 2, 1);
                 b = new emptyBlock();
                 bEmpty = true;
                 putBlock(terminal,b.toString(), 2);
               } else if (selectedBlock == 3){
+                theChosenOne = c;
                 moveBlockOnBoard(terminal, c, 2, 1);
                 c = new emptyBlock();
                 cEmpty = true;
                 putBlock(terminal,c.toString(), 3);
               }
-              numBlocks--;
-              //blockOnBoard = true;
+              blockX = 2;
+              blockY = 1;
+              //numBlocks--;
+              blockOnBoard = true;
             }
 
           } else {
 
             if (key.getKind() == Key.Kind.ArrowUp) {
-
+              eraseBlock(terminal,theChosenOne, blockX, blockY);
+              blockY -= 2;
+              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
-
+              eraseBlock(terminal,theChosenOne, blockX, blockY);
+              blockY += 2;
+              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
-
+              eraseBlock(terminal,theChosenOne, blockX, blockY);
+              blockX -= 4;
+              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
             }
 
             if (key.getKind() == Key.Kind.ArrowRight) {
-
+              eraseBlock(terminal,theChosenOne, blockX, blockY);
+              blockX += 4;
+              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
             }
 
           }
