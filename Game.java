@@ -220,6 +220,7 @@ public class Game{
           c = game.generateBlock();
           cEmpty = false;
           startGame(terminal, game, a, b, c);
+          refreshBoard(terminal, game);
           numBlocks = 3;
         } else {
           if (selectedBlock == 1){
@@ -377,11 +378,10 @@ public class Game{
                 blockOnBoard = false;
                 putString(0,23,terminal,"                           ");
                 refreshBoard(terminal, game);
+                numBlocks--;
               } else {
                 putString(0,23,terminal,"Block cannot be placed here");
               }
-
-              numBlocks--;
             }
 
           }
