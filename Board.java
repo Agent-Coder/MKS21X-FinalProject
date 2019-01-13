@@ -144,13 +144,13 @@ public class Board {
 
     private boolean placeable(Block bl, int x, int y){
       int oriY=y;
-      for (int i = 0; i < b.getLength(); i++){
-        for (int j = 0; j < b.getWidth(); j++){
+      for (int i = 0; i < bl.getLength(); i++){
+        for (int j = 0; j < bl.getWidth(); j++){
           if (board[x][y] != null){
             return false;
           }
           y++;
-          if (j == b.getWidth() - 1){
+          if (j == bl.getWidth() - 1){
             y = oriY;
             x++;
           }
