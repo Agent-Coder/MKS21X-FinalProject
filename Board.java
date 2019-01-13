@@ -143,23 +143,18 @@ public class Board {
     }
 
     private boolean placeable(Block bl, int x, int y){
-      int a = 0;
-      int b = 0;
-      //System.out.println(board.length);
-      //System.out.println(y+bl.getWidth());
-      for (int i = x; a < bl.getLength() && i < x+bl.getLength(); i++){
-        a = 0;
-        for (int j = y; b < bl.getWidth() && j < y+bl.getWidth(); j++){
-          b = 0;
-          //System.out.println("a: " + a + "\nb: " + b + "\ni: " + i + "\nj: " + j);
-          //System.out.println(board[0][0]);
-          //System.out.println(bl.getBlock()[a][b] != null);
-          if (board[i][j] != null && bl.getBlock()[a][b] != null){
+      int oriY=y;
+      for (int i = 0; i < b.getLength(); i++){
+        for (int j = 0; j < b.getWidth(); j++){
+          if (board[x][y] != null){
             return false;
           }
-          b++;
+          y++;
+          if (j == b.getWidth() - 1){
+            y = oriY;
+            x++;
+          }
         }
-        a++;
       }
       return true;
     }
