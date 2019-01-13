@@ -421,6 +421,8 @@ public class Game{
                 putString(0,23,terminal,"                                                        ");
                 refreshBoard(terminal, game);
                 numBlocks--;
+                game.ClearRow();
+                game.ClearCol();
               } else {
                 putString(0,23,terminal,"Block cannot be placed here");
               }

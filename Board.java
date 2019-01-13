@@ -129,7 +129,9 @@ public class Board {
       if (placeable(b, x, y)){
         for (int i = 0; i < b.getLength(); i++){
           for (int j = 0; j < b.getWidth(); j++){
-            board[x][y] = b.getBlock()[i][j];
+            if (b.getBlock()[i][j] != null){
+              board[x][y] = b.getBlock()[i][j];
+            }
             y++;
             if (j == b.getWidth() - 1){
               y = oriY;
@@ -146,7 +148,7 @@ public class Board {
       int oriY=y;
       for (int i = 0; i < bl.getLength(); i++){
         for (int j = 0; j < bl.getWidth(); j++){
-          if (board[x][y] != null){
+          if (bl.getBlock()[i][j] != null && board[x][y] != null){
             return false;
           }
           y++;
