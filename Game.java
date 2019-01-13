@@ -404,10 +404,15 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowRight) {
-              eraseBlock(terminal,theChosenOne, blockX, blockY);
-              blockX += 4;
-              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
-              refreshBoard(terminal, game);
+              if (blockX != theChosenOne.getWidth()*-4 + 42) {
+                eraseBlock(terminal,theChosenOne, blockX, blockY);
+                blockX += 4;
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+                refreshBoard(terminal, game);
+              } else {
+                putString(0,23,terminal,"                                                        ");
+                putString(0,23, terminal, "You have reached the right side of the board");
+              }
             }
 
             if (key.getKind() == Key.Kind.Enter) {
