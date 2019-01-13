@@ -104,6 +104,10 @@ public class Game{
     putBlock(t,c.toString(), 3);
   }
 
+  public static void moveBlockOnBoard(Block b){
+
+  }
+
   public static void main(String[] args) {
 
     Board game = new Board();
@@ -116,6 +120,7 @@ public class Game{
     boolean aEmpty = true;
     boolean bEmpty = true;
     boolean cEmpty = true;
+    boolean blockOnBoard = false;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -183,53 +188,89 @@ public class Game{
             selectedBlock = 1;
           }
 
-          if (key.getKind() == Key.Kind.ArrowRight){
+          if (key.getKind() == Key.Kind.ArrowRight && blockOnBoard == false){
             if (selectedBlock == 1){
               putBlock(terminal,a.toString(), 1);
-              selectedBlock = 2;
+              if (!bEmpty){
+                selectedBlock = 2;
+              } else if (!cEmpty){
+                selectedBlock = 3;
+              } else {
+                selectedBlock = 0;
+              }
             } else if (selectedBlock == 2){
               putBlock(terminal,b.toString(), 2);
-              selectedBlock = 3;
+              if (!cEmpty){
+                selectedBlock = 3;
+              } else if (!aEmpty){
+                selectedBlock = 1;
+              } else {
+                selectedBlock = 0;
+              }
             } else if (selectedBlock == 3){
               putBlock(terminal,c.toString(), 3);
-              selectedBlock = 1;
+              if (!aEmpty){
+                selectedBlock = 1;
+              } else if (!bEmpty){
+                selectedBlock = 2;
+              } else {
+                selectedBlock = 0;
+              }
             }
           }
 
-          if (key.getKind() == Key.Kind.ArrowLeft) {
+          if (key.getKind() == Key.Kind.ArrowLeft && blockOnBoard == false) {
             if (selectedBlock == 1){
               putBlock(terminal,a.toString(), 1);
-              selectedBlock = 3;
+              if (!cEmpty){
+                selectedBlock = 3;
+              } else if (!bEmpty){
+                selectedBlock = 2;
+              } else {
+                selectedBlock = 0;
+              }
             } else if (selectedBlock == 2){
               putBlock(terminal,b.toString(), 2);
-              selectedBlock = 1;
+              if (!aEmpty){
+                selectedBlock = 1;
+              } else if (!cEmpty){
+                selectedBlock = 3;
+              } else {
+                selectedBlock = 0;
+              }
             } else if (selectedBlock == 3){
               putBlock(terminal,c.toString(), 3);
-              selectedBlock = 2;
+              if (!bEmpty){
+                selectedBlock = 2;
+              } else if (!aEmpty){
+                selectedBlock = 1;
+              } else {
+                selectedBlock = 0;
+              }
             }
           }
 
-          if (key.getKind() == Key.Kind.ArrowUp) {
+          if (key.getKind() == Key.Kind.ArrowUp && blockOnBoard == false) {
+            //blockOnBoard = true;
             if (selectedBlock == 1){
-              theChosenOne = a;
+              moveBlockOnBoard(a);
               a = new emptyBlock();
               aEmpty = true;
-              //write code to move block around here
               putBlock(terminal,a.toString(), 1);
             } else if (selectedBlock == 2){
-              theChosenOne = b;
+              moveBlockOnBoard(b);
               b = new emptyBlock();
               bEmpty = true;
-              //write code to move block around here
               putBlock(terminal,b.toString(), 2);
             } else if (selectedBlock == 3){
-              theChosenOne = c;
+              moveBlockOnBoard(c);
               c = new emptyBlock();
               cEmpty = true;
-              //write code to move block around here
               putBlock(terminal,c.toString(), 3);
             }
+            //numBlocks--;
           }
+
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
         }
       }
