@@ -222,6 +222,7 @@ public class Game{
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);
           numBlocks = 3;
+          selectedBlock = 1;
         } else {
           if (selectedBlock == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
@@ -325,18 +326,39 @@ public class Game{
                 a = new emptyBlock();
                 aEmpty = true;
                 putBlock(terminal,a.toString(), 1);
+                if (!bEmpty){
+                  selectedBlock = 2;
+                } else if (!cEmpty){
+                  selectedBlock = 3;
+                } else {
+                  selectedBlock = 0;
+                }
               } else if (selectedBlock == 2){
                 theChosenOne = b;
                 moveBlockOnBoard(terminal, b, 2, 1);
                 b = new emptyBlock();
                 bEmpty = true;
                 putBlock(terminal,b.toString(), 2);
+                if (!cEmpty){
+                  selectedBlock = 3;
+                } else if (!aEmpty){
+                  selectedBlock = 1;
+                } else {
+                  selectedBlock = 0;
+                }
               } else if (selectedBlock == 3){
                 theChosenOne = c;
                 moveBlockOnBoard(terminal, c, 2, 1);
                 c = new emptyBlock();
                 cEmpty = true;
                 putBlock(terminal,c.toString(), 3);
+                if (!aEmpty){
+                  selectedBlock = 1;
+                } else if (!bEmpty){
+                  selectedBlock = 2;
+                } else {
+                  selectedBlock = 0;
+                }
               }
               blockX = 2;
               blockY = 1;
@@ -346,17 +368,27 @@ public class Game{
           } else {
 
             if (key.getKind() == Key.Kind.ArrowUp) {
-              eraseBlock(terminal,theChosenOne, blockX, blockY);
-              blockY -= 2;
-              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
-              refreshBoard(terminal, game);
+              if (blockY != 1) {
+                eraseBlock(terminal,theChosenOne, blockX, blockY);
+                blockY -= 2;
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+                refreshBoard(terminal, game);
+              } else {
+                putString(0,23,terminal,"                                                        ");
+                putString(0,23, terminal, "You have reached the top of the board");
+              }
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
-              eraseBlock(terminal,theChosenOne, blockX, blockY);
-              blockY += 2;
-              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
-              refreshBoard(terminal, game);
+              if (blockY != 1) {
+                eraseBlock(terminal,theChosenOne, blockX, blockY);
+                blockY += 2;
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+                refreshBoard(terminal, game);
+              } else {
+                putString(0,23,terminal,"                                                        ");
+                putString(0,23, terminal, "You have reached the bottom of the board");
+              }
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
@@ -376,7 +408,7 @@ public class Game{
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 blockOnBoard = false;
-                putString(0,23,terminal,"                           ");
+                putString(0,23,terminal,"                                                        ");
                 refreshBoard(terminal, game);
                 numBlocks--;
               } else {
