@@ -125,19 +125,17 @@ public class Board {
     }
 
     public boolean placeBlock(Block b, int x, int y){
-      int tempx=x;
-      int tempy=y;
+      int oriY=y;
       if (placeable(b, x, y)){
         for (int i = 0; i < b.getLength(); i++){
           for (int j = 0; j < b.getWidth(); j++){
-            board[tempx][tempy] = b.getBlock()[i][j];
-            tempy++;
-            if (b.getBlock()[i][j]!=null){
-              this.spotCount--;
-              this.score++;
+            board[x][y] = b.getBlock()[i][j];
+            y++;
+            if (j == b.getWidth() - 1){
+              y = oriY;
+              x++;
             }
           }
-          tempx++;
         }
         return true;
       }

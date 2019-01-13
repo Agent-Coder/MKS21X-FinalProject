@@ -55,7 +55,7 @@ public class Game{
     putString(0,0,t,s);
   }
 
-  public static void drawBlocksOnBoard(Terminal t, Board b){
+  public static void refreshBoard(Terminal t, Board b){
     t.applyForegroundColor(Terminal.Color.BLACK);
     int x = 2;
     int y = 1;
@@ -68,6 +68,7 @@ public class Game{
         }
         x += 4;
         if (j == myBoard[0].length - 1){
+          x = 2;
           y += 2;
         }
       }
@@ -160,8 +161,10 @@ public class Game{
     }
   }
 
-  public static void placeBlockOnBoard(Block b, int x, int y){
-
+  public static boolean placeBlockOnBoard(Board B, Block b, int x, int y){
+    int i = y/2;
+    int j = x/4;
+    return B.placeBlock(b, i, j);
   }
 
   public static void main(String[] args) {
@@ -336,7 +339,6 @@ public class Game{
               }
               blockX = 2;
               blockY = 1;
-              //numBlocks--;
               blockOnBoard = true;
             }
 
@@ -367,7 +369,11 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.Enter) {
-              placeBlockOnBoard(theChosenOne, blockX, blockY);
+              if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
+                blockOnBoard = false;
+              }
+              refreshBoard(terminal, game);
+              numBlocks--;
             }
 
           }
