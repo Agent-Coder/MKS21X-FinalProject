@@ -104,9 +104,7 @@ public class Game{
     putBlock(t,c.toString(), 3);
   }
 
-  public static void moveBlockOnBoard(Terminal t, Block b){
-    int x = 2;
-    int y = 1;
+  public static void moveBlockOnBoard(Terminal t, Block b, int x, int y){
     Square[][] myBlock = b.getBlock();
     for (int i = 0; i < myBlock.length; i++){
       for (int j = 0; j < myBlock[0].length; j++){
@@ -274,23 +272,23 @@ public class Game{
 
             if (key.getKind() == Key.Kind.ArrowUp) {
               if (selectedBlock == 1){
-                moveBlockOnBoard(terminal, a);
+                moveBlockOnBoard(terminal, a, 2, 1);
                 a = new emptyBlock();
                 aEmpty = true;
                 putBlock(terminal,a.toString(), 1);
               } else if (selectedBlock == 2){
-                moveBlockOnBoard(terminal, b);
+                moveBlockOnBoard(terminal, b, 2, 1);
                 b = new emptyBlock();
                 bEmpty = true;
                 putBlock(terminal,b.toString(), 2);
               } else if (selectedBlock == 3){
-                moveBlockOnBoard(terminal, c);
+                moveBlockOnBoard(terminal, c, 2, 1);
                 c = new emptyBlock();
                 cEmpty = true;
                 putBlock(terminal,c.toString(), 3);
               }
               numBlocks--;
-              blockOnBoard = true;
+              //blockOnBoard = true;
             }
 
           } else {
