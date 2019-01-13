@@ -380,15 +380,15 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
-              //if (blockY != 1) {
+              if (blockY != theChosenOne.getLength()*-2 + 21) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY += 2;
                 moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
                 refreshBoard(terminal, game);
-              //} else {
-                //putString(0,23,terminal,"                                                        ");
-                //putString(0,23, terminal, "You have reached the bottom of the board");
-              //}
+              } else {
+                putString(0,23,terminal,"                                                        ");
+                putString(0,23, terminal, "You have reached the bottom of the board");
+              }
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
