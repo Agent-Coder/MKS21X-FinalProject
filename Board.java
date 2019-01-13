@@ -22,6 +22,9 @@ public class Board {
     return this.score;
   }
 
+  public Square[][] getBoard(){
+    return board;
+  }
 
   public Block generateBlock(){
       int roll=(int)(Math.random()*100)%3;

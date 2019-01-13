@@ -55,6 +55,25 @@ public class Game{
     putString(0,0,t,s);
   }
 
+  public static void drawBlocksOnBoard(Terminal t, Board b){
+    t.applyForegroundColor(Terminal.Color.BLACK);
+    int x = 2;
+    int y = 1;
+    Square[][] myBoard = b.getBoard();
+    for (int i = 0; i < myBoard.length; i++){
+      for (int j = 0; j < myBoard[0].length; j++){
+        if (myBoard[i][j] != null){
+          t.moveCursor(x,y);
+          t.putCharacter('@');
+        }
+        x += 4;
+        if (j == myBoard[0].length - 1){
+          y += 2;
+        }
+      }
+    }
+  }
+
   public static void putBlock(Terminal t, String s, int num){
     if (num == 1){
       int x = 0;
@@ -139,6 +158,10 @@ public class Game{
         }
       }
     }
+  }
+
+  public static void placeBlockOnBoard(Block b, int x, int y){
+
   }
 
   public static void main(String[] args) {
@@ -341,6 +364,10 @@ public class Game{
               eraseBlock(terminal,theChosenOne, blockX, blockY);
               blockX += 4;
               moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+            }
+
+            if (key.getKind() == Key.Kind.Enter) {
+              placeBlockOnBoard(theChosenOne, blockX, blockY);
             }
 
           }
