@@ -104,8 +104,24 @@ public class Game{
     putBlock(t,c.toString(), 3);
   }
 
-  public static void moveBlockOnBoard(Block b){
-
+  public static void moveBlockOnBoard(Terminal t, Block b){
+    int x = 2;
+    int y = 1;
+    Square[][] myBlock = b.getBlock();
+    for (int i = 0; i < myBlock.length; i++){
+      for (int j = 0; j < myBlock[0].length; j++){
+        if (myBlock[i][j] != null){
+          t.applyForegroundColor(Terminal.Color.GREEN);
+          t.moveCursor(x,y);
+          t.putCharacter('@');
+        }
+        x += 4;
+        if (j == myBlock[0].length - 1){
+          x = 2;
+          y += 2;
+        }
+      }
+    }
   }
 
   public static void main(String[] args) {
@@ -116,7 +132,7 @@ public class Game{
     Block c = new emptyBlock();
     int numBlocks = 0;
     int selectedBlock = 1;
-    Block theChosenOne = new emptyBlock();
+    //Block theChosenOne = new emptyBlock();
     boolean aEmpty = true;
     boolean bEmpty = true;
     boolean cEmpty = true;
@@ -186,89 +202,115 @@ public class Game{
             numBlocks = 0;
             game = new Board();
             selectedBlock = 1;
+            aEmpty = true;
+            bEmpty = true;
+            cEmpty = true;
+            blockOnBoard = false;
           }
 
-          if (key.getKind() == Key.Kind.ArrowRight && blockOnBoard == false){
-            if (selectedBlock == 1){
-              putBlock(terminal,a.toString(), 1);
-              if (!bEmpty){
-                selectedBlock = 2;
-              } else if (!cEmpty){
-                selectedBlock = 3;
-              } else {
-                selectedBlock = 0;
-              }
-            } else if (selectedBlock == 2){
-              putBlock(terminal,b.toString(), 2);
-              if (!cEmpty){
-                selectedBlock = 3;
-              } else if (!aEmpty){
-                selectedBlock = 1;
-              } else {
-                selectedBlock = 0;
-              }
-            } else if (selectedBlock == 3){
-              putBlock(terminal,c.toString(), 3);
-              if (!aEmpty){
-                selectedBlock = 1;
-              } else if (!bEmpty){
-                selectedBlock = 2;
-              } else {
-                selectedBlock = 0;
-              }
-            }
-          }
+          if (blockOnBoard == false){
 
-          if (key.getKind() == Key.Kind.ArrowLeft && blockOnBoard == false) {
-            if (selectedBlock == 1){
-              putBlock(terminal,a.toString(), 1);
-              if (!cEmpty){
-                selectedBlock = 3;
-              } else if (!bEmpty){
-                selectedBlock = 2;
-              } else {
-                selectedBlock = 0;
-              }
-            } else if (selectedBlock == 2){
-              putBlock(terminal,b.toString(), 2);
-              if (!aEmpty){
-                selectedBlock = 1;
-              } else if (!cEmpty){
-                selectedBlock = 3;
-              } else {
-                selectedBlock = 0;
-              }
-            } else if (selectedBlock == 3){
-              putBlock(terminal,c.toString(), 3);
-              if (!bEmpty){
-                selectedBlock = 2;
-              } else if (!aEmpty){
-                selectedBlock = 1;
-              } else {
-                selectedBlock = 0;
+            if (key.getKind() == Key.Kind.ArrowRight){
+              if (selectedBlock == 1){
+                putBlock(terminal,a.toString(), 1);
+                if (!bEmpty){
+                  selectedBlock = 2;
+                } else if (!cEmpty){
+                  selectedBlock = 3;
+                } else {
+                  selectedBlock = 0;
+                }
+              } else if (selectedBlock == 2){
+                putBlock(terminal,b.toString(), 2);
+                if (!cEmpty){
+                  selectedBlock = 3;
+                } else if (!aEmpty){
+                  selectedBlock = 1;
+                } else {
+                  selectedBlock = 0;
+                }
+              } else if (selectedBlock == 3){
+                putBlock(terminal,c.toString(), 3);
+                if (!aEmpty){
+                  selectedBlock = 1;
+                } else if (!bEmpty){
+                  selectedBlock = 2;
+                } else {
+                  selectedBlock = 0;
+                }
               }
             }
-          }
 
-          if (key.getKind() == Key.Kind.ArrowUp && blockOnBoard == false) {
-            //blockOnBoard = true;
-            if (selectedBlock == 1){
-              moveBlockOnBoard(a);
-              a = new emptyBlock();
-              aEmpty = true;
-              putBlock(terminal,a.toString(), 1);
-            } else if (selectedBlock == 2){
-              moveBlockOnBoard(b);
-              b = new emptyBlock();
-              bEmpty = true;
-              putBlock(terminal,b.toString(), 2);
-            } else if (selectedBlock == 3){
-              moveBlockOnBoard(c);
-              c = new emptyBlock();
-              cEmpty = true;
-              putBlock(terminal,c.toString(), 3);
+            if (key.getKind() == Key.Kind.ArrowLeft) {
+              if (selectedBlock == 1){
+                putBlock(terminal,a.toString(), 1);
+                if (!cEmpty){
+                  selectedBlock = 3;
+                } else if (!bEmpty){
+                  selectedBlock = 2;
+                } else {
+                  selectedBlock = 0;
+                }
+              } else if (selectedBlock == 2){
+                putBlock(terminal,b.toString(), 2);
+                if (!aEmpty){
+                  selectedBlock = 1;
+                } else if (!cEmpty){
+                  selectedBlock = 3;
+                } else {
+                  selectedBlock = 0;
+                }
+              } else if (selectedBlock == 3){
+                putBlock(terminal,c.toString(), 3);
+                if (!bEmpty){
+                  selectedBlock = 2;
+                } else if (!aEmpty){
+                  selectedBlock = 1;
+                } else {
+                  selectedBlock = 0;
+                }
+              }
             }
-            //numBlocks--;
+
+            if (key.getKind() == Key.Kind.ArrowUp) {
+              if (selectedBlock == 1){
+                moveBlockOnBoard(terminal, a);
+                a = new emptyBlock();
+                aEmpty = true;
+                putBlock(terminal,a.toString(), 1);
+              } else if (selectedBlock == 2){
+                moveBlockOnBoard(terminal, b);
+                b = new emptyBlock();
+                bEmpty = true;
+                putBlock(terminal,b.toString(), 2);
+              } else if (selectedBlock == 3){
+                moveBlockOnBoard(terminal, c);
+                c = new emptyBlock();
+                cEmpty = true;
+                putBlock(terminal,c.toString(), 3);
+              }
+              numBlocks--;
+              blockOnBoard = true;
+            }
+
+          } else {
+
+            if (key.getKind() == Key.Kind.ArrowUp) {
+
+            }
+
+            if (key.getKind() == Key.Kind.ArrowDown) {
+
+            }
+
+            if (key.getKind() == Key.Kind.ArrowLeft) {
+
+            }
+
+            if (key.getKind() == Key.Kind.ArrowRight) {
+
+            }
+
           }
 
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
