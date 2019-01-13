@@ -48,3 +48,6 @@ A lot of progress was made today! The blocks are now printed on the board separa
 
 AZ;01-10-19;
 I tried to put the block on the board and make it move around and fixed a few issues with the compiling of the Board and then proceeded to spend most of my time trying to find ways to have lanterna work on my computer. The future is grim.
+
+AZ;01-11-19;
+Today, I went to the 12 hour-Stuy Hack thing and so I didn't have time to work on this, HOWEVER, I got more practice with lanterna...thinking of changing to lanterna 3
