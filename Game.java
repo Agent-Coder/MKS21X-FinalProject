@@ -348,31 +348,39 @@ public class Game{
               eraseBlock(terminal,theChosenOne, blockX, blockY);
               blockY -= 2;
               moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+              refreshBoard(terminal, game);
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
               eraseBlock(terminal,theChosenOne, blockX, blockY);
               blockY += 2;
               moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+              refreshBoard(terminal, game);
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
               eraseBlock(terminal,theChosenOne, blockX, blockY);
               blockX -= 4;
               moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+              refreshBoard(terminal, game);
             }
 
             if (key.getKind() == Key.Kind.ArrowRight) {
               eraseBlock(terminal,theChosenOne, blockX, blockY);
               blockX += 4;
               moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+              refreshBoard(terminal, game);
             }
 
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 blockOnBoard = false;
+                putString(0,23,terminal,"                           ");
+                refreshBoard(terminal, game);
+              } else {
+                putString(0,23,terminal,"Block cannot be placed here");
               }
-              refreshBoard(terminal, game);
+
               numBlocks--;
             }
 
