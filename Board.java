@@ -23,7 +23,7 @@ public class Board {
   }
 
 
-    public Block generateBlock(){
+  public Block generateBlock(){
       int roll=(int)(Math.random()*100)%3;
       int length;
       Block random;
@@ -83,6 +83,7 @@ public class Board {
           layout[x][y]=a.getmap(r,c);
       }
     }
+  }
 
     public static boolean[][] blockSelection(Block a,Block b, Block c){
       boolean[][] selection=new boolean[11][a.getCol()+b.getCol()+c.getCol()+4];
