@@ -380,22 +380,27 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
-              if (blockY != 1) {
+              //if (blockY != 1) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY += 2;
                 moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
                 refreshBoard(terminal, game);
-              } else {
-                putString(0,23,terminal,"                                                        ");
-                putString(0,23, terminal, "You have reached the bottom of the board");
-              }
+              //} else {
+                //putString(0,23,terminal,"                                                        ");
+                //putString(0,23, terminal, "You have reached the bottom of the board");
+              //}
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
-              eraseBlock(terminal,theChosenOne, blockX, blockY);
-              blockX -= 4;
-              moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
-              refreshBoard(terminal, game);
+              if (blockX != 2){
+                eraseBlock(terminal,theChosenOne, blockX, blockY);
+                blockX -= 4;
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
+                refreshBoard(terminal, game);
+              } else {
+                putString(0,23,terminal,"                                                        ");
+                putString(0,23, terminal, "You have reached the left side of the board");
+              }
             }
 
             if (key.getKind() == Key.Kind.ArrowRight) {
