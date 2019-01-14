@@ -129,6 +129,9 @@ public Square getSquare(int x, int y){
             }
           }
         }
+        this.score+=b.getNumSqaures();
+        spotCount-=b.getNumSqaures();
+        blockCount--;
         return true;
       }
       return false;
