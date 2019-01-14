@@ -230,16 +230,19 @@ public class Game{
         } else {
           if (selectedBlock == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            t.applyForegroundColor(a.getColor());
             putBlock(terminal,a.toString(), selectedBlock);
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (selectedBlock == 2){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            t.applyForegroundColor(c.getColor());
             putBlock(terminal,b.toString(), selectedBlock);
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (selectedBlock == 3){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+            t.applyForegroundColor(c.getColor());
             putBlock(terminal,c.toString(), selectedBlock);
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
