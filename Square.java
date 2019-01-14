@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.terminal.Terminal.Color;
+import java.lang.Math;
 public class Square {
   private Enum color;
   private int xcor;
