@@ -2,7 +2,7 @@
 public class Square {
   private int xcor;
   private int ycor;
-  public Square(int x, int y){
+  public Square(String color, int x, int y){
     xcor = x;
     ycor = y;
   }
