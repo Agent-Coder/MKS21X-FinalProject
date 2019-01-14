@@ -64,7 +64,6 @@ public class Game{
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
           t.moveCursor(x,y);
-          t.applyForegroundColor(myBoard.getSquare(i,j).getColor);
           t.putCharacter('@');
         } else {
           t.moveCursor(x,y);
@@ -86,7 +85,7 @@ public class Game{
       int count = 1;
       t.moveCursor(x,y);
       for(int i = 0; i < s.length();i++){
-        t.applyForegroundColor(a.getColor())
+        t.applyForegroundColor(a.getColor());
         t.putCharacter(s.charAt(i));
         if (s.charAt(i) == '\n'){
           t.moveCursor(x,y+count);
@@ -124,7 +123,7 @@ public class Game{
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
-    (t,a.toString(), 1,a);
+    putBlock(t,a.toString(), 1,a);
     putBlock(t,b.toString(), 2,b);
     putBlock(t,c.toString(), 3,c);
   }

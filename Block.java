@@ -1,3 +1,5 @@
+import com.googlecode.lanterna.terminal.Terminal.Color;
+import java.lang.Math;
 abstract class Block {
 
   private Square[][] block;
@@ -9,6 +11,12 @@ abstract class Block {
   private int c;
   private int r;
   private int numSquares;
+  private Enum coloring;
+
+  public Enum getColor(){
+    return coloring;
+  }
+
   public int getRow(){
     return r;
   }
@@ -17,6 +25,8 @@ abstract class Block {
   }
 
   public Block(){
+    String[] colors={"RED","GREEN","BLUE","MAGENTA","YELLOW","CYAN","WHITE","BLACK"};
+    coloring=Terminal.Color.valueOf(colors[(int)(Math.random()*100 % 8)]);
     block=new Square[1][1];
     map=new boolean[2][2];
     }
@@ -92,6 +102,10 @@ class FullBlock extends Block{
   private int c;
   private int r;
   private int numSquares;
+  private Enum coloring;
+  public Enum getColor(){
+    return coloring;
+  }
   public int getNumSqaures(){
     return this.numSquares;
   }
@@ -114,6 +128,8 @@ class FullBlock extends Block{
     return map[row][col];
   }
   public FullBlock(int size){
+    String[] colors={"RED","GREEN","BLUE","MAGENTA","YELLOW","CYAN","WHITE","BLACK"};
+    coloring=Terminal.Color.valueOf(colors[(int)(Math.random()*100 % 8)]);
     block=new Square[size][size];
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
@@ -165,11 +181,16 @@ class FullBlock extends Block{
 }
 
 class LongBlock extends Block{
+
   private Square[][] block;
   private boolean[][] map;
   private int c;
   private int r;
   private int numSquares;
+  private Enum coloring;
+  public Enum getColor(){
+    return coloring;
+  }
   public int getNumSqaures(){
     return this.numSquares;
   }
@@ -192,6 +213,8 @@ class LongBlock extends Block{
     return this.map[row][col];
   }
   public LongBlock(int size,int pos){
+    String[] colors={"RED","GREEN","BLUE","MAGENTA","YELLOW","CYAN","WHITE","BLACK"};
+    coloring=Terminal.Color.valueOf(colors[(int)(Math.random()*100 % 8)]);
     if (pos==1){
       block=new Square[size][1];
       for (int x=0;x<size;x++){
@@ -259,6 +282,10 @@ class LBlock extends Block{
   private int c;
   private int r;
   private int numSquares;
+  private Enum coloring;
+  public Enum getColor(){
+    return coloring;
+  }
   public int getNumSqaures(){
     return this.numSquares;
   }
@@ -281,6 +308,8 @@ class LBlock extends Block{
     return this.map[row][col];
   }
   public LBlock(int size,int pos){
+    String[] colors={"RED","GREEN","BLUE","MAGENTA","YELLOW","CYAN","WHITE","BLACK"};
+    coloring=Terminal.Color.valueOf(colors[(int)(Math.random()*100 % 8)]);
     int row,col1;
     block=new Square[size][size];
     map=new boolean[2*size+1][size];
