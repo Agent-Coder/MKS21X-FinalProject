@@ -58,7 +58,8 @@ public Square getSquare(int x, int y){
       this.blockCount++;
       return random;
     }
-
+//rolls a number 0,1,2 for each type of block and then rolls random dimensions of the block and creates import junit.framework.TestCase;
+//updates block Count and returns the block that is made
     public void BlockonBoard(Block a){
       int r =a.getRow();
       int c=a.getCol();
@@ -76,24 +77,6 @@ public Square getSquare(int x, int y){
         }
       }
     }
-
-    public void ShiftHorizontal(Block a,int dir){
-      int r=a.getLength();
-      int c=a.getWidth();
-      for (int x=r;x<r;x++){
-        for (int y=c;y<c;y++){
-          a.getBlock()[x][y].setXcor(x+dir);
-          a.getBlock()[x][y].setYcor(y+dir);
-        }
-      }
-      r =a.getRow();
-      c=a.getCol();
-      for (int x=((10-r)/2)+dir;x<(r+(10-r)/2)+dir;x++){
-        for (int y=((10-r)/2)+dir;y<(c+(10-r)/2)+dir;y++){
-          layout[x][y]=a.getmap(r,c);
-      }
-    }
-  }
 
     public static boolean[][] blockSelection(Block a,Block b, Block c){
       boolean[][] selection=new boolean[11][a.getCol()+b.getCol()+c.getCol()+4];
