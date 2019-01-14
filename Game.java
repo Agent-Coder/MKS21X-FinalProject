@@ -79,13 +79,14 @@ public class Game{
     }
   }
 
-  public static void putBlock(Terminal t, String s, int num){
+  public static void putBlock(Terminal t, String s, int num, Block a){
     if (num == 1){
       int x = 0;
       int y = 30;
       int count = 1;
       t.moveCursor(x,y);
       for(int i = 0; i < s.length();i++){
+        t.applyForegroundColor(a.getColor())
         t.putCharacter(s.charAt(i));
         if (s.charAt(i) == '\n'){
           t.moveCursor(x,y+count);
@@ -123,9 +124,9 @@ public class Game{
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     drawBoard(t, B.toString());
-    putBlock(t,a.toString(), 1);
-    putBlock(t,b.toString(), 2);
-    putBlock(t,c.toString(), 3);
+    (t,a.toString(), 1,a);
+    putBlock(t,b.toString(), 2,b);
+    putBlock(t,c.toString(), 3,c);
   }
 
   public static void moveBlockOnBoard(Terminal t, Block b, int x, int y){
@@ -230,20 +231,17 @@ public class Game{
         } else {
           if (selectedBlock == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            t.applyForegroundColor(a.getColor());
-            putBlock(terminal,a.toString(), selectedBlock);
+            putBlock(terminal,a.toString(), selectedBlock,a);
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (selectedBlock == 2){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            t.applyForegroundColor(c.getColor());
-            putBlock(terminal,b.toString(), selectedBlock);
+            putBlock(terminal,b.toString(), selectedBlock,b);
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (selectedBlock == 3){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            t.applyForegroundColor(c.getColor());
-            putBlock(terminal,c.toString(), selectedBlock);
+            putBlock(terminal,c.toString(), selectedBlock,c);
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
         }
@@ -266,21 +264,21 @@ public class Game{
 
             if (key.getKind() == Key.Kind.ArrowRight){
               if (selectedBlock == 1){
-                putBlock(terminal,a.toString(), 1);
+                putBlock(terminal,a.toString(), 1,a);
                 if (!bEmpty){
                   selectedBlock = 2;
                 } else if (!cEmpty){
                   selectedBlock = 3;
                 }
               } else if (selectedBlock == 2){
-                putBlock(terminal,b.toString(), 2);
+                putBlock(terminal,b.toString(), 2,b);
                 if (!cEmpty){
                   selectedBlock = 3;
                 } else if (!aEmpty){
                   selectedBlock = 1;
                 }
               } else if (selectedBlock == 3){
-                putBlock(terminal,c.toString(), 3);
+                putBlock(terminal,c.toString(), 3,c);
                 if (!aEmpty){
                   selectedBlock = 1;
                 } else if (!bEmpty){
@@ -291,21 +289,21 @@ public class Game{
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
               if (selectedBlock == 1){
-                putBlock(terminal,a.toString(), 1);
+                putBlock(terminal,a.toString(), 1,a);
                 if (!cEmpty){
                   selectedBlock = 3;
                 } else if (!bEmpty){
                   selectedBlock = 2;
                 }
               } else if (selectedBlock == 2){
-                putBlock(terminal,b.toString(), 2);
+                putBlock(terminal,b.toString(), 2,b);
                 if (!aEmpty){
                   selectedBlock = 1;
                 } else if (!cEmpty){
                   selectedBlock = 3;
                 }
               } else if (selectedBlock == 3){
-                putBlock(terminal,c.toString(), 3);
+                putBlock(terminal,c.toString(), 3,c);
                 if (!bEmpty){
                   selectedBlock = 2;
                 } else if (!aEmpty){
@@ -320,7 +318,7 @@ public class Game{
                 moveBlockOnBoard(terminal, a, 2, 1);
                 a = new emptyBlock();
                 aEmpty = true;
-                putBlock(terminal,a.toString(), 1);
+                putBlock(terminal,a.toString(), 1,a);
                 if (!bEmpty){
                   selectedBlock = 2;
                 } else if (!cEmpty){
@@ -331,7 +329,7 @@ public class Game{
                 moveBlockOnBoard(terminal, b, 2, 1);
                 b = new emptyBlock();
                 bEmpty = true;
-                putBlock(terminal,b.toString(), 2);
+                putBlock(terminal,b.toString(), 2,b);
                 if (!cEmpty){
                   selectedBlock = 3;
                 } else if (!aEmpty){
@@ -342,7 +340,7 @@ public class Game{
                 moveBlockOnBoard(terminal, c, 2, 1);
                 c = new emptyBlock();
                 cEmpty = true;
-                putBlock(terminal,c.toString(), 3);
+                putBlock(terminal,c.toString(), 3,c);
                 if (!aEmpty){
                   selectedBlock = 1;
                 } else if (!bEmpty){
