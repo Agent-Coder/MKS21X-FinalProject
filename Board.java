@@ -113,7 +113,7 @@ public Square getSquare(int x, int y){
       }
       return selection;
     }
-
+//creates the display of three  randomly generated blocks for block selection
     public boolean placeBlock(Block b, int x, int y){
       int oriY=y;
       if (placeable(b, x, y)){
@@ -133,7 +133,7 @@ public Square getSquare(int x, int y){
       }
       return false;
     }
-
+//places block by seeing if placeable and then looping through to assign the spots on the empty board
     private boolean placeable(Block bl, int x, int y){
       int oriY=y;
       for (int i = 0; i < bl.getLength(); i++){
@@ -150,6 +150,7 @@ public Square getSquare(int x, int y){
       }
       return true;
     }
+    //checks if the blocks are placeable by using the board to see if there are already squares occupying it
 
     public boolean checkRows(){
       int full = 0;
@@ -184,14 +185,17 @@ public Square getSquare(int x, int y){
           }
         }
       }
+      this.score+=100;
+      this.spotCount+=10;
       return clear;
     }
-
+//checks to find the row that is full
     private void clearRow(int i){
       for (int j = 0; j < board[0].length; j++){
         board[i][j] = null;
       }
     }
+//clearsRow but making the row on the board contain null and no squares
 
     public boolean checkCols(){
       int full=0;
@@ -226,9 +230,11 @@ public Square getSquare(int x, int y){
           }
         }
       }
+      this.score+=100;
+      this.spotCount+=10;
       return clear;
     }
-
+//find column that is full
     private void clearCol(int i){
       for (int j = 0; j < board.length; j++){
         board[j][i] = null;
