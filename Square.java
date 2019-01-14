@@ -1,10 +1,11 @@
+import com.googlecode.lanterna.terminal.Terminal.Color;
 public class Square {
-  private String color;
+  private Enum color;
   private int xcor;
   private int ycor;
-
-  public Square(String c, int x, int y){
-    color = c;
+  public Square(Enum c, int x, int y){
+    Enum<Terminal.Color>[] colors= Termina.Color.values();
+    color = colors[(int)(Math.random()*100%color.length)];
     xcor = x;
     ycor = y;
   }
@@ -23,7 +24,7 @@ public class Square {
     return ycor;
   }
 
-  public String getColor(){
+  public Enum getColor(){
     return color;
   }
 
