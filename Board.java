@@ -229,10 +229,16 @@ public class Board {
             full++;
           }
           if (b == board[0].length - 1 && full == 10){
-            //clearCol(b);
+            clearCol(b);
             full = 0;
           }
         }
+      }
+    }
+
+    private void clearCol(int i){
+      for (int j = 0; j < board[0].length; j++){
+        board[j][i] = null;
       }
     }
 
