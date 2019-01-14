@@ -240,7 +240,7 @@ public Square getSquare(int x, int y){
         board[j][i] = null;
       }
     }
-
+//clear the column by nulling that col of the board
     public String toString(){
       String s="";//this is the string containing the entire board
       int c=10;
@@ -260,14 +260,5 @@ public Square getSquare(int x, int y){
       s=s+"+---+---+---+---+---+---+---+---+---+---+\n"+"\n"+"\n";
       return s;
     }
-
-  public static void main(String[] args) {
-    Board x=new Board();
-    Block a=x.generateBlock();
-    Block b=x.generateBlock();
-    Block c= new emptyBlock();
-    System.out.println(a.toString());
-    System.out.println(b.toString());
-    System.out.println(c.toString());
-  }
+//toString of the Board
 }
