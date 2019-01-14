@@ -54,3 +54,6 @@ Today, I went to the 12 hour-Stuy Hack thing and so I didn't have time to work o
 
 AC;01-13-19;
 The Minimum Viable Product is completed!! I fixed a couple of bugs including one where the player would not be able to pick a block when there is only on block in the screen. I also wrote the code to move the selected block onto the board and a refresh method to redraw the board every time the block is moved. The player will also not be able to move the block outside the board and will receive a message when they try. Another bug for the placement of L blocks was also fixed. Finally, I implemented the clearRow and clearCol methods so the board will update when a block is placed. 
+
+AZ;01-13-19;
+I was trying to implement the scoring correctly and adding it to each of the method so it would incoporate the scoring. I was also trying to incoporate random colors into the block but that didn't work out yet. I added comments on methods for reading purposes and then deleted uneccessary code/ made it more efficient. Then, I started making the powerUps file which is an extra feature and I am thinking of having the first powerUp be switching the selection part where you can switch out the blocks you have with new ones at the cost of scores.
