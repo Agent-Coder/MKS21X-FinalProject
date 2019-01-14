@@ -51,3 +51,6 @@ I tried to put the block on the board and make it move around and fixed a few is
 
 AZ;01-11-19;
 Today, I went to the 12 hour-Stuy Hack thing and so I didn't have time to work on this, HOWEVER, I got more practice with lanterna...thinking of changing to lanterna 3
+
+AC;01-13-19;
+The Minimum Viable Product is completed!! I fixed a couple of bugs including one where the player would not be able to pick a block when there is only on block in the screen. I also wrote the code to move the selected block onto the board and a refresh method to redraw the board every time the block is moved. The player will also not be able to move the block outside the board and will receive a message when they try. Another bug for the placement of L blocks was also fixed. Finally, I implemented the clearRow and clearCol methods so the board will update when a block is placed. 
