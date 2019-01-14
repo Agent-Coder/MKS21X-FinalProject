@@ -1,8 +1,10 @@
-
 public class Square {
+  private String color;
   private int xcor;
   private int ycor;
-  public Square(String color, int x, int y){
+
+  public Square(String c, int x, int y){
+    color = c;
     xcor = x;
     ycor = y;
   }
@@ -21,6 +23,9 @@ public class Square {
     return ycor;
   }
 
+  public String getColor(){
+    return color;
+  }
 
   public String toString(){
     return "+===+\n| @ |\n+===+";
