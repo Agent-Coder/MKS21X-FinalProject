@@ -8,7 +8,7 @@ abstract class Block {
   private int size;
   private int c;
   private int r;
-
+  private int numSquares;
   public int getRow(){
     return r;
   }
@@ -39,7 +39,9 @@ abstract class Block {
   public int getWidth(){
     return block[0].length;
   }
-
+  public int getNumSqaures(){
+    return this.numSquares;
+  }
   public String toString(){
       String entire="";
       for (int x=0;x<this.map.length;x++){
@@ -89,7 +91,10 @@ class FullBlock extends Block{
   private boolean[][] map;
   private int c;
   private int r;
-
+  private int numSquares;
+  public int getNumSqaures(){
+    return this.numSquares;
+  }
   public int getRow(){
     return r;
   }
@@ -112,7 +117,8 @@ class FullBlock extends Block{
     block=new Square[size][size];
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
-          block[x][y]=new Square("WHITE",x,y);
+          block[x][y]=new Square(x,y);
+          numSquares++;
         }
       }
       map=new boolean[2*size+1][size];
@@ -163,7 +169,10 @@ class LongBlock extends Block{
   private boolean[][] map;
   private int c;
   private int r;
-
+  private int numSquares;
+  public int getNumSqaures(){
+    return this.numSquares;
+  }
   public int getRow(){
     return r;
   }
@@ -186,7 +195,8 @@ class LongBlock extends Block{
     if (pos==1){
       block=new Square[size][1];
       for (int x=0;x<size;x++){
-            block[x][0]=new Square("WHITE",x,0);
+            block[x][0]=new Square(x,0);
+            numSquares++;
           }
       map=new boolean[2*size+1][1];
       for (int a=0;a<map.length;a++){
@@ -196,7 +206,8 @@ class LongBlock extends Block{
     else{
       block=new Square[1][size];
       for (int x=0;x<size;x++){
-            block[0][x]=new Square("WHITE",x,0);
+            block[0][x]=new Square(x,0);
+            numSquares++;
           }
       map=new boolean[3][size];
       for (int a=0;a<3;a++){
@@ -247,7 +258,10 @@ class LBlock extends Block{
   private boolean[][] map;
   private int c;
   private int r;
-
+  private int numSquares;
+  public int getNumSqaures(){
+    return this.numSquares;
+  }
   public int getRow(){
     return r;
   }
@@ -289,7 +303,8 @@ class LBlock extends Block{
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
         if (x==row||y==col1){
-          block[x][y]=new Square("WHITE",x,y);
+          block[x][y]=new Square(x,y);
+          numSquares++;
         }
       }
     }
