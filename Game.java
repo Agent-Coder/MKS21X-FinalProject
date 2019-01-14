@@ -64,6 +64,7 @@ public class Game{
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
           t.moveCursor(x,y);
+          t.applyForegroundColor(myBoard.getSquare(i,j).getColor);
           t.putCharacter('@');
         } else {
           t.moveCursor(x,y);
