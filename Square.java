@@ -3,7 +3,7 @@ public class Square {
   private Enum color;
   private int xcor;
   private int ycor;
-  public Square(Enum c, int x, int y){
+  public Square(int x, int y){
     Enum<Terminal.Color>[] colors= Termina.Color.values();
     color = colors[(int)(Math.random()*100%color.length)];
     xcor = x;
