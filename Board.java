@@ -189,7 +189,7 @@ public class Board {
             full++;
           }
           if (b == board[0].length - 1 && full == 10){
-            clearRow(b);
+            clearRow(a);
             clear = true;
           }
         }

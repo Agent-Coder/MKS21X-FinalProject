@@ -65,24 +65,7 @@ public class Game{
         if (myBoard[i][j] != null){
           t.moveCursor(x,y);
           t.putCharacter('@');
-        }
-        x += 4;
-        if (j == myBoard[0].length - 1){
-          x = 2;
-          y += 2;
-        }
-      }
-    }
-  }
-
-  public static void clearBoard(Terminal t, Board b){
-    t.applyForegroundColor(Terminal.Color.BLACK);
-    int x = 2;
-    int y = 1;
-    Square[][] myBoard = b.getBoard();
-    for (int i = 0; i < myBoard.length; i++){
-      for (int j = 0; j < myBoard[0].length; j++){
-        if (myBoard[i][j] != null){
+        } else {
           t.moveCursor(x,y);
           t.putCharacter(' ');
         }
@@ -423,11 +406,10 @@ public class Game{
                 putString(0,23,terminal,"                                                        ");
                 numBlocks--;
                 if (game.checkRows()){
-                  clearBoard(terminal, game);
                   putString(0,23,terminal,"You cleared a row");
                 }
-                game.checkCols();
                 refreshBoard(terminal, game);
+                //game.checkCols();
               } else {
                 putString(0,23,terminal,"Block cannot be placed here");
               }
