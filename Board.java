@@ -161,10 +161,11 @@ public class Board {
       return true;
     }
 
-    public void ClearRow(){
-      int full=0;
-        for (int a=0;a<10;a++){
-          full=0;
+    public boolean checkRows(){
+      int full = 0;
+      boolean clear = false;
+        /*for (int a=0;a<10;a++){
+          full++;
           for (int b=0;b<10;b++){
             if(this.board[a][b]!=null){
               full++;
@@ -180,12 +181,31 @@ public class Board {
             this.spotCount+=10;
           }
         }
+      }*/
+      for (int a = 0; a < board.length; a++){
+        full = 0;
+        for (int b = 0; b < board[0].length; b++){
+          if (board[a][b] != null){
+            full++;
+          }
+          if (b == board[0].length - 1 && full == 10){
+            clearRow(b);
+            clear = true;
+          }
+        }
+      }
+      return clear;
+    }
+
+    private void clearRow(int i){
+      for (int j = 0; j < board[0].length; j++){
+        board[i][j] = null;
       }
     }
 
-    public void ClearCol(){
+    public void checkCols(){
       int full=0;
-        for (int a=0;a<10;a++){
+        /*for (int a=0;a<10;a++){
           full=0;
           for (int b=0;b<10;b++){
             if(this.board[b][a]!=null){
@@ -200,6 +220,17 @@ public class Board {
             }
             this.score+=100;
             this.spotCount+=10;
+          }
+        }
+      }*/
+      for (int a = 0; a < board.length; a++){
+        for (int b = 0; b < board[0].length; b++){
+          if (board[b][a] != null){
+            full++;
+          }
+          if (b == board[0].length - 1 && full == 10){
+            //clearCol(b);
+            full = 0;
           }
         }
       }

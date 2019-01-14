@@ -75,6 +75,26 @@ public class Game{
     }
   }
 
+  public static void clearBoard(Terminal t, Board b){
+    t.applyForegroundColor(Terminal.Color.BLACK);
+    int x = 2;
+    int y = 1;
+    Square[][] myBoard = b.getBoard();
+    for (int i = 0; i < myBoard.length; i++){
+      for (int j = 0; j < myBoard[0].length; j++){
+        if (myBoard[i][j] != null){
+          t.moveCursor(x,y);
+          t.putCharacter(' ');
+        }
+        x += 4;
+        if (j == myBoard[0].length - 1){
+          x = 2;
+          y += 2;
+        }
+      }
+    }
+  }
+
   public static void putBlock(Terminal t, String s, int num){
     if (num == 1){
       int x = 0;
@@ -264,8 +284,6 @@ public class Game{
                   selectedBlock = 2;
                 } else if (!cEmpty){
                   selectedBlock = 3;
-                } else {
-                  selectedBlock = 0;
                 }
               } else if (selectedBlock == 2){
                 putBlock(terminal,b.toString(), 2);
@@ -273,8 +291,6 @@ public class Game{
                   selectedBlock = 3;
                 } else if (!aEmpty){
                   selectedBlock = 1;
-                } else {
-                  selectedBlock = 0;
                 }
               } else if (selectedBlock == 3){
                 putBlock(terminal,c.toString(), 3);
@@ -282,8 +298,6 @@ public class Game{
                   selectedBlock = 1;
                 } else if (!bEmpty){
                   selectedBlock = 2;
-                } else {
-                  selectedBlock = 0;
                 }
               }
             }
@@ -295,8 +309,6 @@ public class Game{
                   selectedBlock = 3;
                 } else if (!bEmpty){
                   selectedBlock = 2;
-                } else {
-                  selectedBlock = 0;
                 }
               } else if (selectedBlock == 2){
                 putBlock(terminal,b.toString(), 2);
@@ -304,8 +316,6 @@ public class Game{
                   selectedBlock = 1;
                 } else if (!cEmpty){
                   selectedBlock = 3;
-                } else {
-                  selectedBlock = 0;
                 }
               } else if (selectedBlock == 3){
                 putBlock(terminal,c.toString(), 3);
@@ -313,8 +323,6 @@ public class Game{
                   selectedBlock = 2;
                 } else if (!aEmpty){
                   selectedBlock = 1;
-                } else {
-                  selectedBlock = 0;
                 }
               }
             }
@@ -330,8 +338,6 @@ public class Game{
                   selectedBlock = 2;
                 } else if (!cEmpty){
                   selectedBlock = 3;
-                } else {
-                  selectedBlock = 0;
                 }
               } else if (selectedBlock == 2){
                 theChosenOne = b;
@@ -343,8 +349,6 @@ public class Game{
                   selectedBlock = 3;
                 } else if (!aEmpty){
                   selectedBlock = 1;
-                } else {
-                  selectedBlock = 0;
                 }
               } else if (selectedBlock == 3){
                 theChosenOne = c;
@@ -356,8 +360,6 @@ public class Game{
                   selectedBlock = 1;
                 } else if (!bEmpty){
                   selectedBlock = 2;
-                } else {
-                  selectedBlock = 0;
                 }
               }
               blockX = 2;
@@ -371,8 +373,8 @@ public class Game{
               if (blockY != 1) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY -= 2;
-                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
                 refreshBoard(terminal, game);
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the top of the board");
@@ -383,8 +385,8 @@ public class Game{
               if (blockY != theChosenOne.getLength()*-2 + 21) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY += 2;
-                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
                 refreshBoard(terminal, game);
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the bottom of the board");
@@ -395,8 +397,8 @@ public class Game{
               if (blockX != 2){
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX -= 4;
-                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
                 refreshBoard(terminal, game);
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the left side of the board");
@@ -407,8 +409,8 @@ public class Game{
               if (blockX != theChosenOne.getWidth()*-4 + 42) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX += 4;
-                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
                 refreshBoard(terminal, game);
+                moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the right side of the board");
@@ -419,10 +421,13 @@ public class Game{
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 blockOnBoard = false;
                 putString(0,23,terminal,"                                                        ");
-                refreshBoard(terminal, game);
                 numBlocks--;
-                game.ClearRow();
-                game.ClearCol();
+                if (game.checkRows()){
+                  clearBoard(terminal, game);
+                  putString(0,23,terminal,"You cleared a row");
+                }
+                game.checkCols();
+                refreshBoard(terminal, game);
               } else {
                 putString(0,23,terminal,"Block cannot be placed here");
               }
