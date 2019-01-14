@@ -1,10 +1,14 @@
 public class Board {
   private int spotCount;
+  //how many spots on the ten by ten board are complete
   private int blockCount;
+  //how many blocks are left in selection--used to restock selection
   private int score;
+  //keeps track of players score
   private Square[][] board;
+  //actual board and keeps track of which parts of board are filled
   private boolean[][] layout;
-
+//used fore easier toString
   public Board(){
     this.board = new Square[10][10];
     this.layout= new boolean[21][10];
@@ -17,14 +21,21 @@ public class Board {
     this.spotCount=100;
     this.blockCount=0;
   }
-
+  //constructor for board, sets board to a 10 by 10 board and all false because no blocks on it
+//no spots filled yet so a total of 100 spots and block count is 0 currently zero, hasnt generated blocks
   public int getScore(){
     return this.score;
   }
-
+//returns score
   public Square[][] getBoard(){
     return board;
   }
+//returns board array
+
+public Square getSquare(int x, int y){
+  return this.board[x][y];
+}
+//returns whether a spot on the board is filled
 
   public Block generateBlock(){
       int roll=(int)(Math.random()*100)%3;
@@ -46,10 +57,6 @@ public class Board {
       }
       this.blockCount++;
       return random;
-    }
-
-    public Square getSquare(int x, int y){
-      return this.board[x][y];
     }
 
     public void BlockonBoard(Block a){
