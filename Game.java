@@ -406,11 +406,16 @@ public class Game{
                 putString(0,23,terminal,"                                                        ");
                 numBlocks--;
                 if (game.checkRows()){
+                  putString(0,23,terminal,"                                                        ");
                   putString(0,23,terminal,"You cleared a row");
                 }
+                if (game.checkCols()){
+                  putString(0,23,terminal,"                                                        ");
+                  putString(0,23,terminal,"You cleared a column");
+                }
                 refreshBoard(terminal, game);
-                //game.checkCols();
               } else {
+                putString(0,23,terminal,"                                                        ");
                 putString(0,23,terminal,"Block cannot be placed here");
               }
             }

@@ -203,8 +203,9 @@ public class Board {
       }
     }
 
-    public void checkCols(){
+    public boolean checkCols(){
       int full=0;
+      boolean clear = false;
         /*for (int a=0;a<10;a++){
           full=0;
           for (int b=0;b<10;b++){
@@ -223,21 +224,23 @@ public class Board {
           }
         }
       }*/
-      for (int a = 0; a < board.length; a++){
-        for (int b = 0; b < board[0].length; b++){
+      for (int a = 0; a < board[0].length; a++){
+        full = 0;
+        for (int b = 0; b < board.length; b++){
           if (board[b][a] != null){
             full++;
           }
-          if (b == board[0].length - 1 && full == 10){
-            clearCol(b);
-            full = 0;
+          if (b == board.length - 1 && full == 10){
+            clearCol(a);
+            clear = true;
           }
         }
       }
+      return clear;
     }
 
     private void clearCol(int i){
-      for (int j = 0; j < board[0].length; j++){
+      for (int j = 0; j < board.length; j++){
         board[j][i] = null;
       }
     }
