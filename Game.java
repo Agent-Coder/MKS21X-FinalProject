@@ -233,9 +233,9 @@ public class Game{
           if (selectedBlock == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,a.toString(), selectedBlock,a.getColor());
-            t.moveCursor(3,17);
+            t.moveCursor(0,0);
             terminal.putCharacter(' ');
-            putString(3, 17, terminal, ""+game.getScore());
+            putString(0, 0, terminal, ""+game.getScore());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (selectedBlock == 2){
