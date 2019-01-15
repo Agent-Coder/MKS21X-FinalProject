@@ -235,14 +235,14 @@ public class Game{
             putBlock(terminal,a.toString(), selectedBlock,a.getColor());
             terminal.moveCursor(3,20);
             terminal.putCharacter(' ');
-            putString(10, 20, terminal, ""+game.getScore());
+            putString(3, 20, terminal, ""+game.getScore());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (selectedBlock == 2){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             terminal.moveCursor(3,20);
             terminal.putCharacter(' ');
-            putString(10, 20, terminal, ""+game.getScore());
+            putString(3, 20, terminal, ""+game.getScore());
             putBlock(terminal,b.toString(), selectedBlock,b.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
@@ -250,7 +250,7 @@ public class Game{
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             terminal.moveCursor(3,20);
             terminal.putCharacter(' ');
-            putString(10, 20, terminal, ""+game.getScore());
+            putString(3, 20, terminal, ""+game.getScore());
             putBlock(terminal,c.toString(), selectedBlock,c.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
