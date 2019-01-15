@@ -1,3 +1,18 @@
+import com.googlecode.lanterna.terminal.Terminal.SGR;
+import com.googlecode.lanterna.TerminalFacade;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.Key.Kind;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.Terminal.Color;
+import com.googlecode.lanterna.terminal.TerminalSize;
+import com.googlecode.lanterna.LanternaException;
+import com.googlecode.lanterna.input.CharacterPattern;
+import com.googlecode.lanterna.input.InputDecoder;
+import com.googlecode.lanterna.input.InputProvider;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.KeyMappingProfile;
+import com.googlecode.lanterna.screen.Screen;
+import java.lang.Math;
 public class Board {
   private int spotCount;
   private int blockCount;
@@ -33,17 +48,17 @@ public class Board {
       Block random;
       if(roll==0){
         roll=(int)(Math.random()*100)%3+1;
-        random=new FullBlock(roll,colors[(int)(Math.random()*100)%colors.length];);
+        random=new FullBlock(roll,colors[(int)(Math.random()*100)%colors.length]);
       }
       else if(roll==1){
         roll=(int)(Math.random()*100)%2;
         length=(int)(Math.random()*100)%4+2;
-        random=new LongBlock(length,roll,colors[(int)(Math.random()*100)%colors.length];);
+        random=new LongBlock(length,roll,colors[(int)(Math.random()*100)%colors.length]);
       }
       else{
         roll=(int)(Math.random()*100)%4;
         length=(int)(Math.random()*100)%2+2;
-        random=new LBlock(length,roll,colors[(int)(Math.random()*100)%colors.length];);
+        random=new LBlock(length,roll,colors[(int)(Math.random()*100)%colors.length]);
       }
       this.blockCount++;
       return random;
