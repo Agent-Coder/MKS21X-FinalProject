@@ -234,7 +234,7 @@ public class Game{
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,a.toString(), selectedBlock,a.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-            terminal.applyBackgroundColor(Text.Color.BLACK);
+            terminal.applyBackgroundColor(Terminal.Color.BLACK);
             putString(58,6, terminal, "            ");
             putString(58,6, terminal, ""+game.getScore());
           }
@@ -242,7 +242,7 @@ public class Game{
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,b.toString(), selectedBlock,b.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-            terminal.applyBackgroundColor(Text.Color.BLACK);
+            terminal.applyBackgroundColor(Terminal.Color.BLACK);
             putString(58,6, terminal, "            ");
             putString(58,6, terminal, ""+game.getScore());
           }
@@ -250,7 +250,7 @@ public class Game{
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,c.toString(), selectedBlock,c.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-            terminal.applyBackgroundColor(Text.Color.BLACK);
+            terminal.applyBackgroundColor(Terminal.Color.BLACK);
             putString(58,6, terminal, "            ");
             putString(58,6, terminal, ""+game.getScore());
           }
