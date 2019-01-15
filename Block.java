@@ -1,3 +1,5 @@
+import com.googlecode.lanterna.terminal.Terminal.Color;
+import java.lang.Math;
 abstract class Block {
 
   private Square[][] block;
@@ -8,7 +10,10 @@ abstract class Block {
   private int size;
   private int c;
   private int r;
-
+  private Enum coloring;
+  public Enum getColor(){
+    return coloring;
+  }
   public int getRow(){
     return r;
   }
@@ -17,8 +22,10 @@ abstract class Block {
   }
 
   public Block(){
+    Terminal.Color[] colors = Terminal.Color.values()
     block=new Square[1][1];
     map=new boolean[2][2];
+    coloring=colors[(int)(Math.random()*100)%colors.length];
     }
 
   public boolean getmap(int row, int col){
