@@ -233,23 +233,26 @@ public class Game{
           if (selectedBlock == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,a.toString(), selectedBlock,a.getColor());
+            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+            terminal.applyBackgroundColor(Text.Color.BLACK);
             putString(58,6, terminal, "            ");
             putString(58,6, terminal, ""+game.getScore());
-            terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (selectedBlock == 2){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            putString(58,6, terminal, "            ");
-            putString(58,6, terminal, ""+game.getScore());
             putBlock(terminal,b.toString(), selectedBlock,b.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+            terminal.applyBackgroundColor(Text.Color.BLACK);
+            putString(58,6, terminal, "            ");
+            putString(58,6, terminal, ""+game.getScore());
           }
           if (selectedBlock == 3){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            putString(58,6, terminal, "            ");
-            putString(58,6, terminal, ""+game.getScore());
             putBlock(terminal,c.toString(), selectedBlock,c.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+            terminal.applyBackgroundColor(Text.Color.BLACK);
+            putString(58,6, terminal, "            ");
+            putString(58,6, terminal, ""+game.getScore());
           }
         }
 
