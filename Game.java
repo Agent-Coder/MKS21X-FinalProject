@@ -85,7 +85,7 @@ public class Game{
       int count = 1;
       t.moveCursor(x,y);
       for(int i = 0; i < s.length();i++){
-        t.applyForegroundColor(Terminal.Color.c);
+        t.applyForegroundColor(c);
         t.putCharacter(s.charAt(i));
         if (s.charAt(i) == '\n'){
           t.moveCursor(x,y+count);
@@ -134,7 +134,7 @@ public class Game{
     for (int i = 0; i < myBlock.length; i++){
       for (int j = 0; j < myBlock[0].length; j++){
         if (myBlock[i][j] != null){
-          t.applyForegroundColor(Terminal.Color.b.getColor());
+          t.applyForegroundColor(b.getColor());
           t.moveCursor(x,y);
           t.putCharacter('@');
         }
