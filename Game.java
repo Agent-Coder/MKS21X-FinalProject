@@ -426,7 +426,7 @@ public class Game{
                   putString(0,23,terminal,"You cleared a column");
                 }
                 refreshBoard(terminal, game);
-                terminal.applyBackgroundColor(Terminal.Color.BLACK);
+                //terminal.applyBackgroundColor(Terminal.Color.BLACK);
                 putString(58,6, terminal, "            ");
                 putString(58,6, terminal, ""+game.getScore());
               } else {
