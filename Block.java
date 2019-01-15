@@ -129,8 +129,8 @@ class FullBlock extends Block{
   public boolean getmap(int row, int col){
     return map[row][col];
   }
-  public FullBlock(int size,Terminal.Color c){
-    coloring=c;
+  public FullBlock(int size,Terminal.Color colors){
+    coloring=colors;
     block=new Square[size][size];
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
@@ -204,8 +204,8 @@ class LongBlock extends Block{
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
-  public LongBlock(int size,int pos, Terminal.Color c){
-    coloring=c;
+  public LongBlock(int size,int pos, Terminal.Color colors){
+    coloring=colors;
     if (pos==1){
       block=new Square[size][1];
       for (int x=0;x<size;x++){
@@ -289,8 +289,8 @@ class LBlock extends Block{
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
-  public LBlock(int size,int pos, Terminal.Color c){
-    coloring=c;
+  public LBlock(int size,int pos, Terminal.Color colors){
+    coloring=colors;
     int row,col1;
     block=new Square[size][size];
     map=new boolean[2*size+1][size];
