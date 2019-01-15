@@ -33,10 +33,11 @@ abstract class Block {
   public int getCol(){
     return c;
   }
-  /*public Block(c){
+  public Block(){
+    Terminal.Color[] colors = Terminal.Color.values();
     block=new Square[1][1];
     map=new boolean[2][2];
-    coloring=c}*/
+    coloring=colors[(int)(Math.random()*100)%colors.length]}
   public Block(Terminal.Color c){
     block=new Square[1][1];
     map=new boolean[2][2];
