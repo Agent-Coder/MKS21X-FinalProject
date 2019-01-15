@@ -23,10 +23,7 @@ abstract class Block {
   private int size;
   private int c;
   private int r;
-  private Terminal.Color coloring;
-  public Terminal.Color getColor(){
-    return coloring;
-  }
+
   public int getRow(){
     return r;
   }
@@ -34,10 +31,10 @@ abstract class Block {
     return c;
   }
 
-  public Block(Terminal.Color c){
+  public Block(){
     block=new Square[1][1];
     map=new boolean[2][2];
-    coloring=c;}
+    }
 
   public boolean getmap(int row, int col){
     return this.map[row][col];
