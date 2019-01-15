@@ -46,14 +46,17 @@ I worked on doing the shifts (not finished) and puting the block on the board an
 AC;01-10-19;
 A lot of progress was made today! The blocks are now printed on the board separately and blinks to show the player which block they are on. When the player presses the up arrow key, they will have officially selected the block. I also wrote another child class of block as a placeholder when a player selects a block to place on the board.
 
-AZ;01-10-19;
+AZ;01-11-19;
 I tried to put the block on the board and make it move around and fixed a few issues with the compiling of the Board and then proceeded to spend most of my time trying to find ways to have lanterna work on my computer. The future is grim.
 
-AZ;01-11-19;
+AZ;01-12-19;
 Today, I went to the 12 hour-Stuy Hack thing and so I didn't have time to work on this, HOWEVER, I got more practice with lanterna...thinking of changing to lanterna 3
 
 AC;01-13-19;
 The Minimum Viable Product is completed!! I fixed a couple of bugs including one where the player would not be able to pick a block when there is only on block in the screen. I also wrote the code to move the selected block onto the board and a refresh method to redraw the board every time the block is moved. The player will also not be able to move the block outside the board and will receive a message when they try. Another bug for the placement of L blocks was also fixed. Finally, I implemented the clearRow and clearCol methods so the board will update when a block is placed. 
 
-AZ;01-13-19;
+AZ;01-14-19;
 I was trying to implement the scoring correctly and adding it to each of the method so it would incoporate the scoring. I was also trying to incoporate random colors into the block but that didn't work out yet. I added comments on methods for reading purposes and then deleted uneccessary code/ made it more efficient. Then, I started making the powerUps file which is an extra feature and I am thinking of having the first powerUp be switching the selection part where you can switch out the blocks you have with new ones at the cost of scores.
+
+AZ;01-15-19; 
+I implemented new random colors for the blocks in block selection, and is trying to make it so the blocks preserve their colors on the board. First part is completed but second part isn't. I also worked on the board score but the score is printing straight down instead of rewriting so its still a work in progress.
