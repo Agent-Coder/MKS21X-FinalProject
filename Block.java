@@ -34,12 +34,10 @@ abstract class Block {
     return c;
   }
 
-  public Block(){
-    Terminal.Color[] colors = Terminal.Color.values();
+  public Block(Terminal.Color c){
     block=new Square[1][1];
     map=new boolean[2][2];
-    coloring=colors[(int)(Math.random()*100)%colors.length];
-    }
+    coloring=c;}
 
   public boolean getmap(int row, int col){
     return this.map[row][col];
@@ -128,9 +126,8 @@ class FullBlock extends Block{
   public boolean getmap(int row, int col){
     return map[row][col];
   }
-  public FullBlock(int size){
-    Terminal.Color[] colors = Terminal.Color.values();
-    coloring=colors[(int)(Math.random()*100)%colors.length];
+  public FullBlock(int size,Terminal.Color c){
+    coloring=c;
     block=new Square[size][size];
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
@@ -204,9 +201,8 @@ class LongBlock extends Block{
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
-  public LongBlock(int size,int pos){
-    Terminal.Color[] colors = Terminal.Color.values();
-    coloring=colors[(int)(Math.random()*100)%colors.length];
+  public LongBlock(int size,int pos, Terminal.Color c){
+    coloring=c;
     if (pos==1){
       block=new Square[size][1];
       for (int x=0;x<size;x++){
@@ -290,9 +286,8 @@ class LBlock extends Block{
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
-  public LBlock(int size,int pos){
-    Terminal.Color[] colors = Terminal.Color.values();
-    coloring=colors[(int)(Math.random()*100)%colors.length];
+  public LBlock(int size,int pos, Terminal.Color c){
+    coloring=c;
     int row,col1;
     block=new Square[size][size];
     map=new boolean[2*size+1][size];

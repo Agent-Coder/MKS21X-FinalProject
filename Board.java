@@ -27,22 +27,23 @@ public class Board {
   }
 
   public Block generateBlock(){
+      Terminal.Color[] colors = Terminal.Color.values();
       int roll=(int)(Math.random()*100)%3;
       int length;
       Block random;
       if(roll==0){
         roll=(int)(Math.random()*100)%3+1;
-        random=new FullBlock(roll);
+        random=new FullBlock(roll,colors[(int)(Math.random()*100)%colors.length];);
       }
       else if(roll==1){
         roll=(int)(Math.random()*100)%2;
         length=(int)(Math.random()*100)%4+2;
-        random=new LongBlock(length,roll);
+        random=new LongBlock(length,roll,colors[(int)(Math.random()*100)%colors.length];);
       }
       else{
         roll=(int)(Math.random()*100)%4;
         length=(int)(Math.random()*100)%2+2;
-        random=new LBlock(length,roll);
+        random=new LBlock(length,roll,colors[(int)(Math.random()*100)%colors.length];);
       }
       this.blockCount++;
       return random;
