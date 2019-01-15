@@ -147,6 +147,7 @@ public class Board {
           for (int j = 0; j < b.getWidth(); j++){
             if (b.getBlock()[i][j] != null){
               board[x][y] = b.getBlock()[i][j];
+              this.score++;
             }
             y++;
             if (j == b.getWidth() - 1){
@@ -217,6 +218,7 @@ public class Board {
       for (int j = 0; j < board[0].length; j++){
         board[i][j] = null;
       }
+      this.score+=100;
     }
 
     public boolean checkCols(){
@@ -259,6 +261,7 @@ public class Board {
       for (int j = 0; j < board.length; j++){
         board[j][i] = null;
       }
+      this.score+=100;
     }
 
     public String toString(){
@@ -267,7 +270,7 @@ public class Board {
       while (c!=0){
             s=s+"+---+---+---+---+---+---+---+---+---+---+\n";
             if (c==7){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:0\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:"+this.getScore()+"\n";
             }
             else if(c==5){
               s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Tab to RESTART)\n";
