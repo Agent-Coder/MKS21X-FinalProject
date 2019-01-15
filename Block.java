@@ -23,8 +23,8 @@ abstract class Block {
   private int size;
   private int c;
   private int r;
-  private Enum coloring;
-  public Enum getColor(){
+  private Terminal.Color coloring;
+  public Terminal.Color getColor(){
     return coloring;
   }
   public int getRow(){
@@ -109,7 +109,7 @@ class FullBlock extends Block{
   private boolean[][] map;
   private int c;
   private int r;
-  private Enum coloring;
+  private Terminal.Color coloring;
   public int getRow(){
     return r;
   }
@@ -185,7 +185,7 @@ class LongBlock extends Block{
   private boolean[][] map;
   private int c;
   private int r;
-  private Enum coloring;
+  private Terminal.Color coloring;
   public int getRow(){
     return r;
   }
@@ -271,7 +271,7 @@ class LBlock extends Block{
   private boolean[][] map;
   private int c;
   private int r;
-  private Enum coloring;
+  private Terminal.Color coloring;
   public int getRow(){
     return r;
   }
