@@ -78,7 +78,7 @@ public class Game{
     }
   }
 
-  public static void putBlock(Terminal t, String s, int num, Enum c){
+  public static void putBlock(Terminal t, String s, int num, Terminal.Color c){
     if (num == 1){
       int x = 0;
       int y = 30;
