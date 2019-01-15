@@ -37,7 +37,7 @@ abstract class Block {
     Terminal.Color[] colors = Terminal.Color.values();
     block=new Square[1][1];
     map=new boolean[2][2];
-    coloring=colors[(int)(Math.random()*100)%colors.length];}
+    coloring=colors[(int)(Math.random()*100)%(colors.length-1) + 1];}
   public Block(Terminal.Color c){
     block=new Square[1][1];
     map=new boolean[2][2];
