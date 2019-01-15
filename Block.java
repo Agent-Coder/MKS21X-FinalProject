@@ -33,8 +33,11 @@ abstract class Block {
   public int getCol(){
     return c;
   }
-
-  public Block(){
+  /*public Block(c){
+    block=new Square[1][1];
+    map=new boolean[2][2];
+    coloring=c}*/
+  public Block(Terminal.Color c){
     block=new Square[1][1];
     map=new boolean[2][2];
     coloring=c}
