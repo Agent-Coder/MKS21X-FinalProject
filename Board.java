@@ -104,42 +104,6 @@ public class Board {
     }
   }
 
-    public static boolean[][] blockSelection(Block a,Block b, Block c){
-      boolean[][] selection=new boolean[11][a.getCol()+b.getCol()+c.getCol()+4];
-      int x=0,y=0;
-      for(;x<11;x++){
-        for(;y<selection[0].length;y++){
-            selection[x][y]=false;
-        }
-      }
-      x=0;
-      y=0;
-
-      for(;x<a.getRow();x++){
-        y=0;
-        for(;y<a.getCol();y++){
-          selection [x][y]=a.getmap(x,y);
-        }
-      }
-      x=0;
-      y+=2;
-      int z=y;
-      for(;x<b.getRow();x++){
-        z=y;
-        for(;z<(b.getCol()+a.getCol()+2);z++){
-          selection [x][z]=b.getmap(x,z-y);
-        }
-      }
-      x=0;
-      z+=2;
-      for(;x<c.getRow();x++){
-        for(int w=z;w<selection[0].length;w++){
-          selection [x][w]=c.getmap(x,w-z);
-        }
-      }
-      return selection;
-    }
-
     public boolean placeBlock(Block b, int x, int y){
       int oriY=y;
       if (placeable(b, x, y)){

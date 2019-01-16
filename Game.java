@@ -58,6 +58,7 @@ public class Game{
     for (int i = 0; i < myBoard.length; i++){
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
+          //putString(90,0+i,t,""+myBoard[i][j].getColor());
           t.moveCursor(x,y);
           t.applyForegroundColor(myBoard[i][j].getColor());
           t.putCharacter('@');
