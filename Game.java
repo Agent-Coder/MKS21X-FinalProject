@@ -134,7 +134,7 @@ public class Game{
       for (int j = 0; j < myBlock[0].length; j++){
         if (myBlock[i][j] != null){
           t.moveCursor(x,y);
-          t.applyForegroundColor(b.getColor());
+          t.applyForegroundColor(myBlock[i][j].getColor());
           t.putCharacter('@');
         }
         x += 4;
