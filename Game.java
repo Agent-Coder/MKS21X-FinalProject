@@ -421,7 +421,7 @@ public class Game{
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23,terminal,"Block cannot be placed here");
               }
-                putString(58,6, terminal, ""+game.getScore());
+                putString(58,7, terminal, ""+game.getScore());
             }
 
           }
