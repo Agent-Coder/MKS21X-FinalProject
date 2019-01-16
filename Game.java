@@ -18,21 +18,19 @@ public class Game{
 
   public static void putString(int r, int c, Terminal t, String s){
 		t.moveCursor(r,c);
+    t.applyForegroundColor(Terminal.Color.WHITE);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
 		}
 	}
 
-  public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg, Terminal.Color back ){
+  public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg){
     t.moveCursor(r,c);
-    t.applyBackgroundColor(forg);
-    t.applyForegroundColor(Terminal.Color.WHITE);
+    t.applyForegroundColor(forg);
 
     for(int i = 0; i < s.length();i++){
       t.putCharacter(s.charAt(i));
     }
-    t.applyBackgroundColor(Terminal.Color.DEFAULT);
-    t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
 
   public static void drawStartingScreen(Terminal t, TerminalSize s){
@@ -41,33 +39,31 @@ public class Game{
     int r = s.getColumns()/2 - text.length()/2;
     int c = 0;
 
-    t.applyForegroundColor(Terminal.Color.WHITE);
-    putString(r,c,t,text);
+    putString(r,c,t,text,Terminal.Color.WHITE);
     r = s.getColumns()/2 - text2.length()/2;
     c = 10;
     t.applySGR(Terminal.SGR.ENTER_BLINK);
-    putString(r,c,t,text2);
+    putString(r,c,t,text2,Terminal.Color.WHITE);
     t.applySGR(Terminal.SGR.EXIT_BLINK);
   }
 
-  public static void drawBoard(Terminal t, String s){
-    t.applyForegroundColor(Terminal.Color.WHITE);//the color of the board will be black
-    putString(0,0,t,s);
-  }
-
   public static void refreshBoard(Terminal t, Board b){
-    t.applyForegroundColor(Terminal.Color.WHITE);
+    putString(0,0,t,b.toString(),Terminal.Color.WHITE);
     int x = 2;
     int y = 1;
     Square[][] myBoard = b.getBoard();
     for (int i = 0; i < myBoard.length; i++){
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
-          t.moveCursor(x,y);
-          t.putCharacter('@');
+          //putString(90,0+i,t,""+myBoard[i][j].getColor());
+          //t.moveCursor(x,y);
+          //t.applyForegroundColor(myBoard[i][j].getColor());
+          //t.putCharacter('@');
+          putString(x,y,t,"@",myBoard[i][j].getColor());
         } else {
-          t.moveCursor(x,y);
-          t.putCharacter(' ');
+          //t.moveCursor(x,y);
+          //t.putCharacter(' ');
+          putString(x,y,t," ");
         }
         x += 4;
         if (j == myBoard[0].length - 1){
@@ -124,20 +120,21 @@ public class Game{
   }
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
-    drawBoard(t, B.toString());
+    refreshBoard(t, B);
     putBlock(t,a.toString(), 1,a.getColor());
     putBlock(t,b.toString(), 2,b.getColor());
     putBlock(t,c.toString(), 3,c.getColor());
   }
 
   public static void moveBlockOnBoard(Terminal t, Block b, int x, int y){
+    //putString(90,5,t,""+b.getBlock()[0][0].getColor());
     int oriX = x;
     Square[][] myBlock = b.getBlock();
     for (int i = 0; i < myBlock.length; i++){
       for (int j = 0; j < myBlock[0].length; j++){
         if (myBlock[i][j] != null){
           t.moveCursor(x,y);
-          t.applyForegroundColor(b.getColor());
+          t.applyForegroundColor(myBlock[i][j].getColor());
           t.putCharacter('@');
         }
         x += 4;
@@ -201,6 +198,7 @@ public class Game{
     while(running){
 
 			terminal.applyForegroundColor(Terminal.Color.WHITE);
+      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
 
 
       Key key = terminal.readInput();
@@ -405,9 +403,7 @@ public class Game{
 
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
-                blockOnBoard = false;
                 putString(0,23,terminal,"                                                        ");
-                numBlocks--;
                 if (game.checkRows()){
                   putString(0,23,terminal,"                                                        ");
                   putString(0,23,terminal,"You cleared a row");
@@ -417,6 +413,12 @@ public class Game{
                   putString(0,23,terminal,"You cleared a column");
                 }
                 refreshBoard(terminal, game);
+                //terminal.applyBackgroundColor(Terminal.Color.BLACK);
+                putString(58,6, terminal, "            ");
+                putString(58,6, terminal, ""+game.getScore());
+                refreshBoard(terminal, game);
+                numBlocks--;
+                blockOnBoard = false;
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23,terminal,"Block cannot be placed here");
