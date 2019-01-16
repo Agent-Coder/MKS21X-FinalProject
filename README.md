@@ -63,3 +63,6 @@ I implemented new random colors for the blocks in block selection, and is trying
 
 AC;01-15-19;
 I fixed the bug where a block would change colors after being placed on the board. I had to rewrite the array for the random color generator and add new get color methods for the block. I also started cleaning up our code by deleting old, unnecessary methods.
+
+AZ;01-16-19;
+I made a new branch and tried to work on ending the board. I think I'm going to loop through the board when the blocks are generated to see if there are any spots left. So I incorporated variables called Spotsleft and numBlocks in each block. The quick end is when the number of spots can't fit the spots but the hard one is the long looping through the board to find if you can actually place the board anywhere else, which I am still working on.
