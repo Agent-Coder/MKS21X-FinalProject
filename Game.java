@@ -414,9 +414,6 @@ public class Game{
                 }
                 refreshBoard(terminal, game);
                 //terminal.applyBackgroundColor(Terminal.Color.BLACK);
-                putString(58,6, terminal, "            ");
-                putString(58,6, terminal, ""+game.getScore());
-                refreshBoard(terminal, game);
                 numBlocks--;
                 blockOnBoard = false;
               } else {
