@@ -270,7 +270,7 @@ public class Board {
       while (c!=0){
             s=s+"+---+---+---+---+---+---+---+---+---+---+\n";
             if (c==7){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:"+"\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:"+this.getScore()+"\n";
             }
             else if(c==5){
               s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Tab to RESTART)\n";

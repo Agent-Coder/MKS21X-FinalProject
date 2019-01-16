@@ -417,11 +417,11 @@ public class Game{
                   putString(0,23,terminal,"You cleared a column");
                 }
                 refreshBoard(terminal, game);
-                putString(58,6, terminal, ""+game.getScore());
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23,terminal,"Block cannot be placed here");
               }
+                putString(58,6, terminal, ""+game.getScore());
             }
 
           }
