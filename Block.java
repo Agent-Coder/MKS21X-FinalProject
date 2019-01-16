@@ -18,6 +18,7 @@ abstract class Block {
   private Square[][] block;
   private boolean[][] map;
   private int numBlock;
+  private int blockType;
   private int size;
   private int c;
   private int r;

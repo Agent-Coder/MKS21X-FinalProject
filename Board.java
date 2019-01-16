@@ -266,9 +266,23 @@ public class Board {
       this.score+=100;
       this.spotCount+=10;
     }
-    //public boolean GameOver(Block a){
-      //if (spotCount< )
-    //}
+    /*public static boolean BlockGameOver(Block a){
+      if (spotCount<a.getNumBlock()){
+        return true;
+      }
+      for(int x=0;x<board[0].length-a.getRow()+1;x++){
+        for(int y=0;x<board.length-a.getColumns()+1;y++){
+          if(board[x][y]==null){
+
+                if(board[x+a][y+a]==null)
+            }
+          }
+        }
+      }
+    }*/
+    public boolean GameOver(Block a, Block b, Block c){
+      return (BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c));
+    }
     public String toString(){
       String s="";//this is the string containing the entire board
       int c=10;
