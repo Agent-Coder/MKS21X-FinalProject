@@ -55,14 +55,15 @@ public class Game{
     for (int i = 0; i < myBoard.length; i++){
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
-          //putString(90,0+i,t,""+myBoard[i][j].getColor());
+          putString(90,0+i,t,""+myBoard[i][j].getColor());
           //t.moveCursor(x,y);
           //t.applyForegroundColor(myBoard[i][j].getColor());
           //t.putCharacter('@');
           putString(x,y,t,"@",myBoard[i][j].getColor());
         } else {
-          t.moveCursor(x,y);
-          t.putCharacter(' ');
+          //t.moveCursor(x,y);
+          //t.putCharacter(' ');
+          putString(x,y,t," ");
         }
         x += 4;
         if (j == myBoard[0].length - 1){
@@ -126,6 +127,7 @@ public class Game{
   }
 
   public static void moveBlockOnBoard(Terminal t, Block b, int x, int y){
+    putString(90,5,t,""+b.getBlock()[0][0].getColor());
     int oriX = x;
     Square[][] myBlock = b.getBlock();
     for (int i = 0; i < myBlock.length; i++){
@@ -410,9 +412,7 @@ public class Game{
 
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
-                blockOnBoard = false;
                 putString(0,23,terminal,"                                                        ");
-                numBlocks--;
                 if (game.checkRows()){
                   putString(0,23,terminal,"                                                        ");
                   putString(0,23,terminal,"You cleared a row");
@@ -421,10 +421,12 @@ public class Game{
                   putString(0,23,terminal,"                                                        ");
                   putString(0,23,terminal,"You cleared a column");
                 }
-                refreshBoard(terminal, game);
                 //terminal.applyBackgroundColor(Terminal.Color.BLACK);
                 putString(58,6, terminal, "            ");
                 putString(58,6, terminal, ""+game.getScore());
+                refreshBoard(terminal, game);
+                numBlocks--;
+                blockOnBoard = false;
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23,terminal,"Block cannot be placed here");

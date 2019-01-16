@@ -42,23 +42,29 @@ public class Board {
   }
 
   public Block generateBlock(){
-      Terminal.Color[] colors = Terminal.Color.values();
+      String[] colors = new String[6];
+      colors[0]= "BLUE";
+      colors[1]= "CYAN";
+      colors[2]= "GREEN";
+      colors[3]= "MAGENTA";
+      colors[4]= "RED";
+      colors[5]= "YELLOW";
       int roll=(int)(Math.random()*100)%3;
       int length;
       Block random;
       if(roll==0){
         roll=(int)(Math.random()*100)%3+1;
-        random=new FullBlock(roll,colors[(int)(Math.random()*100)%(colors.length-1) + 1]);
+        random=new FullBlock(roll,Terminal.Color.valueOf(colors[(int)(Math.random()*100)%(6)]));
       }
       else if(roll==1){
         roll=(int)(Math.random()*100)%2;
         length=(int)(Math.random()*100)%4+2;
-        random=new LongBlock(length,roll,colors[(int)(Math.random()*100)%(colors.length-1) + 1]);
+        random=new LongBlock(length,roll,Terminal.Color.valueOf(colors[(int)(Math.random()*100)%(6)]));
       }
       else{
         roll=(int)(Math.random()*100)%4;
         length=(int)(Math.random()*100)%2+2;
-        random=new LBlock(length,roll,colors[(int)(Math.random()*100)%(colors.length-1) + 1]);
+        random=new LBlock(length,roll,Terminal.Color.valueOf(colors[(int)(Math.random()*100)%(6)]));
       }
       this.blockCount++;
       return random;
@@ -67,42 +73,6 @@ public class Board {
     public Square getSquare(int x, int y){
       return this.board[x][y];
     }
-
-    public void BlockonBoard(Block a){
-      int r =a.getRow();
-      int c=a.getCol();
-      for (int x=(10-r)/2;x<r+(10-r)/2;x++){
-        for (int y=(10-r)/2;y<c+(10-r)/2;y++){
-          layout[x][y]=a.getmap(r,c);
-        }
-      }
-      r=a.getLength();
-      c=a.getWidth();
-      for (int x=r;x<r;x++){
-        for (int y=c;y<c;y++){
-          a.getBlock()[x][y].setXcor(x);
-          a.getBlock()[x][y].setYcor(y);
-        }
-      }
-    }
-
-    public void ShiftHorizontal(Block a,int dir){
-      int r=a.getLength();
-      int c=a.getWidth();
-      for (int x=r;x<r;x++){
-        for (int y=c;y<c;y++){
-          a.getBlock()[x][y].setXcor(x+dir);
-          a.getBlock()[x][y].setYcor(y+dir);
-        }
-      }
-      r =a.getRow();
-      c=a.getCol();
-      for (int x=((10-r)/2)+dir;x<(r+(10-r)/2)+dir;x++){
-        for (int y=((10-r)/2)+dir;y<(c+(10-r)/2)+dir;y++){
-          layout[x][y]=a.getmap(r,c);
-      }
-    }
-  }
 
     public boolean placeBlock(Block b, int x, int y){
       int oriY=y;
@@ -249,12 +219,7 @@ public class Board {
     }
 
   public static void main(String[] args) {
-    Board x=new Board();
-    Block a=x.generateBlock();
-    Block b=x.generateBlock();
-    Block c= new emptyBlock();
-    System.out.println(a.toString());
-    System.out.println(b.toString());
-    System.out.println(c.toString());
+    for (Terminal.Color c : Terminal.Color.values())
+    System.out.println(c);
   }
 }
