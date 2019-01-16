@@ -113,6 +113,9 @@ class FullBlock extends Block{
   private int c;
   private int r;
   private Terminal.Color coloring;
+  public Terminal.Color getColor(){
+    return coloring;
+  }
   public int getRow(){
     return r;
   }
@@ -188,6 +191,9 @@ class LongBlock extends Block{
   private int c;
   private int r;
   private Terminal.Color coloring;
+  public Terminal.Color getColor(){
+    return coloring;
+  }
   public int getRow(){
     return r;
   }
@@ -273,6 +279,9 @@ class LBlock extends Block{
   private int c;
   private int r;
   private Terminal.Color coloring;
+  public Terminal.Color getColor(){
+    return coloring;
+  }
   public int getRow(){
     return r;
   }

@@ -55,7 +55,7 @@ public class Game{
     for (int i = 0; i < myBoard.length; i++){
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
-          putString(90,0+i,t,""+myBoard[i][j].getColor());
+          //putString(90,0+i,t,""+myBoard[i][j].getColor());
           //t.moveCursor(x,y);
           //t.applyForegroundColor(myBoard[i][j].getColor());
           //t.putCharacter('@');
@@ -127,7 +127,7 @@ public class Game{
   }
 
   public static void moveBlockOnBoard(Terminal t, Block b, int x, int y){
-    putString(90,5,t,""+b.getBlock()[0][0].getColor());
+    //putString(90,5,t,""+b.getBlock()[0][0].getColor());
     int oriX = x;
     Square[][] myBlock = b.getBlock();
     for (int i = 0; i < myBlock.length; i++){
