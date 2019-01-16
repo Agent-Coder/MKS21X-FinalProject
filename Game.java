@@ -234,25 +234,16 @@ public class Game{
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,a.toString(), selectedBlock,a.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-            //terminal.applyBackgroundColor(Terminal.Color.BLACK);
-            //putString(58,6, terminal, "            ");
-            //putString(58,6, terminal, ""+game.getScore());
           }
           if (selectedBlock == 2){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,b.toString(), selectedBlock,b.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-            //terminal.applyBackgroundColor(Terminal.Color.BLACK);
-            //putString(58,6, terminal, "            ");
-            //putString(58,6, terminal, ""+game.getScore());
           }
           if (selectedBlock == 3){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,c.toString(), selectedBlock,c.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-            //terminal.applyBackgroundColor(Terminal.Color.BLACK);
-            //putString(58,6, terminal, "            ");
-            //putString(58,6, terminal, ""+game.getScore());
           }
         }
 
@@ -426,9 +417,7 @@ public class Game{
                   putString(0,23,terminal,"You cleared a column");
                 }
                 refreshBoard(terminal, game);
-                //terminal.applyBackgroundColor(Terminal.Color.BLACK);
-                //putString(58,6, terminal, "            ");
-                putString(58,7, terminal, ""+game.getScore());
+                putString(57,7, terminal, ""+game.getScore());
               } else {
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23,terminal,"Block cannot be placed here");
@@ -453,4 +442,3 @@ public class Game{
   }
   //looping thorugh and adding the layout of the obard for background
 }
-
