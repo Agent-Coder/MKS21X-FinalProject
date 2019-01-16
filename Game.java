@@ -47,11 +47,8 @@ public class Game{
     t.applySGR(Terminal.SGR.EXIT_BLINK);
   }
 
-  public static void drawBoard(Terminal t, String s){
-    putString(0,0,t,s,Terminal.Color.WHITE);
-  }
-
   public static void refreshBoard(Terminal t, Board b){
+    putString(0,0,t,b.toString(),Terminal.Color.WHITE);
     int x = 2;
     int y = 1;
     Square[][] myBoard = b.getBoard();
@@ -59,9 +56,10 @@ public class Game{
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
           //putString(90,0+i,t,""+myBoard[i][j].getColor());
-          t.moveCursor(x,y);
-          t.applyForegroundColor(myBoard[i][j].getColor());
-          t.putCharacter('@');
+          //t.moveCursor(x,y);
+          //t.applyForegroundColor(myBoard[i][j].getColor());
+          //t.putCharacter('@');
+          putString(x,y,t,"@",myBoard[i][j].getColor());
         } else {
           t.moveCursor(x,y);
           t.putCharacter(' ');
@@ -121,7 +119,7 @@ public class Game{
   }
 
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
-    drawBoard(t, B.toString());
+    refreshBoard(t, B);
     putBlock(t,a.toString(), 1,a.getColor());
     putBlock(t,b.toString(), 2,b.getColor());
     putBlock(t,c.toString(), 3,c.getColor());
