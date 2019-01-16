@@ -38,6 +38,7 @@ abstract class Block {
     block=new Square[1][1];
     map=new boolean[2][2];
     coloring=colors[(int)(Math.random()*100)%(colors.length-1) + 1];}
+
   public Block(Terminal.Color c){
     block=new Square[1][1];
     map=new boolean[2][2];
@@ -135,7 +136,7 @@ class FullBlock extends Block{
     block=new Square[size][size];
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
-          block[x][y]=new Square("WHITE",x,y);
+          block[x][y]=new Square(colors,x,y);
         }
       }
       map=new boolean[2*size+1][size];
@@ -210,7 +211,7 @@ class LongBlock extends Block{
     if (pos==1){
       block=new Square[size][1];
       for (int x=0;x<size;x++){
-            block[x][0]=new Square("WHITE",x,0);
+            block[x][0]=new Square(colors,x,0);
           }
       map=new boolean[2*size+1][1];
       for (int a=0;a<map.length;a++){
@@ -220,7 +221,7 @@ class LongBlock extends Block{
     else{
       block=new Square[1][size];
       for (int x=0;x<size;x++){
-            block[0][x]=new Square("WHITE",x,0);
+            block[0][x]=new Square(colors,x,0);
           }
       map=new boolean[3][size];
       for (int a=0;a<3;a++){
@@ -314,7 +315,7 @@ class LBlock extends Block{
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
         if (x==row||y==col1){
-          block[x][y]=new Square("WHITE",x,y);
+          block[x][y]=new Square(colors,x,y);
         }
       }
     }

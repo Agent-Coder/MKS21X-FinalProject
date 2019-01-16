@@ -18,21 +18,19 @@ public class Game{
 
   public static void putString(int r, int c, Terminal t, String s){
 		t.moveCursor(r,c);
+    t.applyForegroundColor(Terminal.Color.WHITE);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
 		}
 	}
 
-  public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg, Terminal.Color back ){
+  public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg){
     t.moveCursor(r,c);
-    t.applyBackgroundColor(forg);
-    t.applyForegroundColor(Terminal.Color.WHITE);
+    t.applyForegroundColor(forg);
 
     for(int i = 0; i < s.length();i++){
       t.putCharacter(s.charAt(i));
     }
-    t.applyBackgroundColor(Terminal.Color.DEFAULT);
-    t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
 
   public static void drawStartingScreen(Terminal t, TerminalSize s){
@@ -41,22 +39,19 @@ public class Game{
     int r = s.getColumns()/2 - text.length()/2;
     int c = 0;
 
-    t.applyForegroundColor(Terminal.Color.WHITE);
-    putString(r,c,t,text);
+    putString(r,c,t,text,Terminal.Color.WHITE);
     r = s.getColumns()/2 - text2.length()/2;
     c = 10;
     t.applySGR(Terminal.SGR.ENTER_BLINK);
-    putString(r,c,t,text2);
+    putString(r,c,t,text2,Terminal.Color.WHITE);
     t.applySGR(Terminal.SGR.EXIT_BLINK);
   }
 
   public static void drawBoard(Terminal t, String s){
-    t.applyForegroundColor(Terminal.Color.WHITE);//the color of the board will be black
-    putString(0,0,t,s);
+    putString(0,0,t,s,Terminal.Color.WHITE);
   }
 
   public static void refreshBoard(Terminal t, Board b){
-    t.applyForegroundColor(Terminal.Color.WHITE);
     int x = 2;
     int y = 1;
     Square[][] myBoard = b.getBoard();
@@ -64,6 +59,7 @@ public class Game{
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
           t.moveCursor(x,y);
+          t.applyForegroundColor(myBoard[i][j].getColor());
           t.putCharacter('@');
         } else {
           t.moveCursor(x,y);
@@ -201,6 +197,7 @@ public class Game{
     while(running){
 
 			terminal.applyForegroundColor(Terminal.Color.WHITE);
+      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
 
 
       Key key = terminal.readInput();
