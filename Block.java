@@ -18,12 +18,11 @@ abstract class Block {
   private Square[][] block;
   private boolean[][] map;
   private int numBlock;
-  private int pos;
-  private int blockType;
   private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
+  public int getNumBlock(){}
   public Terminal.Color getColor(){
     return coloring;
   }
@@ -109,9 +108,16 @@ class emptyBlock extends Block{
 class FullBlock extends Block{
   private Square[][] block;
   private boolean[][] map;
+  private int numBlock;
+  private int pos;
+  private int blockType;
+  private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
+  public int getNumBlock(){
+    return r*c;
+  }
   public int getRow(){
     return r;
   }
@@ -184,9 +190,16 @@ class FullBlock extends Block{
 class LongBlock extends Block{
   private Square[][] block;
   private boolean[][] map;
+  private int numBlock;
+  private int pos;
+  private int blockType;
+  private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
+  public int getNumBlock(){
+    return r*c;
+  }
   public int getRow(){
     return r;
   }
@@ -267,8 +280,12 @@ class LongBlock extends Block{
 }
 
 class LBlock extends Block{
-  public Square[][] block;
+  private Square[][] block;
   private boolean[][] map;
+  private int numBlock;
+  private int pos;
+  private int blockType;
+  private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
@@ -315,6 +332,7 @@ class LBlock extends Block{
       for (int y=0;y<size;y++){
         if (x==row||y==col1){
           block[x][y]=new Square("WHITE",x,y);
+          numBlock++;
         }
       }
     }
