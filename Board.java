@@ -156,6 +156,7 @@ public class Board {
             }
           }
         }
+        this.spotCount=this.spotCount-b.getNumBlock();
         return true;
       }
       return false;
@@ -219,6 +220,7 @@ public class Board {
         board[i][j] = null;
       }
       this.score+=100;
+      this.spotCount+=10;
     }
 
     public boolean checkCols(){
@@ -262,8 +264,11 @@ public class Board {
         board[j][i] = null;
       }
       this.score+=100;
+      this.spotCount+=10;
     }
-
+    //public boolean GameOver(Block a){
+      //if (spotCount< )
+    //}
     public String toString(){
       String s="";//this is the string containing the entire board
       int c=10;
