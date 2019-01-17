@@ -170,6 +170,10 @@ public class Game{
     return B.placeBlock(b, i, j);
   }
 
+  public static void endGame(){
+    String G = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |\n+---+\n|   |\n+---+	    +---+---+\n|   |       |   |   |\n+---+       +---+---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+";
+  }
+
   public static void main(String[] args) {
 
     Board game = new Board();
