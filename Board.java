@@ -316,11 +316,11 @@ public class Board {
     Board x=new Board();
     Block a=x.generateBlock();
     Block b=x.generateBlock();
-    for (int p=0;x.length;x++){
+    for (int p=0;p<x.length;p++){
       System.out.println("\n");
-      for (int q=0;x[0].length;x++){
+      for (int q=0;q<x[0].length;q++){
         if ((int)(Math.random()*100)%2==1){
-          x.block=new Square("c", p,q);
+          x.board=new Square("c", p,q);
           System.out.print("true        ");
         }
         else{
