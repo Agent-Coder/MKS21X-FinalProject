@@ -274,7 +274,7 @@ public class Board {
     }
 
     public boolean GameOver(Block a, Block b, Block c){
-      if (a.getNumSquare()+b.getNumSquare()+c.getNumSquare()<this.spotCount||(BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c))){
+      if (a.getNumSquare()+b.getNumSquare()+c.getNumSquare()>this.spotCount||(BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c))){
         return true;
       }
       for (int x=0;x<this.board.length;x++){
