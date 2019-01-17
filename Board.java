@@ -327,8 +327,8 @@ public class Board {
           System.out.print("false       ");
         }
     }
-    x.BlockOver(a);
-    System.out.println(a);
   }
+  x.BlockOver(a);
+  System.out.println(a);
   }
 }
