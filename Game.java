@@ -298,7 +298,6 @@ public class Game{
                 } else if (!bEmpty){
                   selectedBlock = 2;
                 }
-                gg=(gg||game.BlockOver(b)||game.BlockOver(c));
               } else if (selectedBlock == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!aEmpty){
@@ -306,7 +305,6 @@ public class Game{
                 } else if (!cEmpty){
                   selectedBlock = 3;
                 }
-                gg=(gg||game.BlockOver(a)||game.BlockOver(c));
               } else if (selectedBlock == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!bEmpty){
@@ -314,7 +312,6 @@ public class Game{
                 } else if (!aEmpty){
                   selectedBlock = 1;
                 }
-                gg=(gg ||game.BlockOver(b)||game.BlockOver(a));
               }
             }
 
@@ -327,10 +324,11 @@ public class Game{
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!bEmpty){
                   selectedBlock = 2;
+                  gg=gg&&b.BlockOver();
                 } else if (!cEmpty){
                   selectedBlock = 3;
+                  gg=gg&&c.BlockOver();
                 }
-                gg=(gg||(game.BlockOver(b)||game.BlockOver(c)));
               } else if (selectedBlock == 2){
                 theChosenOne = b;
                 moveBlockOnBoard(terminal, b, 2, 1);
@@ -339,10 +337,12 @@ public class Game{
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!cEmpty){
                   selectedBlock = 3;
+                  gg=gg&&c.BlockOver();
                 } else if (!aEmpty){
                   selectedBlock = 1;
+                  gg=gg&&a.BlockOver();
                 }
-                gg=(gg ||(game.BlockOver(c)||game.BlockOver(a)));
+                gg=(gg &&(game.BlockOver(c)&&game.BlockOver(a)));
               } else if (selectedBlock == 3){
                 theChosenOne = c;
                 moveBlockOnBoard(terminal, c, 2, 1);
@@ -351,10 +351,11 @@ public class Game{
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!aEmpty){
                   selectedBlock = 1;
+                  gg=gg&&a.BlockOver();
                 } else if (!bEmpty){
                   selectedBlock = 2;
+                  gg=gg&&b.BlockOver();
                 }
-                gg=(gg ||(game.BlockOver(c)||game.BlockOver(a)));
               }
               blockX = 2;
               blockY = 1;
@@ -412,7 +413,6 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.Enter) {
-              running=!gg;
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 blockOnBoard = false;
                 putString(0,23,terminal,"                                                        ");
@@ -431,6 +431,7 @@ public class Game{
                 putString(0,23,terminal,"Block cannot be placed here");
               }
                 putString(58,7, terminal, ""+game.getScore());
+                running=!gg;
             }
 
           }
