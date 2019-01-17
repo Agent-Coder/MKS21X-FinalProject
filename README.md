@@ -66,3 +66,6 @@ I fixed the bug where a block would change colors after being placed on the boar
 
 AZ;01-16-19;
 I made a new branch and tried to work on ending the board. I think I'm going to loop through the board when the blocks are generated to see if there are any spots left. So I incorporated variables called Spotsleft and numBlocks in each block. The quick end is when the number of spots can't fit the spots but the hard one is the long looping through the board to find if you can actually place the board anywhere else, which I am still working on.
+
+AZ;01-16-19;
+I got the end game to work although there might still be bugs... I have to run a few more cases but I got the bulge of the function working.
