@@ -322,12 +322,15 @@ public class Game{
                 a = new emptyBlock();
                 aEmpty = true;
                 putBlock(terminal,a.toString(), 1,a.getColor());
+                if(!bEmpty&&!cEmpty){
+                  gg=gg&&game.BlockOver(b)&&game.BlockOver(c);
+                }
                 if (!bEmpty){
                   selectedBlock = 2;
-                  gg=gg&&b.BlockOver();
+                  gg=gg&&game.BlockOver(b);
                 } else if (!cEmpty){
                   selectedBlock = 3;
-                  gg=gg&&c.BlockOver();
+                  gg=gg&&game.BlockOver(c);
                 }
               } else if (selectedBlock == 2){
                 theChosenOne = b;
@@ -335,26 +338,31 @@ public class Game{
                 b = new emptyBlock();
                 bEmpty = true;
                 putBlock(terminal,b.toString(), 2,b.getColor());
+                if(!aEmpty&&!cEmpty){
+                  gg=gg&&game.BlockOver(a)&&game.BlockOver(c);
+                }
                 if (!cEmpty){
                   selectedBlock = 3;
-                  gg=gg&&c.BlockOver();
+                  gg=gg&&game.BlockOver(c);
                 } else if (!aEmpty){
                   selectedBlock = 1;
-                  gg=gg&&a.BlockOver();
+                  gg=gg&&game.BlockOver(a);
                 }
-                gg=(gg &&(game.BlockOver(c)&&game.BlockOver(a)));
               } else if (selectedBlock == 3){
                 theChosenOne = c;
                 moveBlockOnBoard(terminal, c, 2, 1);
                 c = new emptyBlock();
                 cEmpty = true;
                 putBlock(terminal,c.toString(), 3,c.getColor());
+                if(!aEmpty&&!bEmpty){
+                  gg=gg&&game.BlockOver(b)&&game.BlockOver(a);
+                }
                 if (!aEmpty){
                   selectedBlock = 1;
-                  gg=gg&&a.BlockOver();
+                  gg=gg&&game.BlockOver(a);
                 } else if (!bEmpty){
                   selectedBlock = 2;
-                  gg=gg&&b.BlockOver();
+                  gg=gg&&game.BlockOver(b);
                 }
               }
               blockX = 2;
