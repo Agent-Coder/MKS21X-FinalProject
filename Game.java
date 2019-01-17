@@ -228,10 +228,10 @@ public class Game{
           if (game.GameOver(a,b,c)){
             terminal.clearScreen();
             String text = "GG GAME OVER <3";
-            int r = s.getColumns()/2 - text.length()/2;
-            int c = 20;
-            t.applyForegroundColor(Terminal.Color.WHITE);
-            putString(r,c,t,text);
+            int row = size.getColumns()/2 - text.length()/2;
+            int col = 20;
+            terminal.applyForegroundColor(Terminal.Color.WHITE);
+            putString(row,col,terminal,text);
           }
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);

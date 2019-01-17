@@ -266,7 +266,7 @@ public class Board {
       this.score+=100;
       this.spotCount+=10;
     }
-    public static boolean BlockGameOver(Block a){
+    public boolean BlockGameOver(Block a){
       if (this.spotCount<a.getNumBlock()){
         return true;
       }
