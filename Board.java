@@ -316,19 +316,5 @@ public class Board {
     Board x=new Board();
     Block a=x.generateBlock();
     Block b=x.generateBlock();
-    for (int p=0;p<10;p++){
-      System.out.println("\n");
-      for (int q=0;q<10;q++){
-        if ((int)(Math.random()*100)%2==1){
-          x.board[p][q]=new Square("c", p,q);
-          System.out.print("true        ");
-        }
-        else{
-          System.out.print("false       ");
-        }
-    }
-  }
-  System.out.println(x.BlockOver(a));
-  System.out.println(a);
-  }
+
 }

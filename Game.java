@@ -440,6 +440,7 @@ public class Game{
               }
                 putString(58,7, terminal, ""+game.getScore());
                 running=!gg;
+                /*code for end*/
             }
 
           }
