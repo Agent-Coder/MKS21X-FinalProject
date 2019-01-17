@@ -186,6 +186,7 @@ public class Game{
     boolean bEmpty = true;
     boolean cEmpty = true;
     boolean blockOnBoard = false;
+    boolean gg=false;
     int blockX = 2;
     int blockY = 1;
 
@@ -225,14 +226,7 @@ public class Game{
           bEmpty = false;
           c = game.generateBlock();
           cEmpty = false;
-          if (game.GameOver(a,b,c)){
-            drawStartingScreen(terminal, size);
-            String text = "GG GAME OVER <3";
-            int row = size.getColumns()/2 - text.length()/2;
-            int col = 20;
-            terminal.applyForegroundColor(Terminal.Color.WHITE);
-            putString(row,col,terminal,text);
-          }
+          gg=gg||game.GameOver(a,b,c);
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);
           numBlocks = 3;
@@ -304,6 +298,7 @@ public class Game{
                 } else if (!bEmpty){
                   selectedBlock = 2;
                 }
+                gg=(gg||BlockOver(b)||BlockOver(c));
               } else if (selectedBlock == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!aEmpty){
@@ -311,6 +306,7 @@ public class Game{
                 } else if (!cEmpty){
                   selectedBlock = 3;
                 }
+                gg=(gg||BlockOver(a)||BlockOver(c));
               } else if (selectedBlock == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!bEmpty){
@@ -318,6 +314,7 @@ public class Game{
                 } else if (!aEmpty){
                   selectedBlock = 1;
                 }
+                gg=(gg ||(BlockOver(b)||BlockOver(a)));
               }
             }
 
@@ -333,6 +330,7 @@ public class Game{
                 } else if (!cEmpty){
                   selectedBlock = 3;
                 }
+                gg=(gg||(BlockOver(b)||BlockOver(c)));
               } else if (selectedBlock == 2){
                 theChosenOne = b;
                 moveBlockOnBoard(terminal, b, 2, 1);
@@ -344,6 +342,7 @@ public class Game{
                 } else if (!aEmpty){
                   selectedBlock = 1;
                 }
+                gg=(gg ||(BlockOver(c)||BlockOver(a)));
               } else if (selectedBlock == 3){
                 theChosenOne = c;
                 moveBlockOnBoard(terminal, c, 2, 1);
@@ -355,6 +354,7 @@ public class Game{
                 } else if (!bEmpty){
                   selectedBlock = 2;
                 }
+                gg=(gg ||(BlockOver(c)||BlockOver(a)));
               }
               blockX = 2;
               blockY = 1;
@@ -412,6 +412,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.Enter) {
+              running=!gg;
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 blockOnBoard = false;
                 putString(0,23,terminal,"                                                        ");
