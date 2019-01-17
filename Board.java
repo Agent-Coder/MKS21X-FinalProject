@@ -273,8 +273,8 @@ public class Board {
       return false;
     }
     public boolean BlockOver(Block a){
-      for (int x=0;x<this.board.length-a.getLength()+1;x++){
-        for (int y=0;y<this.board[0].length-a.getWidth()+1;y++){
+      for (int x=0;x<this.board.length-a.getLength();x++){
+        for (int y=0;y<this.board[0].length-a.getWidth();y++){
           if(placeable(a,x,y)){
             return false;
           }
