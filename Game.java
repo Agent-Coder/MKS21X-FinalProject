@@ -327,10 +327,10 @@ public class Game{
                 }
                 if (!bEmpty){
                   selectedBlock = 2;
-                  gg=gg&&game.BlockOver(b);
+                  gg=game.BlockOver(b);
                 } else if (!cEmpty){
                   selectedBlock = 3;
-                  gg=gg&&game.BlockOver(c);
+                  gg=game.BlockOver(c);
                 }
               } else if (selectedBlock == 2){
                 theChosenOne = b;
@@ -343,10 +343,10 @@ public class Game{
                 }
                 if (!cEmpty){
                   selectedBlock = 3;
-                  gg=gg&&game.BlockOver(c);
+                  gg=game.BlockOver(c);
                 } else if (!aEmpty){
                   selectedBlock = 1;
-                  gg=gg&&game.BlockOver(a);
+                  gg=game.BlockOver(a);
                 }
               } else if (selectedBlock == 3){
                 theChosenOne = c;
@@ -359,10 +359,10 @@ public class Game{
                 }
                 if (!aEmpty){
                   selectedBlock = 1;
-                  gg=gg&&game.BlockOver(a);
+                  gg=game.BlockOver(a);
                 } else if (!bEmpty){
                   selectedBlock = 2;
-                  gg=gg&&game.BlockOver(b);
+                  gg=game.BlockOver(b);
                 }
               }
               blockX = 2;
