@@ -226,9 +226,9 @@ public class Game{
           bEmpty = false;
           c = game.generateBlock();
           cEmpty = false;
-          gg=(gg||game.GameOver(a,b,c));
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);
+          gg=(gg||game.GameOver(a,b,c));
           numBlocks = 3;
           selectedBlock = 1;
         } else {
