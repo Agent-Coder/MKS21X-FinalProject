@@ -226,7 +226,7 @@ public class Game{
           c = game.generateBlock();
           cEmpty = false;
           if (game.GameOver(a,b,c)){
-            terminal.clear();
+            drawStartingScreen(terminal, size);
             String text = "GG GAME OVER <3";
             int row = size.getColumns()/2 - text.length()/2;
             int col = 20;
