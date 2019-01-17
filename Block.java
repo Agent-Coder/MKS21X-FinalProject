@@ -23,7 +23,9 @@ abstract class Block {
   private int c;
   private int r;
   private Terminal.Color coloring;
-  public int getNumBlock(){}
+  public int getNumBlock(){
+    return numBlock;
+  }
   public Terminal.Color getColor(){
     return coloring;
   }
