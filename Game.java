@@ -314,7 +314,7 @@ public class Game{
                 } else if (!aEmpty){
                   selectedBlock = 1;
                 }
-                gg=(gg ||(game.BlockOver(b)||game.BlockOver(a)));
+                gg=(gg ||game.BlockOver(b)||game.BlockOver(a));
               }
             }
 
