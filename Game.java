@@ -181,15 +181,15 @@ public class Game{
 
     String R = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
 
-    t.putString(0,0,t,G);
-    t.putString(0,24,t,A);
-    t.putString(0,48,t,M);
-    t.putString(0,72,t,E);
+    putString(0,0,t,G);
+    //putString(0,24,t,A);
+    //putString(0,48,t,M);
+    //putString(0,72,t,E);
 
-    t.putString(16,0,t,G);
-    t.putString(16,24,t,A);
-    t.putString(16,48,t,M);
-    t.putString(16,72,t,E);
+    //putString(16,0,t,G);
+    //putString(16,24,t,A);
+    //putString(16,48,t,M);
+    //putString(16,72,t,E);
   }
 
   public static void main(String[] args) {
@@ -216,7 +216,7 @@ public class Game{
 		terminal.setCursorVisible(false);
 
     boolean running = true;
-    int mode = 0;
+    int mode = 3;
 
     while(running){
 
@@ -460,14 +460,21 @@ public class Game{
                 putString(0,23,terminal,"Block cannot be placed here");
               }
                 putString(58,7, terminal, ""+game.getScore());
-                running=!gg;
-                /*code for end*/
+                if(!gg){
+                  terminal.clearScreen();
+                  mode = 3;
+                }
+
             }
 
           }
 
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
         }
+      }
+
+      if (mode == 3){
+        endGame(terminal);
       }
 
       if (key != null){
