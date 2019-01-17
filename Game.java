@@ -225,6 +225,14 @@ public class Game{
           bEmpty = false;
           c = game.generateBlock();
           cEmpty = false;
+          if (game.GameOver(a,b,c)){
+            terminal.clearScreen();
+            String text = "GG GAME OVER <3";
+            int r = s.getColumns()/2 - text.length()/2;
+            int c = 20;
+            t.applyForegroundColor(Terminal.Color.WHITE);
+            putString(r,c,t,text);
+          }
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);
           numBlocks = 3;

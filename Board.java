@@ -266,22 +266,26 @@ public class Board {
       this.score+=100;
       this.spotCount+=10;
     }
-    /*public static boolean BlockGameOver(Block a){
-      if (spotCount<a.getNumBlock()){
+    public static boolean BlockGameOver(Block a){
+      if (this.spotCount<a.getNumBlock()){
         return true;
       }
-      for(int x=0;x<board[0].length-a.getRow()+1;x++){
-        for(int y=0;x<board.length-a.getColumns()+1;y++){
-          if(board[x][y]==null){
+    }
 
-                if(board[x+a][y+a]==null)
+    public boolean GameOver(Block a, Block b, Block c){
+      if (a.getNumBlock()+b.getNumBlock()+c.getNumBlock()<this.spotCount||BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c)){
+        return true;
+      }
+      for (int x=0;x<this.board.length;x++){
+        for (int y=0;x<this.board[0].length;y++){
+          if(this.board[x][y]==null){
+            if(!placeable(a,x,y)&&!placeable(a,x,y)&&!placeable(a,x,y)){
+              return true;
             }
           }
         }
       }
-    }*/
-    public boolean GameOver(Block a, Block b, Block c){
-      return (BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c));
+      return false;
     }
     public String toString(){
       String s="";//this is the string containing the entire board
