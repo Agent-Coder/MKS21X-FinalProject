@@ -270,6 +270,7 @@ public class Board {
       if (this.spotCount<a.getNumBlock()){
         return true;
       }
+      return false;
     }
 
     public boolean GameOver(Block a, Block b, Block c){
