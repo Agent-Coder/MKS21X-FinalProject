@@ -2,13 +2,14 @@
 
 Instructions to Run the Program:
 
-1) Press ENTER to start the game
-2) Use LEFT and RIGHT arrow keys to select a block
-3) Press UP arrow key to move the selected block onto the board
-4) Use UP DOWN LEFT RIGHT arrow keys to move the block around on the board
-5) Press ENTER to place the block on the board
-6) Press TAB at any time to restart the game
-7) Press ESC to quit the game
+1) Type javac -cp lanterna.jar:. Game.java to compile and java -cp lanterna.jar:. Game to start the program
+2) Press ENTER to start the game
+3) Use LEFT and RIGHT arrow keys to select a block
+4) Press UP arrow key to move the selected block onto the board
+5) Use UP DOWN LEFT RIGHT arrow keys to move the block around on the board
+6) Press ENTER to place the block on the board
+7) Press TAB at any time to restart the game
+8) Press ESC to quit the game
 
 Logs:
 
