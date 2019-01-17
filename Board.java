@@ -272,19 +272,23 @@ public class Board {
       }
       return false;
     }
+    public boolean BlockOver(Block a){
+      for (int x=0;x<this.board.length-a.getLength()+1;x++){
+        for (int y=0;x<this.board[0].length-a.getWidth()+1;y++){
+          if(placeable(a,x,y)){
+            return false;
+          }
+        }
+      }
+      return true;
+    }
 
     public boolean GameOver(Block a, Block b, Block c){
       if (a.getNumSquare()+b.getNumSquare()+c.getNumSquare()>this.spotCount||(BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c))){
         return true;
       }
-      for (int x=0;x<this.board.length;x++){
-        for (int y=0;x<this.board[0].length;y++){
-          if(this.board[x][y]==null){
-            if(!placeable(a,x,y)&&!placeable(a,x,y)&&!placeable(a,x,y)){
-              return true;
-            }
-          }
-        }
+      if(BlockOver(a,x,y)&&BlockOver(b,x,y)&&BlockOver(c,x,y)){
+        return true;
       }
       return false;
     }
