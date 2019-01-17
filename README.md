@@ -1,6 +1,14 @@
 # MKS21X-FinalProject
 
-Instructions to run the program:
+Instructions to Run the Program:
+
+1) Press ENTER to start the game
+2) Use LEFT and RIGHT arrow keys to select a block
+3) Press UP arrow key to move the selected block onto the board
+4) Use UP DOWN LEFT RIGHT arrow keys to move the block around on the board
+5) Press ENTER to place the block on the board
+6) Press TAB at any time to restart the game
+7) Press ESC to quit the game
 
 Logs:
 
@@ -69,3 +77,6 @@ I made a new branch and tried to work on ending the board. I think I'm going to 
 
 AZ;01-16-19;
 I got the end game to work although there might still be bugs... I have to run a few more cases but I got the bulge of the function working.
+
+AC;01-16-19;
+I hard coded the Strings for the word "GAME OVER" for the end screen and started the method putting the words on the board. This methods needs a couple more for loops to work. I also updated this README.md with instructions for the game.
