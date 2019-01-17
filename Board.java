@@ -287,7 +287,7 @@ public class Board {
       if (a.getNumSquare()+b.getNumSquare()+c.getNumSquare()>this.spotCount||(BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c))){
         return true;
       }
-      if(BlockOver(a,x,y)&&BlockOver(b,x,y)&&BlockOver(c,x,y)){
+      if(BlockOver(a)&&BlockOver(b)&&BlockOver(c)){
         return true;
       }
       return false;
