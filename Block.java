@@ -23,7 +23,7 @@ abstract class Block {
   private int c;
   private int r;
   private Terminal.Color coloring;
-  public int getnumSquare(){
+  public int getNumSquare(){
     return numSquare;
   }
   public Terminal.Color getColor(){
@@ -118,7 +118,7 @@ class FullBlock extends Block{
   private int c;
   private int r;
   private Terminal.Color coloring;
-  public int getnumSquare(){
+  public int getNumSquare(){
     return r*c;
   }
   public int getRow(){
