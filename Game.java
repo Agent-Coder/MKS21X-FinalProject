@@ -181,15 +181,15 @@ public class Game{
 
     String R = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
 
-    putString(0,0,t,G);
-    putString(0,24,t,A);
-    putString(0,48,t,M);
-    putString(0,72,t,E);
+    t.putString(0,0,t,G);
+    t.putString(0,24,t,A);
+    t.putString(0,48,t,M);
+    t.putString(0,72,t,E);
 
-    putString(16,0,t,G);
-    putString(16,24,t,A);
-    putString(16,48,t,M);
-    putString(16,72,t,E);
+    t.putString(16,0,t,G);
+    t.putString(16,24,t,A);
+    t.putString(16,48,t,M);
+    t.putString(16,72,t,E);
   }
 
   public static void main(String[] args) {
