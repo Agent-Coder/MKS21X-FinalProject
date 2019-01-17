@@ -17,14 +17,14 @@ abstract class Block {
 
   private Square[][] block;
   private boolean[][] map;
-  private int numBlock;
+  private int numSquare;
   private int blockType;
   private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
-  public int getNumBlock(){
-    return numBlock;
+  public int getnumSquare(){
+    return numSquare;
   }
   public Terminal.Color getColor(){
     return coloring;
@@ -111,14 +111,14 @@ class emptyBlock extends Block{
 class FullBlock extends Block{
   private Square[][] block;
   private boolean[][] map;
-  private int numBlock;
+  private int numSquare;
   private int pos;
   private int blockType;
   private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
-  public int getNumBlock(){
+  public int getnumSquare(){
     return r*c;
   }
   public int getRow(){
@@ -145,6 +145,7 @@ class FullBlock extends Block{
     for (int x=0;x<size;x++){
       for (int y=0;y<size;y++){
           block[x][y]=new Square("WHITE",x,y);
+          numSquare++;
         }
       }
       map=new boolean[2*size+1][size];
@@ -193,14 +194,14 @@ class FullBlock extends Block{
 class LongBlock extends Block{
   private Square[][] block;
   private boolean[][] map;
-  private int numBlock;
+  private int numSquare;
   private int pos;
   private int blockType;
   private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
-  public int getNumBlock(){
+  public int getNumSquare(){
     return r*c;
   }
   public int getRow(){
@@ -227,6 +228,7 @@ class LongBlock extends Block{
       block=new Square[size][1];
       for (int x=0;x<size;x++){
             block[x][0]=new Square("WHITE",x,0);
+            numSquare++;
           }
       map=new boolean[2*size+1][1];
       for (int a=0;a<map.length;a++){
@@ -285,13 +287,16 @@ class LongBlock extends Block{
 class LBlock extends Block{
   private Square[][] block;
   private boolean[][] map;
-  private int numBlock;
+  private int numSquare;
   private int pos;
   private int blockType;
   private int size;
   private int c;
   private int r;
   private Terminal.Color coloring;
+  public int getNumSquare(){
+    return numSquare;
+  }
   public int getRow(){
     return r;
   }
@@ -335,7 +340,7 @@ class LBlock extends Block{
       for (int y=0;y<size;y++){
         if (x==row||y==col1){
           block[x][y]=new Square("WHITE",x,y);
-          numBlock++;
+          numSquare++;
         }
       }
     }

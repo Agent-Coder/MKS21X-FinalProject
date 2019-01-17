@@ -156,7 +156,7 @@ public class Board {
             }
           }
         }
-        this.spotCount=this.spotCount-b.getNumBlock();
+        this.spotCount=this.spotCount-b.getNumSquare();
         return true;
       }
       return false;
@@ -267,14 +267,14 @@ public class Board {
       this.spotCount+=10;
     }
     public boolean BlockGameOver(Block a){
-      if (this.spotCount<a.getNumBlock()){
+      if (this.spotCount<a.getNumSquare()){
         return true;
       }
       return false;
     }
 
     public boolean GameOver(Block a, Block b, Block c){
-      if (a.getNumBlock()+b.getNumBlock()+c.getNumBlock()<this.spotCount||BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c)){
+      if (a.getNumSquare()+b.getNumSquare()+c.getNumSquare()<this.spotCount||(BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c))){
         return true;
       }
       for (int x=0;x<this.board.length;x++){
