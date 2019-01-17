@@ -53,10 +53,16 @@ AZ;01-12-19;
 Today, I went to the 12 hour-Stuy Hack thing and so I didn't have time to work on this, HOWEVER, I got more practice with lanterna...thinking of changing to lanterna 3
 
 AC;01-13-19;
-The Minimum Viable Product is completed!! I fixed a couple of bugs including one where the player would not be able to pick a block when there is only on block in the screen. I also wrote the code to move the selected block onto the board and a refresh method to redraw the board every time the block is moved. The player will also not be able to move the block outside the board and will receive a message when they try. Another bug for the placement of L blocks was also fixed. Finally, I implemented the clearRow and clearCol methods so the board will update when a block is placed. 
+The Minimum Viable Product is completed!! I fixed a couple of bugs including one where the player would not be able to pick a block when there is only on block in the screen. I also wrote the code to move the selected block onto the board and a refresh method to redraw the board every time the block is moved. The player will also not be able to move the block outside the board and will receive a message when they try. Another bug for the placement of L blocks was also fixed. Finally, I implemented the clearRow and clearCol methods so the board will update when a block is placed.
 
 AZ;01-14-19;
 I was trying to implement the scoring correctly and adding it to each of the method so it would incoporate the scoring. I was also trying to incoporate random colors into the block but that didn't work out yet. I added comments on methods for reading purposes and then deleted uneccessary code/ made it more efficient. Then, I started making the powerUps file which is an extra feature and I am thinking of having the first powerUp be switching the selection part where you can switch out the blocks you have with new ones at the cost of scores.
 
-AZ;01-15-19; 
+AZ;01-15-19;
 I implemented new random colors for the blocks in block selection, and is trying to make it so the blocks preserve their colors on the board. First part is completed but second part isn't. I also worked on the board score but the score is printing straight down instead of rewriting so its still a work in progress.
+
+AC;01-15-19;
+I fixed the bug where a block would change colors after being placed on the board. I had to rewrite the array for the random color generator and add new get color methods for the block. I also started cleaning up our code by deleting old, unnecessary methods.
+
+AZ;01-16-19;
+I made a new branch and tried to work on ending the board. I think I'm going to loop through the board when the blocks are generated to see if there are any spots left. So I incorporated variables called Spotsleft and numBlocks in each block. The quick end is when the number of spots can't fit the spots but the hard one is the long looping through the board to find if you can actually place the board anywhere else, which I am still working on.
