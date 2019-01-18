@@ -116,24 +116,6 @@ public class Board {
     public boolean checkRows(){
       int full = 0;
       boolean clear = false;
-        /*for (int a=0;a<10;a++){
-          full++;
-          for (int b=0;b<10;b++){
-            if(this.board[a][b]!=null){
-              full++;
-            }
-          if (full==10){
-            for (int c=0;c<10;c++){
-              this.board[a][c]=null;
-            }
-            for (int d=0;d<10;d++){
-              this.layout[2*a+1][d]=false;
-            }
-            this.score+=100;
-            this.spotCount+=10;
-          }
-        }
-      }*/
       for (int a = 0; a < board.length; a++){
         full = 0;
         for (int b = 0; b < board[0].length; b++){
@@ -160,24 +142,6 @@ public class Board {
     public boolean checkCols(){
       int full=0;
       boolean clear = false;
-        /*for (int a=0;a<10;a++){
-          full=0;
-          for (int b=0;b<10;b++){
-            if(this.board[b][a]!=null){
-              full++;
-            }
-          if (full==10){
-            for (int c=0;c<10;c++){
-              this.board[c][a]=null;
-            }
-            for (int d=0;d<21;d++){
-              this.layout[a][d]=false;
-            }
-            this.score+=100;
-            this.spotCount+=10;
-          }
-        }
-      }*/
       for (int a = 0; a < board[0].length; a++){
         full = 0;
         for (int b = 0; b < board.length; b++){
@@ -206,7 +170,8 @@ public class Board {
       }
       return false;
     }
-    public boolean BlockOver(Block a){
+
+    private boolean BlockOver(Block a){
       for (int x=0;x<this.board.length-a.getLength()+1;x++){
         for (int y=0;y<this.board[0].length-a.getWidth()+1;y++){
           if(placeable(a,x,y)){
@@ -226,6 +191,7 @@ public class Board {
       }
       return false;
     }
+
     public String toString(){
       String s="";//this is the string containing the entire board
       int c=10;
