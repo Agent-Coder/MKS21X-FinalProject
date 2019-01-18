@@ -296,7 +296,6 @@ public class Game{
             cEmpty = true;
             blockOnBoard = false;
           }
-
           if (blockOnBoard == false){
 
             if (key.getKind() == Key.Kind.ArrowRight){
@@ -464,6 +463,22 @@ public class Game{
                 putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the right side of the board");
               }
+            }
+            if (Key.getKind()==Key.Kind.BackSpace){
+              if(selectedBlock==1){
+                a=theChosenOne;
+                aEmpty=false;
+              }
+              else if (selectedBlock==2){
+                b=theChosenOne;
+                bEmpty=false;
+              }
+              else if(selectedBlock==3){
+                c=theChosenOne;
+                cEmpty=false;
+              }
+              putBLock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
+              theChosenOne=new emptyBlock();
             }
 
             if (key.getKind() == Key.Kind.Enter) {
