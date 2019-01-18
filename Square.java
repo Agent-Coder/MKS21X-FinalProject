@@ -16,27 +16,9 @@ import java.lang.Math;
 
 public class Square {
   private Terminal.Color color;
-  private int xcor;
-  private int ycor;
 
-  public Square(Terminal.Color c, int x, int y){
+  public Square(Terminal.Color c){
     color = c;
-    xcor = x;
-    ycor = y;
-  }
-
-  public void setXcor(int x){
-    xcor = x;
-  }
-  public void setYcor(int y){
-    ycor = y;
-  }
-
-  public int getXcor(){
-    return xcor;
-  }
-  public int getYcor(){
-    return ycor;
   }
 
   public Terminal.Color getColor(){
