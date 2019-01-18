@@ -200,13 +200,10 @@ public class Game{
     putLetter(t, 48, 0, M);
     putLetter(t, 72, 0, E);
 
-    //putString(0,48,t,M);
-    //putString(0,72,t,E);
-
-    //putString(16,0,t,G);
-    //putString(16,24,t,A);
-    //putString(16,48,t,M);
-    //putString(16,72,t,E);
+    putLetter(t, 0, 16, O);
+    putLetter(t, 24, 16, V);
+    putLetter(t, 48, 16, E);
+    putLetter(t, 72, 16, R);
   }
 
   public static void main(String[] args) {
