@@ -170,9 +170,8 @@ public class Game{
     return B.placeBlock(b, i, j);
   }
 
-  private static void putLetter(Terminal t, int x, String s){
+  private static void putLetter(Terminal t, int x, int y, String s){
     int OriX = x;
-    int y = 0;
     for (int i = 0; i < s.length(); i++){
       if (s.charAt(i) == '\n') {
         y++;
@@ -196,9 +195,10 @@ public class Game{
 
     String R = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
 
-    putString(0,0,t,G);
-
-    putLetter(t, 24, A);
+    putLetter(t, 0, 0, G);
+    putLetter(t, 24, 0, A);
+    putLetter(t, 48, 0, M);
+    putLetter(t, 72, 0, E);
 
     //putString(0,48,t,M);
     //putString(0,72,t,E);
