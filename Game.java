@@ -170,6 +170,21 @@ public class Game{
     return B.placeBlock(b, i, j);
   }
 
+  private static void putLetter(Terminal t, int x, String s){
+    int OriX = x;
+    int y = 0;
+    for (int i = 0; i < s.length(); i++){
+      if (s.charAt(i) == '\n') {
+        y++;
+        x = OriX;
+      } else {
+        t.moveCursor(x,y);
+        t.putCharacter(s.charAt(i));
+        x++;
+      }
+    }
+  }
+
   public static void endGame(Terminal t){
     String G = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |\n+---+\n|   |\n+---+       +---+---+\n|   |       |   |   |\n+---+	    +---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+";
     String A = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
@@ -183,19 +198,8 @@ public class Game{
 
     putString(0,0,t,G);
 
-    int x = 24;
-    int y = 0;
-    for (int i = 0; i < A.length(); i++){
-      if (A.charAt(i) == '\n') {
-        y++;
-        x = 24;
-      } else {
-        t.moveCursor(x,y);
-        t.putCharacter(A.charAt(i));
-        x++;
-      }
-    }
-    //putString(24,0,t,A);
+    putLetter(t, 24, A);
+
     //putString(0,48,t,M);
     //putString(0,72,t,E);
 
