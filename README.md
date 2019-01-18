@@ -2,6 +2,8 @@
 
 Instructions to Run the Program:
 
+******Please Maximize Your Terminal Before Running This Program******
+
 1) Type javac -cp lanterna.jar:. Game.java to compile and java -cp lanterna.jar:. Game to start the program
 2) Press ENTER to start the game
 3) Use LEFT and RIGHT arrow keys to select a block
@@ -81,3 +83,6 @@ I got the end game to work although there might still be bugs... I have to run a
 
 AC;01-16-19;
 I hard coded the Strings for the word "GAME OVER" for the end screen and started the method putting the words on the board. This methods needs a couple more for loops to work. I also updated this README.md with instructions for the game.
+
+AC;01-17-19;
+I worked on revising the prototype and recreated the UML diagram as we added major changes to our project (our diagram is now quite big). I also finished printing the end screen onto lanterna and created a helper function called putLetter to condense the code. Finally, I added minor changes to the instructions to run the program in this README.
