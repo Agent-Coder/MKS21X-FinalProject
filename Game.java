@@ -230,7 +230,7 @@ public class Game{
 		terminal.setCursorVisible(false);
 
     boolean running = true;
-    int mode = 3;
+    int mode = 0;
 
     while(running){
 
@@ -474,7 +474,7 @@ public class Game{
                 putString(0,23,terminal,"Block cannot be placed here");
               }
                 putString(58,7, terminal, ""+game.getScore());
-                if(!gg){
+                if(gg){
                   terminal.clearScreen();
                   mode = 3;
                 }
