@@ -182,7 +182,20 @@ public class Game{
     String R = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
 
     putString(0,0,t,G);
-    //putString(0,24,t,A);
+
+    int x = 24;
+    int y = 0;
+    for (int i = 0; i < A.length(); i++){
+      if (A.charAt(i) == '\n') {
+        y++;
+        x = 24;
+      } else {
+        t.moveCursor(x,y);
+        t.putCharacter(A.charAt(i));
+        x++;
+      }
+    }
+    //putString(24,0,t,A);
     //putString(0,48,t,M);
     //putString(0,72,t,E);
 

@@ -23,6 +23,7 @@ abstract class Block {
   private int c;
   private int r;
   private Terminal.Color coloring;
+  
   public int getNumSquare(){
     return numSquare;
   }
