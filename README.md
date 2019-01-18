@@ -1,6 +1,6 @@
 # MKS21X-FinalProject
 
-Instructions to Run the Program:
+Instructions:
 
 ******Please Maximize Your Terminal Before Running This Program******
 
