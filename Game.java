@@ -227,6 +227,7 @@ public class Game{
   public static void main(String[] args) {
 
     Board game = new Board();
+    Board tempgame=game;
     Block a = new emptyBlock();
     Block b = new emptyBlock();
     Block c = new emptyBlock();
