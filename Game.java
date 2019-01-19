@@ -482,7 +482,7 @@ public class Game{
               }
             }
             if (key.getKind() == Key.Kind.Backspace){
-              blockOnBoard=true;
+              blockOnBoard=false;
               game.setBoard(temp);
               putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
               if(selectedBlock==1){
