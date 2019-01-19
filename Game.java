@@ -55,14 +55,8 @@ public class Game{
     for (int i = 0; i < myBoard.length; i++){
       for (int j = 0; j < myBoard[0].length; j++){
         if (myBoard[i][j] != null){
-          //putString(90,0+i,t,""+myBoard[i][j].getColor());
-          //t.moveCursor(x,y);
-          //t.applyForegroundColor(myBoard[i][j].getColor());
-          //t.putCharacter('@');
           putString(x,y,t,"@",myBoard[i][j].getColor());
         } else {
-          //t.moveCursor(x,y);
-          //t.putCharacter(' ');
           putString(x,y,t," ");
         }
         x += 4;
@@ -227,7 +221,8 @@ public class Game{
   public static void main(String[] args) {
 
     Board game = new Board();
-    Board tempgame=game;
+    Square[][] temp=game.getBoard();
+
     Block a = new emptyBlock();
     Block b = new emptyBlock();
     Block c = new emptyBlock();
@@ -282,6 +277,7 @@ public class Game{
           cEmpty = false;
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);
+          temp=game.getBoard();
           gg=(gg||game.GameOver(a,b,c));
           numBlocks = 3;
         } else {
@@ -309,12 +305,12 @@ public class Game{
             mode = 0;
             numBlocks = 0;
             game = new Board();
-            tempgame=game;
             selectedBlock = 1;
             aEmpty = true;
             bEmpty = true;
             cEmpty = true;
             blockOnBoard = false;
+            temp=game.getBoard();
           }
           if (blockOnBoard == false){
 
@@ -486,7 +482,8 @@ public class Game{
               }
             }
             if (key.getKind() == Key.Kind.Backspace){
-                putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
+              game.setBoard(temp);
+              putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
               if(selectedBlock==1){
                 a=theChosenOne;
                 aEmpty=false;
@@ -501,7 +498,6 @@ public class Game{
               }
               theChosenOne=new emptyBlock();
               numBlocks++;
-              game=tempgame;
             }
 
             if (key.getKind() == Key.Kind.Enter) {
@@ -528,7 +524,6 @@ public class Game{
                   terminal.clearScreen();
                   mode = 3;
                 }
-                tempgame=game;
             }
 
           }
