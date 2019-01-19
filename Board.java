@@ -40,7 +40,7 @@ public class Board {
   public Square[][] getBoard(){
     return board;
   }
-  public Square[][] setBoard(Square[][] replace){
+  public void setBoard(Square[][] replace){
     this.board=replace;
   }
   public Block generateBlock(){
