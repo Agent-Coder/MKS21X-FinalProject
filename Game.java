@@ -216,6 +216,7 @@ public class Game{
     putLetter(t, 24, 16, V);
     putLetter(t, 48, 16, E);
     putLetter(t, 72, 16, R);
+    putString(80, 10,t,"Press Esc to exit game");
   }
 
   public static void main(String[] args) {
