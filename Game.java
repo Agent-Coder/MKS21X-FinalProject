@@ -308,7 +308,7 @@ public class Game{
             mode = 0;
             numBlocks = 0;
             game = new Board();
-            tempgame=new Board();
+            tempgame=game;
             selectedBlock = 1;
             aEmpty = true;
             bEmpty = true;
@@ -500,6 +500,7 @@ public class Game{
               }
               theChosenOne=new emptyBlock();
               numBlocks++;
+              game=tempgame;
             }
 
             if (key.getKind() == Key.Kind.Enter) {
@@ -526,11 +527,10 @@ public class Game{
                   terminal.clearScreen();
                   mode = 3;
                 }
-
+                tempgame=game;
             }
 
           }
-
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
         }
       }
@@ -545,7 +545,6 @@ public class Game{
           running = false;
         }
       }
-      tempgame=ga me;
     }
 
   }
