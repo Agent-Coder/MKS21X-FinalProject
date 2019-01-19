@@ -89,3 +89,6 @@ I worked on revising the prototype and recreated the UML diagram as we added maj
 
 AZ;01-17-19; 
 I worked on the endgame again because I found a few cases where the game ended to early and also realized we need an undo thing to make the endgame work because the endgame is when there are no possible moves so if the playet chooses the wrong block, he can't end game because the block won't fit but the other on in his selection will. Also, we need to do something about the text "You have reached the edged of the board" because it continues to appear even after we are not on the edge of the board.
+
+AZ;01-18-19;
+I worked on undo and it works for the selection block being redrawn and undo the move but on the physical board, it is not erased completely though you can't see it.
