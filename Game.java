@@ -466,6 +466,7 @@ public class Game{
               }
             }
             if (key.getKind() == Key.Kind.Backspace){
+                putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
               if(selectedBlock==1){
                 a=theChosenOne;
                 aEmpty=false;
@@ -478,9 +479,8 @@ public class Game{
                 c=theChosenOne;
                 cEmpty=false;
               }
-
-              putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
               theChosenOne=new emptyBlock();
+              numBlocks++;
             }
 
             if (key.getKind() == Key.Kind.Enter) {
