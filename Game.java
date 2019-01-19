@@ -145,6 +145,24 @@ public class Game{
       }
     }
   }
+  public static void undo(Terminal t, Block b, int x, int y){
+    int oriX = x;
+    Square[][] myBlock = b.getBlock();
+    for (int i = 0; i < myBlock.length; i++){
+      for (int j = 0; j < myBlock[0].length; j++){
+        if (myBlock[i][j] != null){
+          t.moveCursor(x,y);
+          t.applyForegroundColor(myBlock[i][j].getColor());
+          t.putCharacter('@');
+        }
+        x += 4;
+        if (j == myBlock[0].length - 1){
+          x = oriX;
+          y += 2;
+        }
+      }
+    }
+  }
 
   public static void eraseBlock(Terminal t, Block b, int x, int y){
     int oriX = x;
@@ -265,21 +283,20 @@ public class Game{
           refreshBoard(terminal, game);
           gg=(gg||game.GameOver(a,b,c));
           numBlocks = 3;
-          selectedBlock = 1;
         } else {
           if (flicker == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            putBlock(terminal,a.toString(), selectedBlock,a.getColor());
+            putBlock(terminal,a.toString(), flicker,a.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (flicker == 2){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            putBlock(terminal,b.toString(), selectedBlock,b.getColor());
+            putBlock(terminal,b.toString(), flicker,b.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
           if (flicker == 3){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-            putBlock(terminal,c.toString(), selectedBlock,c.getColor());
+            putBlock(terminal,c.toString(), flicker,c.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
         }
@@ -300,21 +317,21 @@ public class Game{
           if (blockOnBoard == false){
 
             if (key.getKind() == Key.Kind.ArrowRight){
-              if (selectedBlock == 1){
+              if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!bEmpty){
                   flicker = 2;
                 } else if (!cEmpty){
                   flicker = 3;
                 }
-              } else if (selectedBlock == 2){
+              } else if (flicker == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!cEmpty){
                   flicker = 3;
                 } else if (!aEmpty){
                   flicker = 1;
                 }
-              } else if (selectedBlock == 3){
+              } else if (flicker == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!aEmpty){
                   flicker = 1;
@@ -325,21 +342,21 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
-              if (selectedBlock == 1){
+              if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!cEmpty){
                   flicker = 3;
                 } else if (!bEmpty){
                   flicker = 2;
                 }
-              } else if (selectedBlock == 2){
+              } else if (flicker == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!aEmpty){
                   flicker = 1;
                 } else if (!cEmpty){
                   flicker = 3;
                 }
-              } else if (selectedBlock == 3){
+              } else if (flicker == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!bEmpty){
                   flicker = 2;
@@ -350,7 +367,8 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowUp) {
-              if (selectedBlock == 1){
+              selectedBlock=flicker;
+              if (flicker == 1){
                 theChosenOne = a;
                 moveBlockOnBoard(terminal, a, 2, 1);
                 a = new emptyBlock();
@@ -370,7 +388,7 @@ public class Game{
                 } else if (!cEmpty){
                   flicker = 3;
                 }
-              } else if (selectedBlock == 2){
+              } else if (flicker == 2){
                 theChosenOne = b;
                 moveBlockOnBoard(terminal, b, 2, 1);
                 b = new emptyBlock();
@@ -390,7 +408,7 @@ public class Game{
                 } else if (!aEmpty){
                   flicker = 1;
                 }
-              } else if (selectedBlock == 3){
+              } else if (flicker == 3){
                 theChosenOne = c;
                 moveBlockOnBoard(terminal, c, 2, 1);
                 c = new emptyBlock();
