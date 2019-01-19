@@ -499,7 +499,6 @@ public class Game{
                 cEmpty=false;
               }
               theChosenOne=new emptyBlock();
-              numBlocks++;
             }
 
             if (key.getKind() == Key.Kind.Enter) {
