@@ -484,6 +484,7 @@ public class Game{
             if (key.getKind() == Key.Kind.Backspace){
               blockOnBoard=false;
               game.setBoard(temp);
+              refreshBoard(terminal,game);
               putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
               if(selectedBlock==1){
                 a=theChosenOne;
