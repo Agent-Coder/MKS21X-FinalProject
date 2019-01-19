@@ -214,6 +214,7 @@ public class Game{
     Block c = new emptyBlock();
     int numBlocks = 0;
     int selectedBlock = 1;
+    int flicker=1;
     Block theChosenOne = new emptyBlock();
     boolean aEmpty = true;
     boolean bEmpty = true;
@@ -266,17 +267,17 @@ public class Game{
           numBlocks = 3;
           selectedBlock = 1;
         } else {
-          if (selectedBlock == 1){
+          if (flicker == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,a.toString(), selectedBlock,a.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
-          if (selectedBlock == 2){
+          if (flicker == 2){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,b.toString(), selectedBlock,b.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
-          if (selectedBlock == 3){
+          if (flicker == 3){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
             putBlock(terminal,c.toString(), selectedBlock,c.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
@@ -302,23 +303,23 @@ public class Game{
               if (selectedBlock == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!bEmpty){
-                  selectedBlock = 2;
+                  flicker = 2;
                 } else if (!cEmpty){
-                  selectedBlock = 3;
+                  flicker = 3;
                 }
               } else if (selectedBlock == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!cEmpty){
-                  selectedBlock = 3;
+                  flicker = 3;
                 } else if (!aEmpty){
-                  selectedBlock = 1;
+                  flicker = 1;
                 }
               } else if (selectedBlock == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!aEmpty){
-                  selectedBlock = 1;
+                  flicker = 1;
                 } else if (!bEmpty){
-                  selectedBlock = 2;
+                  flicker = 2;
                 }
               }
             }
@@ -327,23 +328,23 @@ public class Game{
               if (selectedBlock == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!cEmpty){
-                  selectedBlock = 3;
+                  flicker = 3;
                 } else if (!bEmpty){
-                  selectedBlock = 2;
+                  flicker = 2;
                 }
               } else if (selectedBlock == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!aEmpty){
-                  selectedBlock = 1;
+                  flicker = 1;
                 } else if (!cEmpty){
-                  selectedBlock = 3;
+                  flicker = 3;
                 }
               } else if (selectedBlock == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!bEmpty){
-                  selectedBlock = 2;
+                  flicker = 2;
                 } else if (!aEmpty){
-                  selectedBlock = 1;
+                  flicker = 1;
                 }
               }
             }
@@ -365,9 +366,9 @@ public class Game{
                   gg=game.BlockOver(c);
                 }
                 if (!bEmpty){
-                  selectedBlock = 2;
+                  flicker = 2;
                 } else if (!cEmpty){
-                  selectedBlock = 3;
+                  flicker = 3;
                 }
               } else if (selectedBlock == 2){
                 theChosenOne = b;
@@ -385,9 +386,9 @@ public class Game{
                   gg=game.BlockOver(c);
                 }
                 if (!cEmpty){
-                  selectedBlock = 3;
+                  flicker = 3;
                 } else if (!aEmpty){
-                  selectedBlock = 1;
+                  flicker = 1;
                 }
               } else if (selectedBlock == 3){
                 theChosenOne = c;
@@ -405,9 +406,9 @@ public class Game{
                   gg=game.BlockOver(b);
                 }
                 if (!aEmpty){
-                  selectedBlock = 1;
+                  flicker = 1;
                 } else if (!bEmpty){
-                  selectedBlock = 2;
+                  flicker = 2;
                 }
               }
               blockX = 2;
