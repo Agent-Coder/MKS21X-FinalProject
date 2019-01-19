@@ -464,7 +464,7 @@ public class Game{
                 putString(0,23, terminal, "You have reached the right side of the board");
               }
             }
-            if (Key.getKind()==Key.Kind.BackSpace){
+            if (key.getKind() == Key.Kind.Backspace){
               if(selectedBlock==1){
                 a=theChosenOne;
                 aEmpty=false;
@@ -477,7 +477,8 @@ public class Game{
                 c=theChosenOne;
                 cEmpty=false;
               }
-              putBLock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
+
+              putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
               theChosenOne=new emptyBlock();
             }
 
