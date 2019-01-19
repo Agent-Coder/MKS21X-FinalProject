@@ -436,49 +436,49 @@ public class Game{
           } else {
 
             if (key.getKind() == Key.Kind.ArrowUp) {
+              putString(0,23,terminal,"                                                        ");
               if (blockY != 1) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY -= 2;
                 refreshBoard(terminal, game);
                 moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
-                putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the top of the board");
               }
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
+              putString(0,23,terminal,"                                                        ");
               if (blockY != theChosenOne.getLength()*-2 + 21) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY += 2;
                 refreshBoard(terminal, game);
                 moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
-                putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the bottom of the board");
               }
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
+              putString(0,23,terminal,"                                                        ");
               if (blockX != 2){
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX -= 4;
                 refreshBoard(terminal, game);
                 moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
-                putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the left side of the board");
               }
             }
 
             if (key.getKind() == Key.Kind.ArrowRight) {
+              putString(0,23,terminal,"                                                        ");
               if (blockX != theChosenOne.getWidth()*-4 + 42) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX += 4;
                 refreshBoard(terminal, game);
                 moveBlockOnBoard(terminal,theChosenOne, blockX, blockY);
               } else {
-                putString(0,23,terminal,"                                                        ");
                 putString(0,23, terminal, "You have reached the right side of the board");
               }
             }
@@ -506,11 +506,9 @@ public class Game{
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                        ");
                 if (game.checkRows()){
-                  putString(0,23,terminal,"                                                        ");
                   putString(0,23,terminal,"You cleared a row");
                 }
                 if (game.checkCols()){
-                  putString(0,23,terminal,"                                                        ");
                   putString(0,23,terminal,"You cleared a column");
                 }
                 refreshBoard(terminal, game);
