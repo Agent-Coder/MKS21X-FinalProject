@@ -277,7 +277,6 @@ public class Game{
           cEmpty = false;
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);
-          temp=game.getBoard();
           gg=(gg||game.GameOver(a,b,c));
           numBlocks = 3;
         } else {
@@ -296,6 +295,7 @@ public class Game{
             putBlock(terminal,c.toString(), flicker,c.getColor());
             terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           }
+          temp=game.getBoard();
         }
 
         if (key != null){
@@ -524,6 +524,7 @@ public class Game{
                   terminal.clearScreen();
                   mode = 3;
                 }
+                temp=game.getBoard();
             }
 
           }
