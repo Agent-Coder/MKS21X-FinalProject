@@ -40,7 +40,9 @@ public class Board {
   public Square[][] getBoard(){
     return board;
   }
-
+  public Square[][] setBoard(Square[][] replace){
+    this.board=replace;
+  }
   public Block generateBlock(){
       String[] colors = new String[6];
       colors[0]= "BLUE";
