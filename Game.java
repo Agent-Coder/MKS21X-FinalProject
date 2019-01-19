@@ -249,6 +249,21 @@ public class Game{
 
         if (key != null){
 
+          if (key.getKind() == Key.Kind.F1){
+            a = game.generateBlock();
+            aEmpty = false;
+            b = game.generateBlock();
+            bEmpty = false;
+            c = game.generateBlock();
+            cEmpty = false;
+            putBlock(t,a.toString(), 1,a.getColor());
+            putBlock(t,b.toString(), 2,b.getColor());
+            putBlock(t,c.toString(), 3,c.getColor());
+            gg=(gg||game.GameOver(a,b,c));
+            numBlocks = 3;
+            selectedBlock = 1;
+
+          }
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 0;
@@ -260,7 +275,6 @@ public class Game{
             cEmpty = true;
             blockOnBoard = false;
           }
-
           if (blockOnBoard == false){
 
             if (key.getKind() == Key.Kind.ArrowRight){

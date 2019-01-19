@@ -40,7 +40,14 @@ public class Board {
   public Square[][] getBoard(){
     return board;
   }
-
+  public void powerUp(int x){
+    if (x==1){
+      this.score+=this.score-300;
+    }
+    else if(x==2){
+      this.score+=this.score-100;
+    }
+  }
   public Block generateBlock(){
       String[] colors = new String[6];
       colors[0]= "BLUE";
@@ -245,10 +252,5 @@ public class Board {
       s=s+"+---+---+---+---+---+---+---+---+---+---+\n"+"\n"+"\n";
       return s;
     }
-
-  public static void main(String[] args) {
-    Board x=new Board();
-    Block a=x.generateBlock();
-    Block b=x.generateBlock();
 
 }
