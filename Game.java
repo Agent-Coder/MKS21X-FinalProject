@@ -235,8 +235,8 @@ public class Game{
 		terminal.enterPrivateMode();
 
 		TerminalSize size = new TerminalSize(100,100);
-    terminal.size.setColumns(100);
-    terminal.size.setRows(100);
+    size.setColumns(100);
+    size.setRows(100);
 		terminal.setCursorVisible(false);
 
     boolean running = true;
