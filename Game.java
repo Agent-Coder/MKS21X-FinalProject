@@ -304,9 +304,11 @@ public class Game{
               putBlock(terminal,b.toString(), 2,b.getColor());
               putBlock(terminal,c.toString(), 3,c.getColor());
               game.powerUps(1);
+              putString(58,7, terminal, "                            ")
               putString(58,7, terminal, ""+game.getScore());
               gg=(gg||game.GameOver(a,b,c));
               numBlocks = 3;
+              putString(58,7, terminal, "                            ")
               putString(58,7, terminal, ""+game.getScore());
             }
           }
@@ -532,6 +534,7 @@ public class Game{
                 putString(0,23,terminal,"                                                                                ");
                 putString(0,23,terminal,"Block cannot be placed here");
               }
+                putString(58,7, terminal, "                            ")
                 putString(58,7, terminal, ""+game.getScore());
                 gg=BlockOver(a)||BlockOver(b)||BlockOver(c);
                 if(gg){
