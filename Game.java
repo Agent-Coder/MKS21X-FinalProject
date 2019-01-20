@@ -307,6 +307,7 @@ public class Game{
               putString(58,7, terminal, ""+game.getScore());
               gg=(gg||game.GameOver(a,b,c));
               numBlocks = 3;
+              putString(58,7, terminal, ""+game.getScore());
             }
           }
           if (key.getKind() == Key.Kind.Tab) {
