@@ -282,7 +282,7 @@ public class Game{
         }
 
         if (key != null){
-          if(key.getKind()==Key.Kind.F1){
+          if(key.getKind()==Key.Kind.Delete){
             if (game.getScore()<300){
               putString(0,23,terminal,"                                                        ");
               putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up");
@@ -528,6 +528,7 @@ public class Game{
                 putString(0,23,terminal,"Block cannot be placed here");
               }
                 putString(58,7, terminal, ""+game.getScore());
+                gg=BlockOver(a)||BlockOver(b)||BlockOver(c);
                 if(gg){
                   terminal.clearScreen();
                   mode = 3;
