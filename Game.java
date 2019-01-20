@@ -139,24 +139,6 @@ public class Game{
       }
     }
   }
-  public static void undo(Terminal t, Block b, int x, int y){
-    int oriX = x;
-    Square[][] myBlock = b.getBlock();
-    for (int i = 0; i < myBlock.length; i++){
-      for (int j = 0; j < myBlock[0].length; j++){
-        if (myBlock[i][j] != null){
-          t.moveCursor(x,y);
-          t.applyForegroundColor(myBlock[i][j].getColor());
-          t.putCharacter('@');
-        }
-        x += 4;
-        if (j == myBlock[0].length - 1){
-          x = oriX;
-          y += 2;
-        }
-      }
-    }
-  }
 
   public static void eraseBlock(Terminal t, Block b, int x, int y){
     int oriX = x;
@@ -307,6 +289,7 @@ public class Game{
             bEmpty = false;
             c = game.generateBlock();
             cEmpty = false;
+            refreshBoard(terminal,game);
             putBlock(terminal,a.toString(), 1,a.getColor());
             putBlock(terminal,b.toString(), 2,b.getColor());
             putBlock(terminal,c.toString(), 3,c.getColor());
