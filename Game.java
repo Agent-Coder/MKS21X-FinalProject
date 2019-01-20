@@ -307,9 +307,9 @@ public class Game{
             bEmpty = false;
             c = game.generateBlock();
             cEmpty = false;
-            putBlock(t,a.toString(), 1,a.getColor());
-            putBlock(t,b.toString(), 2,b.getColor());
-            putBlock(t,c.toString(), 3,c.getColor());
+            putBlock(terminal,a.toString(), 1,a.getColor());
+            putBlock(terminal,b.toString(), 2,b.getColor());
+            putBlock(terminal,c.toString(), 3,c.getColor());
             gg=(gg||game.GameOver(a,b,c));
             numBlocks = 3;
             game.powerUps(1);
