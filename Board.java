@@ -215,6 +215,12 @@ public class Board {
             else if(c==5){
               s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Tab to RESTART)\n";
             }
+            else if(c==6){
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press BackSpace to Choose Different Block)\n";
+            }
+            else if(c==7){
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Delete to Use 300 points to Purchase New Set of Blocks)\n";
+            }
             else{
             s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
           }
