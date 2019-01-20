@@ -16,16 +16,17 @@ import java.lang.Math;
 
 public class Square {
   private Terminal.Color color;
-
+//color of the squares
   public Square(Terminal.Color c){
     color = c;
   }
-
+//constructor for squares
   public Terminal.Color getColor(){
     return color;
   }
-
+//returns color
   public String toString(){
     return "+===+\n| @ |\n+===+";
   }
+  //tostring for squares
 }

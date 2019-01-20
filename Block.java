@@ -16,56 +16,63 @@ import java.lang.Math;
 abstract class Block {
 
   private Square[][] block;
+  //array for block comprised of  squares
   private boolean[][] map;
+  //easier printing of block
   private int numSquare;
-  private int blockType;
+  //num of squares comprising block
   private int size;
+  //size of block
   private int c;
+  //number of columns  in map
   private int r;
+  //number of rows in map
   private Terminal.Color coloring;
-  
+  //color of block
   public int getNumSquare(){
     return numSquare;
   }
+  //returns numSquare
   public Terminal.Color getColor(){
     return coloring;
   }
+  //returns colors of blocks
   public int getRow(){
     return r;
   }
+  //returns number of rows in map
   public int getCol(){
     return c;
   }
+  //returns number of cols in map
   public Block(){
     Terminal.Color[] colors = Terminal.Color.values();
     block=new Square[1][1];
     map=new boolean[2][2];
     coloring=colors[(int)(Math.random()*100)%(colors.length-1) + 1];}
-
+ //constructor for block
   public Block(Terminal.Color c){
     block=new Square[1][1];
     map=new boolean[2][2];
     coloring=c;}
-
+//constructor for block taking in an input of color
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
-
+ //returns a cell of map
   public Square[][] getBlock(){
     return block;
   }
-
-  public int getBlockType(){
-    return blockType;
-  }
+//returns block array
 
   public int getLength(){
     return block.length;
   }
+  //gets length of block
   public int getWidth(){
     return block[0].length;
   }
-
+//gets width of block
   public String toString(){
       String entire="";
       for (int x=0;x<this.map.length;x++){
@@ -99,7 +106,7 @@ abstract class Block {
       return entire;
     }
 }
-
+//toString of map
 class emptyBlock extends Block{
   public String toString(){
     String s = "";
@@ -109,42 +116,57 @@ class emptyBlock extends Block{
     return s;
   }
 }
-
+//toString of empty Block
 class FullBlock extends Block{
+  //sqaure shaped block
   private Square[][] block;
+  //array for block comprised of  squares
   private boolean[][] map;
+  //easier printing of block
   private int numSquare;
-  private int pos;
-  private int blockType;
+  //num of squares comprising block
   private int size;
+  //size of block
   private int c;
+  //number of columns  in map
   private int r;
+  //number of rows in map
   private Terminal.Color coloring;
-
+  //color of block
+  private int pos;
+//orientation of block
   public Terminal.Color getColor(){
     return coloring;
   }
+  //returns color of block
   public int getNumSquare(){
     return block.length*block.length;
   }
+  //returns number of squares the block has
   public int getRow(){
     return r;
   }
+  //row for map
   public int getCol(){
     return c;
   }
+  //col for map
   public Square[][] getBlock(){
     return block;
   }
+  //gets block array
   public int getLength(){
     return block.length;
   }
+  //length of block
   public int getWidth(){
     return block[0].length;
   }
+  //width of block
   public boolean getmap(int row, int col){
     return map[row][col];
   }
+  //specific cell of map
   public FullBlock(int size,Terminal.Color colors){
     coloring=colors;
     block=new Square[size][size];
@@ -162,6 +184,7 @@ class FullBlock extends Block{
       r=map.length;
       c=map[0].length;
     }
+    //constructor for fullBlock that sets the map and square array
     public String toString(){
         String entire="";
         for (int x=0;x<map.length;x++){
@@ -194,42 +217,60 @@ class FullBlock extends Block{
 
         return entire;
       }
+      //toString of full Block
 }
 
 class LongBlock extends Block{
+  //a line-shaped block
   private Square[][] block;
+  //array for block comprised of  squares
   private boolean[][] map;
+  //easier printing of block
   private int numSquare;
-  private int pos;
-  private int blockType;
+  //num of squares comprising block
   private int size;
+  //size of block
   private int c;
+  //number of columns  in map
   private int r;
+  //number of rows in map
   private Terminal.Color coloring;
+  //color of block
+  private int pos;
+//orientation
+
   public int getNumSquare(){
     return block[0].length;
   }
+  //number of squares in block
   public Terminal.Color getColor(){
     return coloring;
   }
+  //getting color
   public int getRow(){
     return r;
   }
+  //returns map rows
   public int getCol(){
     return c;
   }
+  //returns col rows
   public Square[][] getBlock(){
     return block;
   }
+  //gets square array of block
   public int getLength(){
     return block.length;
   }
+  //gets length of block
   public int getWidth(){
     return block[0].length;
   }
+  //gets width of block
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
+  //gets cell of map
   public LongBlock(int size,int pos, Terminal.Color colors){
     coloring=colors;
     if (pos==1){
@@ -257,6 +298,7 @@ class LongBlock extends Block{
     r=map.length;
     c=map[0].length;
   }
+  //constructor of long block
   public String toString(){
       String entire="";
       for (int x=0;x<map.length;x++){
@@ -289,42 +331,58 @@ class LongBlock extends Block{
 
       return entire;
     }
+    //toString
 }
 
 class LBlock extends Block{
   private Square[][] block;
+  //array for block comprised of  squares
   private boolean[][] map;
+  //easier printing of block
   private int numSquare;
-  private int pos;
-  private int blockType;
+  //num of squares comprising block
   private int size;
+  //size of block
   private int c;
+  //number of columns  in map
   private int r;
+  //number of rows in map
   private Terminal.Color coloring;
+  //color of block
+  private int pos;
+//orientation
   public int getNumSquare(){
     return numSquare;
   }
+  //gets number of squares in block
   public Terminal.Color getColor(){
     return coloring;
   }
+  //gets color
   public int getRow(){
     return r;
   }
+  //gets row in map
   public int getCol(){
     return c;
   }
+  //gets col in map
   public Square[][] getBlock(){
     return block;
   }
+  //gets square array of blocks
   public int getLength(){
     return block.length;
   }
+  //gets length of block
   public int getWidth(){
     return block[0].length;
   }
+  //gets width of block
   public boolean getmap(int row, int col){
     return this.map[row][col];
   }
+  //gets specific cell of map
   public LBlock(int size,int pos, Terminal.Color colors){
     coloring=colors;
     int row,col1;
@@ -376,6 +434,7 @@ class LBlock extends Block{
     r=map.length;
     c=map[0].length;
   }
+  //constructor for long block
   public String toString(){
       String entire="";
       for (int x=0;x<map.length;x++){
@@ -408,4 +467,5 @@ class LBlock extends Block{
 
       return entire;
     }
+    //toString for long block
 }

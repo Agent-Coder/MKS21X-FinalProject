@@ -15,11 +15,15 @@ import com.googlecode.lanterna.screen.Screen;
 import java.lang.Math;
 public class Board {
   private int spotCount;
+  //counts amount of empty spots on board
   private int blockCount;
+  //number of blocks in the selection
   private int score;
+  //player's score
   private Square[][] board;
+  //array of squares that contains each part of block on the board
   private boolean[][] layout;
-
+  //used for printing board
   public Board(){
     this.board = new Square[10][10];
     this.layout= new boolean[21][10];
@@ -32,6 +36,8 @@ public class Board {
     this.spotCount=100;
     this.blockCount=0;
   }
+  //creates empty 10 by 10 board with 21 by 10 layout for printing and sets everything in layout as false since there is no blocks on Board
+  //score is zero, total amount of spots is 100 and block count is 0
   public void powerUps(int x){
     if (x==1){
       this.score=this.score-300;
@@ -40,19 +46,19 @@ public class Board {
       this.score=this.score-50;
     }
   }
-  public void continueScore(int x){
-    score=x;
-  }
+  //different modes of powerups so this function deals with calculation of score deduction from different powerups
   public int getScore(){
     return this.score;
   }
-
+//returns score
   public Square[][] getBoard(){
     return board;
   }
+  //returns board
   public void setBoard(Square[][] replace){
     this.board=replace;
   }
+  //replacing the board with a new board
   public Block generateBlock(){
       String[] colors = new String[6];
       colors[0]= "BLUE";
@@ -81,11 +87,11 @@ public class Board {
       this.blockCount++;
       return random;
     }
-
+    //generates colors and rolls different numbers to get different colors of different types of different sizes of blocks
     public Square getSquare(int x, int y){
       return this.board[x][y];
     }
-
+    //returns square occupying a certain cell of board array
     public boolean placeBlock(Block b, int x, int y){
       int oriY=y;
       if (placeable(b, x, y)){
@@ -107,7 +113,7 @@ public class Board {
       }
       return false;
     }
-
+    //places block down by checking placeable and modifying board array while also modifying score and then changing spotcount
     private boolean placeable(Block bl, int x, int y){
       int oriY=y;
       for (int i = 0; i < bl.getLength(); i++){
@@ -124,6 +130,7 @@ public class Board {
       }
       return true;
     }
+    //checks of the positions of the block placement is on null areas on the board
 
     public boolean checkRows(){
       int full = 0;
@@ -142,7 +149,7 @@ public class Board {
       }
       return clear;
     }
-
+    //checks if a row is filled
     private void clearRow(int i){
       for (int j = 0; j < board[0].length; j++){
         board[i][j] = null;
@@ -150,7 +157,7 @@ public class Board {
       this.score+=100;
       this.spotCount+=10;
     }
-
+    //clears a row and adds score and spot count
     public boolean checkCols(){
       int full=0;
       boolean clear = false;
@@ -168,7 +175,7 @@ public class Board {
       }
       return clear;
     }
-
+    //checks if a col is filled
     private void clearCol(int i){
       for (int j = 0; j < board.length; j++){
         board[j][i] = null;
@@ -176,13 +183,14 @@ public class Board {
       this.score+=100;
       this.spotCount+=10;
     }
+    //clears the filled column and adds appropriate score and spot count
     public boolean BlockGameOver(Block a){
       if (this.spotCount<a.getNumSquare()){
         return true;
       }
       return false;
     }
-
+    //checks if the number of spots is less than the amount of squares in block a
     public boolean BlockOver(Block a){
       for (int x=0;x<this.board.length-a.getLength()+1;x++){
         for (int y=0;y<this.board[0].length-a.getWidth()+1;y++){
@@ -193,7 +201,7 @@ public class Board {
       }
       return true;
     }
-
+    // checks to see if the block is able to be placed anywere on the board
     public boolean GameOver(Block a, Block b, Block c){
       if (a.getNumSquare()+b.getNumSquare()+c.getNumSquare()>this.spotCount||(BlockGameOver(a)&&BlockGameOver(b)&&BlockGameOver(c))){
         return true;
@@ -203,7 +211,7 @@ public class Board {
       }
       return false;
     }
-
+    //checks to see if game is over by seeing if all blocks cant be placed on board
     public String toString(){
       String s="";//this is the string containing the entire board
       int c=10;
@@ -229,11 +237,5 @@ public class Board {
       s=s+"+---+---+---+---+---+---+---+---+---+---+\n"+"\n"+"\n";
       return s;
     }
-
-  public static void main(String[] args) {
-    Board x=new Board();
-    Block a=x.generateBlock();
-    Block b=x.generateBlock();
-
-}
+//beginning of game screen
 }

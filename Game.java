@@ -23,16 +23,15 @@ public class Game{
 			t.putCharacter(s.charAt(i));
 		}
 	}
-
+  //puts text at certain position on terminal
   public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg){
     t.moveCursor(r,c);
     t.applyForegroundColor(forg);
-
     for(int i = 0; i < s.length();i++){
       t.putCharacter(s.charAt(i));
     }
   }
-
+//puts text at certain position on interval with color
   public static void drawStartingScreen(Terminal t, TerminalSize s){
     String text = "1010!";
     String text2 = "Press ENTER to START GAME";
@@ -46,7 +45,7 @@ public class Game{
     putString(r,c,t,text2,Terminal.Color.WHITE);
     t.applySGR(Terminal.SGR.EXIT_BLINK);
   }
-
+//draws starting screen before game appears
   public static void refreshBoard(Terminal t, Board b){
     putString(0,0,t,b.toString(),Terminal.Color.WHITE);
     int x = 2;
@@ -67,7 +66,7 @@ public class Game{
       }
     }
   }
-
+//updates info on the board
   public static void putBlock(Terminal t, String s, int num, Terminal.Color c){
     if (num == 1){
       int x = 0;
@@ -112,16 +111,15 @@ public class Game{
       }
     }
   }
-
+//puts block on selection space
   public static void startGame(Terminal t, Board B, Block a, Block b, Block c){
     refreshBoard(t, B);
     putBlock(t,a.toString(), 1,a.getColor());
     putBlock(t,b.toString(), 2,b.getColor());
     putBlock(t,c.toString(), 3,c.getColor());
   }
-
+//starting game mechanism
   public static void moveBlockOnBoard(Terminal t, Block b, int x, int y){
-    //putString(90,5,t,""+b.getBlock()[0][0].getColor());
     int oriX = x;
     Square[][] myBlock = b.getBlock();
     for (int i = 0; i < myBlock.length; i++){
@@ -139,7 +137,7 @@ public class Game{
       }
     }
   }
-
+//allows for updating the position of the block when it is already on board and player is controlling with up down right left arrows
   public static void eraseBlock(Terminal t, Block b, int x, int y){
     int oriX = x;
     Square[][] myBlock = b.getBlock();
@@ -157,13 +155,13 @@ public class Game{
       }
     }
   }
-
+//erasing block in selection after choosing it
   public static boolean placeBlockOnBoard(Board B, Block b, int x, int y){
     int i = y/2;
     int j = x/4;
     return B.placeBlock(b, i, j);
   }
-
+//placing selected block on the board
   private static void putLetter(Terminal t, int x, int y, String s){
     int OriX = x;
     for (int i = 0; i < s.length(); i++){
@@ -177,7 +175,7 @@ public class Game{
       }
     }
   }
-
+//putting letters of game over on the end screen
   public static void endGame(Terminal t){
     String G = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |\n+---+\n|   |\n+---+       +---+---+\n|   |       |   |   |\n+---+	    +---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+";
     String A = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
@@ -200,6 +198,7 @@ public class Game{
     putLetter(t, 72, 16, R);
     putString(36, 40,t,"Press Esc to exit game");
   }
+  //printing of screen after game ends
   public static void endMenu(Terminal t,TerminalSize s){
     int r = s.getColumns()/2 - "No more moves! Use Powerup to Coninue Game?".length()/2;
     int c = 0;
@@ -220,23 +219,27 @@ public class Game{
     Block b = new emptyBlock();
     Block c = new emptyBlock();
     int numBlocks = 0;
+    //number of blocks in block seelction
     int selectedBlock = 1;
+    //which of the three provided blocks are selected
     int flicker=1;
+    //which one to blink on
     Block theChosenOne = new emptyBlock();
+    //selected block
     boolean aEmpty = true;
     boolean bEmpty = true;
     boolean cEmpty = true;
     boolean blockOnBoard = false;
     boolean gg=false;
+    //game over?
     int blockX = 2;
     int blockY = 1;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
 
-		TerminalSize size = new TerminalSize(1000,1000);
-    size.setColumns(1000);
-    size.setRows(1000);
+		TerminalSize size = terminal.getTerminalSize();
+
 		terminal.setCursorVisible(false);
 
     boolean running = true;
@@ -260,9 +263,10 @@ public class Game{
           }
 				}
       }
-
+//the starting screen before entering into game
 
       if (mode == 1){
+        //in game
         if (numBlocks == 0){
           a = game.generateBlock();
           aEmpty = false;
@@ -274,6 +278,7 @@ public class Game{
           refreshBoard(terminal, game);
           gg=(gg||game.GameOver(a,b,c));
           numBlocks = 3;
+          //if no more blocks in selection, generate new ones and refresh board and calculate if game over with new selection of blocks
         } else {
           if (flicker == 1){
             terminal.applySGR(Terminal.SGR.ENTER_BLINK);
@@ -292,13 +297,15 @@ public class Game{
           }
           temp=game.getBoard();
         }
-
+// if blocks is not blink on blocks
         if (key != null){
+          //if key is being pressed
           if(key.getKind()==Key.Kind.Delete){
             if (game.getScore()<300){
               putString(0,23,terminal,"                                                                                 ");
               putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
             }
+            //delete powerup won't work if score is less than 300
             else{
               a = new emptyBlock();
               b = new emptyBlock();
@@ -323,6 +330,7 @@ public class Game{
               putString(58,7, terminal, "                            ");
               putString(58,7, terminal, ""+game.getScore());
             }
+            //score is high enough to get a newly generated block with score and gg calculated
           }
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
@@ -336,8 +344,9 @@ public class Game{
             blockOnBoard = false;
             temp=game.getBoard();
           }
+          //tab restarts everything
           if (blockOnBoard == false){
-
+//if selected block isnt on board
             if (key.getKind() == Key.Kind.ArrowRight){
               refreshBoard(terminal,game);
               if (flicker == 1){
@@ -363,7 +372,7 @@ public class Game{
                 }
               }
             }
-
+//right arrow functions to blink on the next block (wraps after third block)
             if (key.getKind() == Key.Kind.ArrowLeft) {
               if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
@@ -388,7 +397,7 @@ public class Game{
                 }
               }
             }
-
+//left arrow functions to blink on the previous block (wraps after you reach first block)
             if (key.getKind() == Key.Kind.ArrowUp) {
               selectedBlock=flicker;
               if (flicker == 1){
@@ -456,9 +465,9 @@ public class Game{
               blockY = 1;
               blockOnBoard = true;
             }
-
+//pressing up will make the block disapear but appear on the board
           } else {
-
+//if block is already on board
             if (key.getKind() == Key.Kind.ArrowUp) {
               putString(0,23,terminal,"                                                                                 ");
               if (blockY != 1) {
@@ -470,7 +479,7 @@ public class Game{
                 putString(0,23, terminal, "You have reached the top of the board");
               }
             }
-
+//up arrow functions as to shift the position of the chosen block up one until it reaches top which will output message
             if (key.getKind() == Key.Kind.ArrowDown) {
               putString(0,23,terminal,"                                                                                 ");
               if (blockY != theChosenOne.getLength()*-2 + 21) {
@@ -482,7 +491,7 @@ public class Game{
                 putString(0,23, terminal, "You have reached the bottom of the board");
               }
             }
-
+//down arrow functions as to shift the position of the chosen block down one until it reaches bottom which will output message
             if (key.getKind() == Key.Kind.ArrowLeft) {
               putString(0,23,terminal,"                                                                                 ");
               if (blockX != 2){
@@ -494,7 +503,7 @@ public class Game{
                 putString(0,23, terminal, "You have reached the left side of the board");
               }
             }
-
+//left arrow functions as to shift the position of the chosen block left one until it reaches left border which will output message
             if (key.getKind() == Key.Kind.ArrowRight) {
               putString(0,23,terminal,"                                                                                 ");
               if (blockX != theChosenOne.getWidth()*-4 + 42) {
@@ -506,6 +515,7 @@ public class Game{
                 putString(0,23, terminal, "You have reached the right side of the board");
               }
             }
+            //right arrow functions as to shift the position of the chosen block right one until it reaches left border which will output message
             if (key.getKind() == Key.Kind.Backspace){
               blockOnBoard=false;
               game.setBoard(temp);
@@ -525,7 +535,7 @@ public class Game{
               }
               theChosenOne=new emptyBlock();
             }
-
+//backspace erases the chosen block on the board and makes it appear on the selection block again
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
@@ -539,7 +549,6 @@ public class Game{
                   temp=game.getBoard();
                 }
                 refreshBoard(terminal, game);
-                //terminal.applyBackgroundColor(Terminal.Color.BLACK);
                 numBlocks--;
                 blockOnBoard = false;
               } else {
@@ -555,7 +564,7 @@ public class Game{
                 }
                 temp=game.getBoard();
             }
-
+//enter permanently places block in position unless there is already part of a block underneath it then it outputs message
           }
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
         }
@@ -579,6 +588,7 @@ public class Game{
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           running = false;
+          //escaping the game
         }
       }
     }
