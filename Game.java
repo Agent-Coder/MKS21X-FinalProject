@@ -198,9 +198,19 @@ public class Game{
     putLetter(t, 24, 16, V);
     putLetter(t, 48, 16, E);
     putLetter(t, 72, 16, R);
-    putString(80, 20,t,"Press Esc to exit game");
+    putString(36, 40,t,"Press Esc to exit game");
   }
+  public static void endMenu(Terminal t,TerminalSize s){
+    int r = s.getColumns()/2 - text.length()/2;
+    int c = 0;
 
+    putString(r,c,t,"No more moves! Use Powerup to Coninue Game?",Terminal.Color.WHITE);
+    t.applySGR(Terminal.SGR.ENTER_BLINK);
+    putString(r,c+1,t,"Pay 300 points for New Selection of Blocks",Terminal.Color.WHITE);
+    t.applySGR(Terminal.SGR.EXIT_BLINK);
+    putString(r,c+2,t,"No, Restart Game",Terminal.Color.WHITE);
+    putString(r,c+3,t,"No, End Game",Terminal.Color.WHITE);
+  }
   public static void main(String[] args) {
 
     Board game = new Board();
@@ -284,8 +294,8 @@ public class Game{
         if (key != null){
           if(key.getKind()==Key.Kind.Delete){
             if (game.getScore()<300){
-              putString(0,23,terminal,"                                                        ");
-              putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up");
+              putString(0,23,terminal,"                                                                                 ");
+              putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
             }
             else{
               a = new emptyBlock();
@@ -447,7 +457,7 @@ public class Game{
           } else {
 
             if (key.getKind() == Key.Kind.ArrowUp) {
-              putString(0,23,terminal,"                                                                                ");
+              putString(0,23,terminal,"                                                                                 ");
               if (blockY != 1) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY -= 2;
@@ -459,7 +469,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
-              putString(0,23,terminal,"                                                                                ");
+              putString(0,23,terminal,"                                                                                 ");
               if (blockY != theChosenOne.getLength()*-2 + 21) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY += 2;
@@ -471,7 +481,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
-              putString(0,23,terminal,"                                                                                ");
+              putString(0,23,terminal,"                                                                                 ");
               if (blockX != 2){
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX -= 4;
@@ -483,7 +493,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowRight) {
-              putString(0,23,terminal,"                                                                                ");
+              putString(0,23,terminal,"                                                                                 ");
               if (blockX != theChosenOne.getWidth()*-4 + 42) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX += 4;
@@ -549,6 +559,16 @@ public class Game{
       }
 
       if (mode == 3){
+        /*endMenu(terminal);
+        if (key != null){
+          int blink=1;
+          if (key.getKind() == Key.Kind.ArrowDown) {
+            t.applySGR(Terminal.SGR.ENTER_BLINK);
+            putString(r,c,t,text2,Terminal.Color.WHITE);
+            t.applySGR(Terminal.SGR.EXIT_BLINK);
+            } else {
+            }
+          }*/
         endGame(terminal);
       }
 
