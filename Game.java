@@ -536,7 +536,7 @@ public class Game{
               }
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
-                gg=BlockOver(a)||BlockOver(b)||BlockOver(c);
+                gg=game.BlockOver(a)||game.BlockOver(b)||game.BlockOver(c);
                 if(gg){
                   terminal.clearScreen();
                   mode = 3;
