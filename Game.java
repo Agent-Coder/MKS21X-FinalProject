@@ -283,13 +283,18 @@ public class Game{
 
         if (key != null){
           if(key.getKind()==Key.Kind.F1){
+            a = new emptyBlock();
+            b = new emptyBlock();
+            c = new emptyBlock();
+            putBlock(terminal,a.toString(), 1,a.getColor());
+            putBlock(terminal,b.toString(), 2,b.getColor());
+            putBlock(terminal,c.toString(), 3,c.getColor());
             a = game.generateBlock();
             aEmpty = false;
             b = game.generateBlock();
             bEmpty = false;
             c = game.generateBlock();
             cEmpty = false;
-            refreshBoard(terminal,game);
             putBlock(terminal,a.toString(), 1,a.getColor());
             putBlock(terminal,b.toString(), 2,b.getColor());
             putBlock(terminal,c.toString(), 3,c.getColor());
