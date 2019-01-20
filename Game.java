@@ -493,6 +493,7 @@ public class Game{
             if (key.getKind() == Key.Kind.Backspace){
               blockOnBoard=false;
               game.setBoard(temp);
+              game.continueScore(temp.getScore());
               refreshBoard(terminal,game);
               putBlock(terminal,theChosenOne.toString(),selectedBlock,theChosenOne.getColor());
               if(selectedBlock==1){
@@ -513,11 +514,14 @@ public class Game{
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
+                temp=game.getBoard();
                 if (game.checkRows()){
                   putString(0,23,terminal,"You cleared a row");
+                  temp=game.getBoard();
                 }
                 if (game.checkCols()){
                   putString(0,23,terminal,"You cleared a column");
+                  temp=game.getBoard();
                 }
                 refreshBoard(terminal, game);
                 //terminal.applyBackgroundColor(Terminal.Color.BLACK);

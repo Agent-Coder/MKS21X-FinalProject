@@ -40,6 +40,9 @@ public class Board {
       this.score=this.score-50;
     }
   }
+  public void continueScore(int x){
+    score=x;
+  }
   public int getScore(){
     return this.score;
   }
