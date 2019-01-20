@@ -337,6 +337,7 @@ public class Game{
           if (blockOnBoard == false){
 
             if (key.getKind() == Key.Kind.ArrowRight){
+              refreshBoard(terminal,game);
               if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!bEmpty){
@@ -362,6 +363,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
+              refreshBoard(terminal,game);
               if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!cEmpty){
@@ -457,6 +459,7 @@ public class Game{
           } else {
 
             if (key.getKind() == Key.Kind.ArrowUp) {
+              refreshBoard(terminal,game);
               putString(0,23,terminal,"                                                                                 ");
               if (blockY != 1) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
