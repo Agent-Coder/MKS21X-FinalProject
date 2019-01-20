@@ -32,7 +32,14 @@ public class Board {
     this.spotCount=100;
     this.blockCount=0;
   }
-
+  public void powerUps(int x){
+    if (x==1){
+      this.score=this.score-300;
+    }
+    else if(x==2){
+      this.score=this.score-50;
+    }
+  }
   public int getScore(){
     return this.score;
   }
