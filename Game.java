@@ -363,27 +363,32 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
-              refreshBoard(terminal,game);
               if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!cEmpty){
                   flicker = 3;
+                  refreshBoard(terminal,game);
                 } else if (!bEmpty){
                   flicker = 2;
+                  refreshBoard(terminal,game);
                 }
               } else if (flicker == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!aEmpty){
                   flicker = 1;
+                  refreshBoard(terminal,game);
                 } else if (!cEmpty){
                   flicker = 3;
+                  refreshBoard(terminal,game);
                 }
               } else if (flicker == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!bEmpty){
                   flicker = 2;
+                  refreshBoard(terminal,game);
                 } else if (!aEmpty){
                   flicker = 1;
+                  refreshBoard(terminal,game);
                 }
               }
             }
@@ -459,7 +464,6 @@ public class Game{
           } else {
 
             if (key.getKind() == Key.Kind.ArrowUp) {
-              refreshBoard(terminal,game);
               putString(0,23,terminal,"                                                                                 ");
               if (blockY != 1) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
