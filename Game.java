@@ -198,7 +198,7 @@ public class Game{
     putLetter(t, 24, 16, V);
     putLetter(t, 48, 16, E);
     putLetter(t, 72, 16, R);
-    putString(80, 10,t,"Press Esc to exit game");
+    putString(80, 20,t,"Press Esc to exit game");
   }
 
   public static void main(String[] args) {
@@ -288,7 +288,6 @@ public class Game{
               putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up");
             }
             else{
-              game.powerUps(1);
               a = new emptyBlock();
               b = new emptyBlock();
               c = new emptyBlock();
@@ -304,6 +303,8 @@ public class Game{
               putBlock(terminal,a.toString(), 1,a.getColor());
               putBlock(terminal,b.toString(), 2,b.getColor());
               putBlock(terminal,c.toString(), 3,c.getColor());
+              game.powerUps(1);
+              putString(58,7, terminal, ""+game.getScore());
               gg=(gg||game.GameOver(a,b,c));
               numBlocks = 3;
             }
