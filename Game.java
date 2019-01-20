@@ -285,7 +285,7 @@ public class Game{
           if(key.getKind()==Key.Kind.F1){
             if (game.getScore()<300){
               putString(0,23,terminal,"                                                        ");
-              putString(0,23,termina,"Sorry! Your score is not high enough to purchase New Selection Power-up")
+              putString(0,23,termina,"Sorry! Your score is not high enough to purchase New Selection Power-up");
             }
             else{
               game.powerUps(1);
