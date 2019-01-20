@@ -235,6 +235,8 @@ public class Game{
 		terminal.enterPrivateMode();
 
 		TerminalSize size = terminal.getTerminalSize();
+    size.setColumns(100);
+    size.setRows(100);
 		terminal.setCursorVisible(false);
 
     boolean running = true;
@@ -367,28 +369,22 @@ public class Game{
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!cEmpty){
                   flicker = 3;
-                  refreshBoard(terminal,game);
                 } else if (!bEmpty){
                   flicker = 2;
-                  refreshBoard(terminal,game);
                 }
               } else if (flicker == 2){
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 if (!aEmpty){
                   flicker = 1;
-                  refreshBoard(terminal,game);
                 } else if (!cEmpty){
                   flicker = 3;
-                  refreshBoard(terminal,game);
                 }
               } else if (flicker == 3){
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 if (!bEmpty){
                   flicker = 2;
-                  refreshBoard(terminal,game);
                 } else if (!aEmpty){
                   flicker = 1;
-                  refreshBoard(terminal,game);
                 }
               }
             }
