@@ -201,7 +201,7 @@ public class Game{
     putString(36, 40,t,"Press Esc to exit game");
   }
   public static void endMenu(Terminal t,TerminalSize s){
-    int r = s.getColumns()/2 - "No more moves! Use Powerup to Coninue Game?"()/2;
+    int r = s.getColumns()/2 - "No more moves! Use Powerup to Coninue Game?".length()/2;
     int c = 0;
 
     putString(r,c,t,"No more moves! Use Powerup to Coninue Game?",Terminal.Color.WHITE);
