@@ -283,24 +283,30 @@ public class Game{
 
         if (key != null){
           if(key.getKind()==Key.Kind.F1){
-            a = new emptyBlock();
-            b = new emptyBlock();
-            c = new emptyBlock();
-            putBlock(terminal,a.toString(), 1,a.getColor());
-            putBlock(terminal,b.toString(), 2,b.getColor());
-            putBlock(terminal,c.toString(), 3,c.getColor());
-            a = game.generateBlock();
-            aEmpty = false;
-            b = game.generateBlock();
-            bEmpty = false;
-            c = game.generateBlock();
-            cEmpty = false;
-            putBlock(terminal,a.toString(), 1,a.getColor());
-            putBlock(terminal,b.toString(), 2,b.getColor());
-            putBlock(terminal,c.toString(), 3,c.getColor());
-            gg=(gg||game.GameOver(a,b,c));
-            numBlocks = 3;
-            game.powerUps(1);
+            if (game.getScore()<300){
+              putString(0,23,terminal,"                                                        ");
+              putString(0,23,termina,"Sorry! Your score is not high enough to purchase New Selection Power-up")
+            }
+            else{
+              game.powerUps(1);
+              a = new emptyBlock();
+              b = new emptyBlock();
+              c = new emptyBlock();
+              putBlock(terminal,a.toString(), 1,a.getColor());
+              putBlock(terminal,b.toString(), 2,b.getColor());
+              putBlock(terminal,c.toString(), 3,c.getColor());
+              a = game.generateBlock();
+              aEmpty = false;
+              b = game.generateBlock();
+              bEmpty = false;
+              c = game.generateBlock();
+              cEmpty = false;
+              putBlock(terminal,a.toString(), 1,a.getColor());
+              putBlock(terminal,b.toString(), 2,b.getColor());
+              putBlock(terminal,c.toString(), 3,c.getColor());
+              gg=(gg||game.GameOver(a,b,c));
+              numBlocks = 3;
+            }
           }
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
@@ -437,7 +443,7 @@ public class Game{
           } else {
 
             if (key.getKind() == Key.Kind.ArrowUp) {
-              putString(0,23,terminal,"                                                        ");
+              putString(0,23,terminal,"                                                                                ");
               if (blockY != 1) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY -= 2;
@@ -449,7 +455,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowDown) {
-              putString(0,23,terminal,"                                                        ");
+              putString(0,23,terminal,"                                                                                ");
               if (blockY != theChosenOne.getLength()*-2 + 21) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockY += 2;
@@ -461,7 +467,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowLeft) {
-              putString(0,23,terminal,"                                                        ");
+              putString(0,23,terminal,"                                                                                ");
               if (blockX != 2){
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX -= 4;
@@ -473,7 +479,7 @@ public class Game{
             }
 
             if (key.getKind() == Key.Kind.ArrowRight) {
-              putString(0,23,terminal,"                                                        ");
+              putString(0,23,terminal,"                                                                                ");
               if (blockX != theChosenOne.getWidth()*-4 + 42) {
                 eraseBlock(terminal,theChosenOne, blockX, blockY);
                 blockX += 4;
@@ -505,7 +511,7 @@ public class Game{
 
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
-                putString(0,23,terminal,"                                                        ");
+                putString(0,23,terminal,"                                                                                ");
                 if (game.checkRows()){
                   putString(0,23,terminal,"You cleared a row");
                 }
@@ -517,7 +523,7 @@ public class Game{
                 numBlocks--;
                 blockOnBoard = false;
               } else {
-                putString(0,23,terminal,"                                                        ");
+                putString(0,23,terminal,"                                                                                ");
                 putString(0,23,terminal,"Block cannot be placed here");
               }
                 putString(58,7, terminal, ""+game.getScore());
