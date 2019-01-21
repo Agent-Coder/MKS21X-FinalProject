@@ -247,8 +247,8 @@ public class Game{
 
     while(running){
 
-			terminal.applyForegroundColor(Terminal.Color.WHITE);
-      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			terminal.applyForegroundColor(Terminal.Color.BLACK);
+      terminal.applyBackgroundColor(Terminal.Color.WHITE);
 
 
       Key key = terminal.readInput();
@@ -276,8 +276,9 @@ public class Game{
           cEmpty = false;
           startGame(terminal, game, a, b, c);
           refreshBoard(terminal, game);
-          gg=(gg||game.GameOver(a,b,c));
+          gg=game.GameOver(a,b,c);
           numBlocks = 3;
+          flicker=1;
           //if no more blocks in selection, generate new ones and refresh board and calculate if game over with new selection of blocks
         } else {
           if (flicker == 1){
@@ -325,7 +326,7 @@ public class Game{
               game.powerUps(1);
               putString(58,7, terminal, "                            ");
               putString(58,7, terminal, ""+game.getScore());
-              gg=(gg||game.GameOver(a,b,c));
+              gg=game.GameOver(a,b,c);
               numBlocks = 3;
               putString(58,7, terminal, "                            ");
               putString(58,7, terminal, ""+game.getScore());
@@ -405,15 +406,6 @@ public class Game{
                 a = new emptyBlock();
                 aEmpty = true;
                 putBlock(terminal,a.toString(), 1,a.getColor());
-                if(!bEmpty&&!cEmpty){
-                  gg=gg&&game.BlockOver(b)&&game.BlockOver(c);
-                }
-                else if(!bEmpty){
-                  gg=game.BlockOver(b);
-                }
-                else if(!cEmpty){
-                  gg=game.BlockOver(c);
-                }
                 if (!bEmpty){
                   flicker = 2;
                 } else if (!cEmpty){
@@ -425,15 +417,6 @@ public class Game{
                 b = new emptyBlock();
                 bEmpty = true;
                 putBlock(terminal,b.toString(), 2,b.getColor());
-                if(!bEmpty&&!cEmpty){
-                  gg=gg&&game.BlockOver(a)&&game.BlockOver(c);
-                }
-                else if(!aEmpty){
-                  gg=game.BlockOver(a);
-                }
-                else if(!cEmpty){
-                  gg=game.BlockOver(c);
-                }
                 if (!cEmpty){
                   flicker = 3;
                 } else if (!aEmpty){
@@ -445,15 +428,6 @@ public class Game{
                 c = new emptyBlock();
                 cEmpty = true;
                 putBlock(terminal,c.toString(), 3,c.getColor());
-                if(!bEmpty&&!cEmpty){
-                  gg=gg&&game.BlockOver(b)&&game.BlockOver(c);
-                }
-                else if(!aEmpty){
-                  gg=game.BlockOver(a);
-                }
-                else if(!bEmpty){
-                  gg=game.BlockOver(b);
-                }
                 if (!aEmpty){
                   flicker = 1;
                 } else if (!bEmpty){
@@ -538,25 +512,31 @@ public class Game{
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
-                temp=game.getBoard();
                 if (game.checkRows()){
                   putString(0,23,terminal,"You cleared a row");
-                  temp=game.getBoard();
                 }
                 if (game.checkCols()){
                   putString(0,23,terminal,"You cleared a column");
-                  temp=game.getBoard();
                 }
                 refreshBoard(terminal, game);
+                temp=game.getBoard();
                 numBlocks--;
                 blockOnBoard = false;
+                if(!aEmpty){
+                  gg=gg&&game.BlockOver(a);
+                }
+                if(!bEmpty){
+                  gg=gg&&game.BlockOver(b);
+                }
+                if(!cEmpty){
+                  gg=gg&&game.BlockOver(c);
+                }
               } else {
                 putString(0,23,terminal,"                                                                                ");
                 putString(0,23,terminal,"Block cannot be placed here");
               }
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
-                gg=game.BlockOver(a)||game.BlockOver(b)||game.BlockOver(c);
                 if(gg){
                   terminal.clearScreen();
                   mode = 3;
