@@ -608,12 +608,9 @@ public class Game{
 //enter permanently places block in position unless there is already part of a block underneath it then it outputs message
 
           }
-<<<<<<< HEAD
           putString(0,45,terminal,"["+key.getCharacter() +"]");
-=======
 
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
->>>>>>> 05788924ff7b8b38d43334e6007f56631f9c49d4
         }
       }
 
