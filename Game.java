@@ -249,9 +249,8 @@ public class Game{
     boolean running = true;
     int mode = 0;
 
-    long tStart = System.currentTimeMillis();
-		long lastSecond = 0;
-    //timer for timed mode
+    long tStart = 0; //starting time variable
+    long lastSecond = 0; //second counter for timed mode
 
     while(running){
 
@@ -270,6 +269,7 @@ public class Game{
   					mode = 1;
           }
           if (key.getCharacter() == '2') {
+            tStart = System.currentTimeMillis(); //timer starts
             terminal.clearScreen();
   					mode = 2;
           }
@@ -278,6 +278,12 @@ public class Game{
 //the starting screen before entering into game
 
       if (mode == 1 || mode == 2){
+        long tEnd = System.currentTimeMillis(); //timer starts when program runs
+        long millis = tEnd - tStart;
+        if(millis/1000 > lastSecond){
+          lastSecond = millis / 1000;
+          //one second has passed.
+        }
         if (mode == 2){
           putString(52,2,terminal,"Time Left: "+ (10 - lastSecond));
           if (lastSecond == 10){
@@ -604,13 +610,6 @@ public class Game{
           //escaping the game
         }
       }
-
-      long tEnd = System.currentTimeMillis(); //starting timer
-			long millis = tEnd - tStart;
-			if(millis/1000 > lastSecond){
-				lastSecond = millis / 1000;
-				//one second has passed.
-			}
     }
 
   }
