@@ -572,7 +572,8 @@ public class Game{
             } else {
             }
           }*/
-        endGame(terminal);
+          running=false;
+        //endGame(terminal);
       }
 
       if (key != null){
