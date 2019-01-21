@@ -627,7 +627,7 @@ public class Game{
               putString(58,7, terminal, ""+game.getScore());
             }
           }
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + (key.getCharacter() == '1'));
+          //putString(0,45,terminal,"["+key.getCharacter() +"]" + (key.getCharacter() == '1'));
         }
 
         if (key != null){
@@ -676,7 +676,7 @@ public class Game{
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
         }
         if (key != null){
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
+          //putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
           if (key.getKind() == Key.Kind.ArrowDown){
             putString(0,34,terminal,"                                                                                 ");
             if (endSelect == 3){
@@ -810,7 +810,7 @@ public class Game{
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
         }
         if (key != null){
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
+          //putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
           if (key.getKind() == Key.Kind.ArrowDown){
             putString(0,34,terminal,"                                                                                 ");
             if (endSelect == 1){
