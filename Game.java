@@ -578,7 +578,25 @@ public class Game{
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
               }
+<<<<<<< HEAD
 
+=======
+            }
+            if(key.getCharacter() == ' '){
+              int roll=(int)(Math.random()*100)%2;
+              if(roll==0){
+                roll=(int)(Math.random()*100)%10;
+                game.eraseRow(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+              }else{
+                roll=(int)(Math.random()*100)%10;
+                game.eraseCol(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+              }
+            }
+>>>>>>> 597a53f6ed36c70f484ef44d9dbb7e1b1de439b1
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
@@ -657,8 +675,6 @@ public class Game{
         }
       }
     }
-
   }
+}
   //looping thorugh and adding the layout of the obard for background
-}
-}
