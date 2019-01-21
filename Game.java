@@ -279,9 +279,11 @@ public class Game{
 
       if (mode == 1 || mode == 2){
         if (mode == 2){
-          putString(52,2,terminal,"Time Left: "+ (200 - lastSecond));
-          if (lastSecond == 200){
+          putString(52,2,terminal,"Time Left: "+ (10 - lastSecond));
+          if (lastSecond == 10){
             mode = 3;
+            flicker = 0;
+            terminal.clearScreen();
           }
         }
         if (numBlocks == 0){
