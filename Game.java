@@ -357,6 +357,50 @@ public class Game{
             }
             //score is high enough to get a newly generated block with score and gg calculated
           }
+          if(key.getCharacter() == '2'){
+            if (game.getScore()<100){
+              putString(0,23,terminal,"                                                                                 ");
+              putString(0,23,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
+            }
+            else{
+              int roll=(int)(Math.random()*100)%2;
+              if(roll==0){
+                roll=(int)(Math.random()*100)%10;
+                game.eraseRow(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+              }else{
+                roll=(int)(Math.random()*100)%10;
+                game.eraseCol(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+              }
+              if(!aEmpty){
+                gg=game.BlockOver(a);
+              }
+              if(!bEmpty){
+                gg=game.BlockOver(b);
+              }
+              if(!cEmpty){
+                gg=game.BlockOver(c);
+              }
+              if(!aEmpty&&!bEmpty){
+                gg=game.BlockOver(a)&&game.BlockOver(b);
+              }
+              if(!bEmpty&&!cEmpty){
+                gg=game.BlockOver(b)&&game.BlockOver(c);
+              }
+              if(!aEmpty&&!cEmpty){
+                gg=game.BlockOver(a)&&game.BlockOver(c);
+              }
+              if(!aEmpty&&!cEmpty&&!bEmpty){
+                gg=game.GameOver(a,b,c);
+              }
+              refreshBoard(terminal,game);
+              putString(58,7, terminal, "                            ");
+              putString(58,7, terminal, ""+game.getScore());
+            }
+          }
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 0;
@@ -535,50 +579,7 @@ public class Game{
               theChosenOne=new emptyBlock();
             }
 //backspace erases the chosen block on the board and makes it appear on the selection block again
-            if(key.getCharacter() == '2'){
-              if (game.getScore()<100){
-                putString(0,23,terminal,"                                                                                 ");
-                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
-              }
-              else{
-                int roll=(int)(Math.random()*100)%2;
-                if(roll==0){
-                  roll=(int)(Math.random()*100)%10;
-                  game.eraseRow(roll);
-                  putString(0,23,terminal,"                                                                                ");
-                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
-                }else{
-                  roll=(int)(Math.random()*100)%10;
-                  game.eraseCol(roll);
-                  putString(0,23,terminal,"                                                                                ");
-                  putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
-                }
-                if(!aEmpty){
-                  gg=game.BlockOver(a);
-                }
-                if(!bEmpty){
-                  gg=game.BlockOver(b);
-                }
-                if(!cEmpty){
-                  gg=game.BlockOver(c);
-                }
-                if(!aEmpty&&!bEmpty){
-                  gg=game.BlockOver(a)&&game.BlockOver(b);
-                }
-                if(!bEmpty&&!cEmpty){
-                  gg=game.BlockOver(b)&&game.BlockOver(c);
-                }
-                if(!aEmpty&&!cEmpty){
-                  gg=game.BlockOver(a)&&game.BlockOver(c);
-                }
-                if(!aEmpty&&!cEmpty&&!bEmpty){
-                  gg=game.GameOver(a,b,c);
-                }
-                refreshBoard(terminal,game);
-                putString(58,7, terminal, "                            ");
-                putString(58,7, terminal, ""+game.getScore());
-              }
-            }
+
             if(key.getCharacter() == ' '){
               int roll=(int)(Math.random()*100)%2;
               if(roll==0){
