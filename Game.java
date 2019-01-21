@@ -279,7 +279,10 @@ public class Game{
 
       if (mode == 1 || mode == 2){
         if (mode == 2){
-          putString(52,2,terminal,"Seconds since start of program: "+lastSecond);
+          putString(52,2,terminal,"Time Left: "+ (200 - lastSecond));
+          if (lastSecond == 200){
+            mode = 3;
+          }
         }
         if (numBlocks == 0){
           a = game.generateBlock();
