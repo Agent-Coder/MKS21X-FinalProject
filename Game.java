@@ -676,3 +676,4 @@ public class Game{
   }
   //looping thorugh and adding the layout of the obard for background
 }
+}
