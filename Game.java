@@ -202,23 +202,6 @@ public class Game{
     putLetter(t, 72, 16, R);
     //putString(36, 40,t,"Press Esc to exit game");
   }
-  //printing of screen after game ends
-  public static String[] endMenu(Terminal t, TerminalSize s, int score){
-    int r = 20;
-    int c = 34;
-
-    putString(r,c,t,"No more moves! Use Powerup to Coninue Game?",Terminal.Color.WHITE);
-    putString(r,c+2,t,"Pay 300 points for New Selection of Blocks",Terminal.Color.WHITE);
-    putString(r,c+4,t,"No, Restart Game",Terminal.Color.WHITE);
-    putString(r,c+6,t,"No, End Game",Terminal.Color.WHITE);
-
-    String[] texts = new String[4];
-    texts[0] = "No more moves! Use Powerup to Coninue Game?";
-    texts[1] = "Pay 300 points for New Selection of Blocks";
-    texts[2] = "No, Restart Game";
-    texts[3] = "No, End Game";
-    return texts;
-  }
 
   public static void main(String[] args) {
 
@@ -657,12 +640,27 @@ public class Game{
 
       if (mode == 3){
         int endSelect = 0;
+        if (endSelect == 0){
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,34,terminal,texts[endSelect]);
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+        }
         String[] texts = endMenu(terminal, size, 0);
-        terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-        putString(20,34,terminal,texts[endSelect]);
-        terminal.applySGR(Terminal.SGR.EXIT_BLINK);
         if (key != null){
-          //if
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect);
+          if (key.getKind() == Key.Kind.ArrowDown){
+            if (endSelect == 3){
+              endSelect = 0;
+            } else {
+              endSelect++;
+            }
+          }
+          if (key.getKind() == Key.Kind.ArrowDown){
+
+          }
+          if (key.getKind() == Key.Kind.Enter){
+
+          }
         }
         endGame(terminal);
       }
