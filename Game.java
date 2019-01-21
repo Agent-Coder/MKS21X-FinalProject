@@ -659,7 +659,11 @@ public class Game{
             }
           }
           if (key.getKind() == Key.Kind.ArrowUp){
-
+            if (endSelect == 0){
+              endSelect = 3;
+            } else {
+              endSelect--;
+            }
           }
           if (key.getKind() == Key.Kind.Enter){
 
