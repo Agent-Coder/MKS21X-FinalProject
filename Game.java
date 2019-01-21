@@ -285,8 +285,8 @@ public class Game{
           //one second has passed.
         }
         if (mode == 2){
-          putString(52,2,terminal,"Time Left: "+ (10 - lastSecond));
-          if (lastSecond == 10){
+          putString(52,2,terminal,"Time Left: "+ (200 - lastSecond));
+          if (lastSecond == 200){
             mode = 3;
             flicker = 0;
             terminal.clearScreen();
