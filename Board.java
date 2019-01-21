@@ -42,9 +42,6 @@ public class Board {
     if (x==1){
       this.score=this.score-300;
     }
-    else if(x==2){
-      this.score=this.score-50;
-    }
   }
   //different modes of powerups so this function deals with calculation of score deduction from different powerups
   public int getScore(){
@@ -245,7 +242,10 @@ public class Board {
               s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press BackSpace to Choose Different Block)\n";
             }
             else if(c==3){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Delete to Use 300 points to Purchase New Set of Blocks)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press 1 to Use 300 points to Purchase New Set of Blocks)\n";
+            }
+            else if(c==2){
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press 2 to Use 100 points to Purchase Random Row/Column Clear)\n";
             }
             else{
             s=s+"|   |   |   |   |   |   |   |   |   |   |\n";

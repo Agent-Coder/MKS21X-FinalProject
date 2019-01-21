@@ -308,7 +308,7 @@ public class Game{
 // if blocks is not blink on blocks
         if (key != null){
           //if key is being pressed
-          if(key.getKind()==Key.Kind.Delete){
+          if((key.getCharacter() == '1')){
             if (game.getScore()<300){
               putString(0,23,terminal,"                                                                                 ");
               putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
@@ -516,18 +516,24 @@ public class Game{
               theChosenOne=new emptyBlock();
             }
 //backspace erases the chosen block on the board and makes it appear on the selection block again
-            if(key.getCharacter() == ' '){
-              int roll=(int)(Math.random()*100)%2;
-              if(roll==0){
-                roll=(int)(Math.random()*100)%10;
-                game.eraseRow(roll);
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
-              }else{
-                roll=(int)(Math.random()*100)%10;
-                game.eraseCol(roll);
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+            if(key.getCharacter() == '2'){
+              if (game.getScore()<100){
+                putString(0,23,terminal,"                                                                                 ");
+                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
+              }
+              else{
+                int roll=(int)(Math.random()*100)%2;
+                if(roll==0){
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseRow(roll);
+                  putString(0,23,terminal,"                                                                                ");
+                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+                }else{
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseCol(roll);
+                  putString(0,23,terminal,"                                                                                ");
+                  putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+                }
               }
             }
             if (key.getKind() == Key.Kind.Enter) {
