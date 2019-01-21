@@ -541,7 +541,7 @@ public class Game{
                   gg=game.BlockOver(a)&&game.BlockOver(c);
                 }
                 if(!aEmpty&&!cEmpty&&!bEmpty){
-                  gg=game.GameOver(a,b,c)
+                  gg=game.GameOver(a,b,c);
                 }
               } else {
                 putString(0,23,terminal,"                                                                                ");
