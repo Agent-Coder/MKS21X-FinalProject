@@ -236,7 +236,7 @@ public class Game{
 		terminal.setCursorVisible(false);
 
     boolean running = true;
-    int mode = 0;
+    int mode = 4;
 
     long tStart = 0; //starting time variable
     long lastSecond = 0; //second counter for timed mode
@@ -277,8 +277,8 @@ public class Game{
         }
         if (mode == 2){
           putString(52,2,terminal,"Time Left: "+ (200 - lastSecond));
-          if (lastSecond == 200){
-            mode = 3;
+          if (lastSecond >= 200){
+            mode = 4;
             flicker = 0;
             terminal.clearScreen();
           }
@@ -542,7 +542,11 @@ public class Game{
                 putString(58,7, terminal, ""+game.getScore());
                 if(gg){
                   terminal.clearScreen();
-                  mode = 3;
+                  if (mode == 1){
+                    mode = 3;
+                  } else {
+                    mode = 4;
+                  }
                 }
                 temp=game.getBoard();
             }
@@ -785,6 +789,68 @@ public class Game{
               terminal.clearScreen();
               terminal.exitPrivateMode();
             }
+          }
+        }
+      }
+
+      if (mode == 4){
+        endGame(terminal);
+        putString(0,32,terminal,"Score: " + game.getScore());
+        putString(20,32,terminal,"Press SPACE to Select");
+        if (endSelect == 0){
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,36,terminal,"Restart Game");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          putString(20,38,terminal,"Exit");
+        }
+        if (endSelect == 1){
+          putString(20,36,terminal,"Restart Game");
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,38,terminal,"Exit");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+        }
+        if (key != null){
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
+          if (key.getKind() == Key.Kind.ArrowDown){
+            putString(0,34,terminal,"                                                                                 ");
+            if (endSelect == 1){
+              endSelect = 0;
+            } else {
+              endSelect++;
+            }
+          }
+
+          if (key.getKind() == Key.Kind.ArrowUp){
+            putString(0,34,terminal,"                                                                                 ");
+            if (endSelect == 0){
+              endSelect = 1;
+            } else {
+              endSelect--;
+            }
+          }
+
+          if (key.getCharacter() == ' '){
+
+            if (endSelect == 0){
+              terminal.clearScreen();
+              mode = 0;
+              numBlocks = 0;
+              game = new Board();
+              selectedBlock = 1;
+              aEmpty = true;
+              bEmpty = true;
+              cEmpty = true;
+              blockOnBoard = false;
+              temp=game.getBoard();
+              lastSecond = 0;
+            }
+
+            if (endSelect == 1){
+              running = false;
+              terminal.clearScreen();
+              terminal.exitPrivateMode();
+            }
+
           }
         }
       }
