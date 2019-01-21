@@ -539,10 +539,13 @@ public class Game{
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You have placed a block");
                 if (game.checkRows()){
+                  putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You cleared a row");
                 }
                 if (game.checkCols()){
+                  putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You cleared a column");
                 }
                 refreshBoard(terminal, game);
@@ -570,8 +573,6 @@ public class Game{
                 if(!aEmpty&&!cEmpty&&!bEmpty){
                   gg=game.GameOver(a,b,c);
                 }
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You have placed a block");
               } else {
                 putString(0,23,terminal,"                                                                                ");
                 putString(0,23,terminal,"Block cannot be placed here");
@@ -586,7 +587,7 @@ public class Game{
             }
 //enter permanently places block in position unless there is already part of a block underneath it then it outputs message
           }
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
+          putString(0,45,terminal,"["+key.getCharacter() +"]");
         }
       }
 
