@@ -653,34 +653,34 @@ public class Game{
         endGame(terminal);
         if (endSelect == 0){
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
-          putString(20,38,terminal,"Restart Game");
-          putString(20,40,terminal,"Exit");
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,40,terminal,"Restart Game");
+          putString(20,42,terminal,"Exit");
         }
         if (endSelect == 1){
-          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-          putString(20,38,terminal,"Restart Game");
-          putString(20,40,terminal,"Exit");
+          putString(20,40,terminal,"Restart Game");
+          putString(20,42,terminal,"Exit");
         }
         if (endSelect == 2){
-          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
-          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-          putString(20,38,terminal,"Restart Game");
+          putString(20,40,terminal,"Restart Game");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-          putString(20,40,terminal,"Exit");
+          putString(20,42,terminal,"Exit");
         }
         if (endSelect == 3){
-          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
-          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
-          putString(20,38,terminal,"Restart Game");
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,40,terminal,"Restart Game");
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-          putString(20,40,terminal,"Exit");
+          putString(20,42,terminal,"Exit");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
         }
         if (key != null){
@@ -699,24 +699,22 @@ public class Game{
               endSelect--;
             }
           }
-          if (key.getKind() == Key.Kind.Enter){
+          if (key.getCharacter() == ' '){
             if (endSelect == 0){
               if (game.getScore()<100){
-                putString(0,23,terminal,"                                                                                 ");
-                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
+                putString(0,34,terminal,"                                                                                 ");
+                putString(0,34,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
               }
               else{
                 int roll=(int)(Math.random()*100)%2;
                 if(roll==0){
                   roll=(int)(Math.random()*100)%10;
                   game.eraseRow(roll);
-                  putString(0,23,terminal,"                                                                                ");
-                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+                  putString(0,34,terminal,"                                                                                ");
+                  putString(0,34,terminal,"You used 100 points to clear Row "+(roll+1));
                 }else{
                   roll=(int)(Math.random()*100)%10;
                   game.eraseCol(roll);
-                  putString(0,23,terminal,"                                                                                ");
-                  putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
                 }
                 if(!aEmpty){
                   gg=game.BlockOver(a);
@@ -747,8 +745,8 @@ public class Game{
             }
             if (endSelect == 1){
               if (game.getScore()<300){
-                putString(0,23,terminal,"                                                                                 ");
-                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
+                putString(0,34,terminal,"                                                                                 ");
+                putString(0,34,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
               }
               //delete powerup won't work if score is less than 300
               else{
