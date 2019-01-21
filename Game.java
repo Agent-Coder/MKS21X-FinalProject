@@ -348,7 +348,6 @@ public class Game{
           if (blockOnBoard == false){
 //if selected block isnt on board
             if (key.getKind() == Key.Kind.ArrowRight){
-              refreshBoard(terminal,game);
               if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
                 if (!bEmpty){
