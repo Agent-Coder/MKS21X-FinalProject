@@ -2,7 +2,7 @@
 
 ### Instructions:
 
-**Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program**
+*Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program*
 
 1) Type javac -cp lanterna.jar:. Game.java to compile and java -cp lanterna.jar:. Game to start the program
 2) Follow the instructions on the START SCREEN to select a game mode
@@ -109,4 +109,4 @@ AZ;01-20-19;
 I finished the second powerups which deletes a random row or column and also commented things and then tried to put audio but failed. I also added some new instructions for the player.
 
 AC;01-21-19;
-I finished up the end screen and created two different ones for the two different modes. I decided to make the timed mode survival mode instead so if the player runs out of places to put a block, the game ends and the player does not have a choice to use a powerup to get back to the game, even if they still have time left. I also made some minor changes to how the start screen looks and the messages on the game screen. Finally, I updated the instructions for the game.
+I finished up the end screen and created two different ones for the two different modes. I decided to make the timed mode survival mode instead so if the player runs out of places to put a block, the game ends and the player does not have a choice to use a powerup to get back to the game, even if they still have time left. I also made some minor changes to how the start screen looks and the messages on the game screen. Finally, I updated the instructions for the game and played around with the README syntax.
