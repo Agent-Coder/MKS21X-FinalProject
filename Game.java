@@ -241,6 +241,8 @@ public class Game{
     long tStart = 0; //starting time variable
     long lastSecond = 0; //second counter for timed mode
 
+    int endSelect = 0; //variable for end screen
+
     while(running){
 
 			terminal.applyForegroundColor(Terminal.Color.WHITE);
@@ -639,7 +641,6 @@ public class Game{
       }
 
       if (mode == 3){
-        int endSelect = 0;
         if (endSelect == 0){
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
           putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
@@ -649,7 +650,7 @@ public class Game{
           putString(20,40,terminal,"No, End Game");
         }
         if (key != null){
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect);
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
           if (key.getKind() == Key.Kind.ArrowDown){
             if (endSelect == 3){
               endSelect = 0;
