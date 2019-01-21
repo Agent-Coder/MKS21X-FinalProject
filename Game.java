@@ -327,36 +327,6 @@ public class Game{
 // if blocks is not blink on blocks
         if (key != null){
           //if key is being pressed
-          if(key.getKind()==Key.Kind.Delete){
-            if (game.getScore()<300){
-              putString(0,23,terminal,"                                                                                 ");
-              putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
-            }
-            //delete powerup won't work if score is less than 300
-            else{
-              a = new emptyBlock();
-              b = new emptyBlock();
-              c = new emptyBlock();
-              putBlock(terminal,a.toString(), 1,a.getColor());
-              putBlock(terminal,b.toString(), 2,b.getColor());
-              putBlock(terminal,c.toString(), 3,c.getColor());
-              a = game.generateBlock();
-              aEmpty = false;
-              b = game.generateBlock();
-              bEmpty = false;
-              c = game.generateBlock();
-              cEmpty = false;
-              putBlock(terminal,a.toString(), 1,a.getColor());
-              putBlock(terminal,b.toString(), 2,b.getColor());
-              putBlock(terminal,c.toString(), 3,c.getColor());
-              game.powerUps(1);
-              putString(58,7, terminal, "                            ");
-              putString(58,7, terminal, ""+game.getScore());
-              gg=game.GameOver(a,b,c);
-              numBlocks = 3;
-            }
-            //score is high enough to get a newly generated block with score and gg calculated
-          }
 
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
@@ -645,6 +615,36 @@ public class Game{
             }
 //enter permanently places block in position unless there is already part of a block underneath it then it outputs message
 
+          }
+          if(key.getCharacter() == '1'){
+            if (game.getScore()<300){
+              putString(0,23,terminal,"                                                                                 ");
+              putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
+            }
+            //delete powerup won't work if score is less than 300
+            else{
+              a = new emptyBlock();
+              b = new emptyBlock();
+              c = new emptyBlock();
+              putBlock(terminal,a.toString(), 1,a.getColor());
+              putBlock(terminal,b.toString(), 2,b.getColor());
+              putBlock(terminal,c.toString(), 3,c.getColor());
+              a = game.generateBlock();
+              aEmpty = false;
+              b = game.generateBlock();
+              bEmpty = false;
+              c = game.generateBlock();
+              cEmpty = false;
+              putBlock(terminal,a.toString(), 1,a.getColor());
+              putBlock(terminal,b.toString(), 2,b.getColor());
+              putBlock(terminal,c.toString(), 3,c.getColor());
+              game.powerUps(1);
+              putString(58,7, terminal, "                            ");
+              putString(58,7, terminal, ""+game.getScore());
+              gg=game.GameOver(a,b,c);
+              numBlocks = 3;
+            }
+            //score is high enough to get a newly generated block with score and gg calculated
           }
           putString(0,45,terminal,"["+key.getCharacter() +"]" + (key.getCharacter() == '1'));
         }
