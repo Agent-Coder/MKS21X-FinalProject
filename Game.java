@@ -369,6 +369,7 @@ public class Game{
             cEmpty = true;
             blockOnBoard = false;
             temp=game.getBoard();
+            lastSecond = 0;
           }
           //tab restarts everything
           if (blockOnBoard == false){
