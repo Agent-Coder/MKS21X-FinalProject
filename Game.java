@@ -641,49 +641,58 @@ public class Game{
       }
 
       if (mode == 3){
+        if (game.getscore() < 100){
+          endSelect = 2;
+        }
         if (endSelect == 0){
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
           putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
           putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
-          putString(20,38,terminal,"No, Restart Game");
-          putString(20,40,terminal,"No, End Game");
+          putString(20,38,terminal,"Restart Game");
+          putString(20,40,terminal,"Exit");
         }
         if (endSelect == 1){
           putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
           putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-          putString(20,38,terminal,"No, Restart Game");
-          putString(20,40,terminal,"No, End Game");
+          putString(20,38,terminal,"Restart Game");
+          putString(20,40,terminal,"Exit");
         }
         if (endSelect == 2){
           putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
           putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-          putString(20,38,terminal,"No, Restart Game");
+          putString(20,38,terminal,"Restart Game");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
-          putString(20,40,terminal,"No, End Game");
+          putString(20,40,terminal,"Exit");
         }
         if (endSelect == 3){
           putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
           putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
-          putString(20,38,terminal,"No, Restart Game");
+          putString(20,38,terminal,"Restart Game");
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-          putString(20,40,terminal,"No, End Game");
+          putString(20,40,terminal,"Exit");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
         }
         if (key != null){
           putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
           if (key.getKind() == Key.Kind.ArrowDown){
             if (endSelect == 3){
-              endSelect = 0;
+              if (game.getscore() < 100) {
+                endSelect = 2;
+              } else {
+                endSelect = 0;
+              }
             } else {
               endSelect++;
             }
           }
           if (key.getKind() == Key.Kind.ArrowUp){
             if (endSelect == 0){
+              endSelect = 3;
+            } else if (endSelect == 2 && game.getscore() < 100){
               endSelect = 3;
             } else {
               endSelect--;
