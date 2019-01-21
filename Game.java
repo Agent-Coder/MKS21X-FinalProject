@@ -651,6 +651,8 @@ public class Game{
 
       if (mode == 3){
         endGame(terminal);
+        putString(0,32,terminal,"Score: " + game.getScore());
+        putString(20,32,terminal,"Press SPACE to Select");
         if (endSelect == 0){
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
           putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
@@ -686,6 +688,7 @@ public class Game{
         if (key != null){
           putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
           if (key.getKind() == Key.Kind.ArrowDown){
+            putString(0,34,terminal,"                                                                                 ");
             if (endSelect == 3){
               endSelect = 0;
             } else {
@@ -693,6 +696,7 @@ public class Game{
             }
           }
           if (key.getKind() == Key.Kind.ArrowUp){
+            putString(0,34,terminal,"                                                                                 ");
             if (endSelect == 0){
               endSelect = 3;
             } else {
