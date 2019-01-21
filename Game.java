@@ -13,7 +13,7 @@ import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 import com.googlecode.lanterna.screen.Screen;
-
+import java.lang.Math;
 public class Game{
 
   public static void putString(int r, int c, Terminal t, String s){
@@ -536,6 +536,20 @@ public class Game{
               theChosenOne=new emptyBlock();
             }
 //backspace erases the chosen block on the board and makes it appear on the selection block again
+            if(key.getCharacter() == ' '){
+              int roll=(int)(Math.random()*100)%2;
+              if(roll==0){
+                roll=(int)(Math.random()*100)%10;
+                game.eraseRow(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+              }else{
+                roll=(int)(Math.random()*100)%10;
+                game.eraseCol(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+              }
+            }
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
@@ -586,6 +600,7 @@ public class Game{
                 temp=game.getBoard();
             }
 //enter permanently places block in position unless there is already part of a block underneath it then it outputs message
+
           }
           putString(0,45,terminal,"["+key.getCharacter() +"]");
         }
