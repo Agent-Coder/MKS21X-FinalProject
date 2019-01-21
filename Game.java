@@ -327,7 +327,7 @@ public class Game{
 // if blocks is not blink on blocks
         if (key != null){
           //if key is being pressed
-          if(key.getKind()==Key.Kind.Delete){
+          if(key.getCharacter() == '1'){
             if (game.getScore()<300){
               putString(0,23,terminal,"                                                                                 ");
               putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
