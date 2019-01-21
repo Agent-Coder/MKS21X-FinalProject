@@ -355,6 +355,7 @@ public class Game{
           //tab restarts everything
           if (blockOnBoard == false){
 //if selected block isnt on board
+            putString(0,23,terminal,"                                                                                ");
             if (key.getKind() == Key.Kind.ArrowRight){
               if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
