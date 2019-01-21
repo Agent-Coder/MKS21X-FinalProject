@@ -35,7 +35,7 @@ public class Game{
   public static void drawStartingScreen(Terminal t, TerminalSize s){
     String text = "1010!";
     String text2 = "Press 1 for ENDLESS MODE";
-    String text3 = "Press 2 for TIMED MODE";
+    String text3 = "Press 2 for SURVIVAL MODE";
     int r = s.getColumns()/2 - text.length()/2;
     int c = 0;
 
