@@ -326,7 +326,7 @@ public class Game{
 // if blocks is not blink on blocks
         if (key != null){
           //if key is being pressed
-          if((key.getCharacter() == '1')){
+          if(key.getCharacter() == '1'){
             if (game.getScore()<300){
               putString(0,23,terminal,"                                                                                 ");
               putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
@@ -353,8 +353,6 @@ public class Game{
               putString(58,7, terminal, ""+game.getScore());
               gg=game.GameOver(a,b,c);
               numBlocks = 3;
-              putString(58,7, terminal, "                            ");
-              putString(58,7, terminal, ""+game.getScore());
             }
             //score is high enough to get a newly generated block with score and gg calculated
           }
@@ -554,6 +552,8 @@ public class Game{
                   putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
                 }
+                putString(58,7, terminal, "                            ");
+                putString(58,7, terminal, ""+game.getScore());
               }
             }
             if (key.getKind() == Key.Kind.Enter) {
