@@ -357,6 +357,7 @@ public class Game{
             }
             //score is high enough to get a newly generated block with score and gg calculated
           }
+
           if (key.getKind() == Key.Kind.Tab) {
             terminal.clearScreen();
             mode = 0;
@@ -645,7 +646,7 @@ public class Game{
 //enter permanently places block in position unless there is already part of a block underneath it then it outputs message
 
           }
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + blockOnBoard);
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + (key.getCharacter() == '1'));
         }
       }
 
