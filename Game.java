@@ -649,6 +649,30 @@ public class Game{
           putString(20,38,terminal,"No, Restart Game");
           putString(20,40,terminal,"No, End Game");
         }
+        if (endSelect == 1){
+          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          putString(20,38,terminal,"No, Restart Game");
+          putString(20,40,terminal,"No, End Game");
+        }
+        if (endSelect == 2){
+          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,38,terminal,"No, Restart Game");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          putString(20,40,terminal,"No, End Game");
+        }
+        if (endSelect == 3){
+          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,38,terminal,"No, Restart Game");
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,40,terminal,"No, End Game");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+        }
         if (key != null){
           putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
           if (key.getKind() == Key.Kind.ArrowDown){
