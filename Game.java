@@ -650,6 +650,7 @@ public class Game{
       }
 
       if (mode == 3){
+        endGame(terminal);
         if (endSelect == 0){
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
           putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
@@ -789,12 +790,12 @@ public class Game{
               lastSecond = 0;
             }
             if (endSelect == 3){
-              terminal.exitPrivateMode();
               running = false;
+              terminal.clearScreen();
+              terminal.exitPrivateMode();
             }
           }
         }
-        endGame(terminal);
       }
     }
   }
