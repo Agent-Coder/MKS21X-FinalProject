@@ -181,7 +181,7 @@ public class Game{
   }
 //putting letters of game over on the end screen
   public static void endGame(Terminal t){
-    String G = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |\n+---+\n|   |\n+---+       +---+---+\n|   |       |   |   |\n+---+	    +---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+";
+    String G = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |\n+---+\n|   |\n+---+       +---+---+\n|   |       |   |   |\n+---+	      +---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+";
     String A = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
     String M = "+---+---+   +---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+   +---+   +---+\n|   |   |   |   |   |\n+---+   +---+   +---+\n|   |   |   |   |   |\n+---+   +---+   +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+\n|   |           |   |\n+---+           +---+";
     String E = "+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+\n|   |\n+---+\n|   |\n+---+---+---+\n|   |   |   |\n+---+---+---+\n|   |\n+---+\n|   |\n+---+---+---+---+---+\n|   |   |   |   |   |\n+---+---+---+---+---+";
@@ -249,6 +249,9 @@ public class Game{
     boolean running = true;
     int mode = 0;
 
+    long tStart = 0; //starting time variable
+    long lastSecond = 0; //second counter for timed mode
+
     while(running){
 
 			terminal.applyForegroundColor(Terminal.Color.WHITE);
@@ -266,6 +269,7 @@ public class Game{
   					mode = 1;
           }
           if (key.getCharacter() == '2') {
+            tStart = System.currentTimeMillis(); //timer starts
             terminal.clearScreen();
   					mode = 2;
           }
@@ -274,6 +278,20 @@ public class Game{
 //the starting screen before entering into game
 
       if (mode == 1 || mode == 2){
+        long tEnd = System.currentTimeMillis(); //timer starts when program runs
+        long millis = tEnd - tStart;
+        if(millis/1000 > lastSecond){
+          lastSecond = millis / 1000;
+          //one second has passed.
+        }
+        if (mode == 2){
+          putString(52,2,terminal,"Time Left: "+ (200 - lastSecond));
+          if (lastSecond == 200){
+            mode = 3;
+            flicker = 0;
+            terminal.clearScreen();
+          }
+        }
         if (numBlocks == 0){
           a = game.generateBlock();
           aEmpty = false;
@@ -351,10 +369,12 @@ public class Game{
             cEmpty = true;
             blockOnBoard = false;
             temp=game.getBoard();
+            lastSecond = 0;
           }
           //tab restarts everything
           if (blockOnBoard == false){
 //if selected block isnt on board
+            putString(0,23,terminal,"                                                                                ");
             if (key.getKind() == Key.Kind.ArrowRight){
               if (flicker == 1){
                 putBlock(terminal,a.toString(), 1,a.getColor());
@@ -539,10 +559,13 @@ public class Game{
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You have placed a block");
                 if (game.checkRows()){
+                  putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You cleared a row");
                 }
                 if (game.checkCols()){
+                  putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You cleared a column");
                 }
                 refreshBoard(terminal, game);
@@ -585,8 +608,12 @@ public class Game{
 //enter permanently places block in position unless there is already part of a block underneath it then it outputs message
 
           }
+<<<<<<< HEAD
+          putString(0,45,terminal,"["+key.getCharacter() +"]");
+=======
 
           putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
+>>>>>>> 05788924ff7b8b38d43334e6007f56631f9c49d4
         }
       }
 
