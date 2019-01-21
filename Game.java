@@ -710,12 +710,13 @@ public class Game{
                 putString(0,34,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
               }
               else{
+                terminal.clearScreen();
                 int roll=(int)(Math.random()*100)%2;
                 if(roll==0){
                   roll=(int)(Math.random()*100)%10;
                   game.eraseRow(roll);
                   putString(0,34,terminal,"                                                                                ");
-                  putString(0,34,terminal,"You used 100 points to clear Row "+(roll+1));
+                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
                 }else{
                   roll=(int)(Math.random()*100)%10;
                   game.eraseCol(roll);
@@ -754,6 +755,7 @@ public class Game{
               }
               //delete powerup won't work if score is less than 300
               else{
+                terminal.clearScreen();
                 a = new emptyBlock();
                 b = new emptyBlock();
                 c = new emptyBlock();
@@ -774,6 +776,7 @@ public class Game{
                 putString(58,7, terminal, ""+game.getScore());
                 gg=game.GameOver(a,b,c);
                 numBlocks = 3;
+                refreshBoard(terminal, game);
                 mode = 1;
               }
               //score is high enough to get a newly generated block with score and gg calculated
