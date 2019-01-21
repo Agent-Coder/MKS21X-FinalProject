@@ -236,7 +236,7 @@ public class Game{
 		terminal.setCursorVisible(false);
 
     boolean running = true;
-    int mode = 3;
+    int mode = 0;
 
     long tStart = 0; //starting time variable
     long lastSecond = 0; //second counter for timed mode
