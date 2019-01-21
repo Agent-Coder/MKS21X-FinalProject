@@ -200,19 +200,7 @@ public class Game{
     putLetter(t, 24, 16, V);
     putLetter(t, 48, 16, E);
     putLetter(t, 72, 16, R);
-    putString(36, 40,t,"Press Esc to exit game");
-  }
-  //printing of screen after game ends
-  public static void endMenu(Terminal t,TerminalSize s){
-    int r = s.getColumns()/2 - "No more moves! Use Powerup to Coninue Game?".length()/2;
-    int c = 0;
-
-    putString(r,c,t,"No more moves! Use Powerup to Coninue Game?",Terminal.Color.WHITE);
-    t.applySGR(Terminal.SGR.ENTER_BLINK);
-    putString(r,c+1,t,"Pay 300 points for New Selection of Blocks",Terminal.Color.WHITE);
-    t.applySGR(Terminal.SGR.EXIT_BLINK);
-    putString(r,c+2,t,"No, Restart Game",Terminal.Color.WHITE);
-    putString(r,c+3,t,"No, End Game",Terminal.Color.WHITE);
+    //putString(36, 40,t,"Press Esc to exit game");
   }
 
   public static void main(String[] args) {
@@ -252,6 +240,8 @@ public class Game{
 
     long tStart = 0; //starting time variable
     long lastSecond = 0; //second counter for timed mode
+
+    int endSelect = 0; //variable for end screen
 
     while(running){
 
@@ -506,7 +496,69 @@ public class Game{
               theChosenOne=new emptyBlock();
             }
 //backspace erases the chosen block on the board and makes it appear on the selection block again
+<<<<<<< HEAD
 
+=======
+            if(key.getCharacter() == '2'){
+              if (game.getScore()<100){
+                putString(0,23,terminal,"                                                                                 ");
+                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
+              }
+              else{
+                int roll=(int)(Math.random()*100)%2;
+                if(roll==0){
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseRow(roll);
+                  putString(0,23,terminal,"                                                                                ");
+                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+                }else{
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseCol(roll);
+                  putString(0,23,terminal,"                                                                                ");
+                  putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+                }
+                if(!aEmpty){
+                  gg=game.BlockOver(a);
+                }
+                if(!bEmpty){
+                  gg=game.BlockOver(b);
+                }
+                if(!cEmpty){
+                  gg=game.BlockOver(c);
+                }
+                if(!aEmpty&&!bEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(b);
+                }
+                if(!bEmpty&&!cEmpty){
+                  gg=game.BlockOver(b)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty&&!bEmpty){
+                  gg=game.GameOver(a,b,c);
+                }
+                refreshBoard(terminal,game);
+                putString(58,7, terminal, "                            ");
+                putString(58,7, terminal, ""+game.getScore());
+              }
+            }
+
+            if(key.getCharacter() == ' '){
+              int roll=(int)(Math.random()*100)%2;
+              if(roll==0){
+                roll=(int)(Math.random()*100)%10;
+                game.eraseRow(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+              }else{
+                roll=(int)(Math.random()*100)%10;
+                game.eraseCol(roll);
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+              }
+            }
+>>>>>>> endscreen
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
@@ -635,27 +687,167 @@ public class Game{
           }
           putString(0,45,terminal,"["+key.getCharacter() +"]" + (key.getCharacter() == '1'));
         }
+
+        if (key != null){
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            running = false;
+            //escaping the game
+          }
+        }
       }
 
       if (mode == 3){
-        /*endMenu(terminal);
-        if (key != null){
-          int blink=1;
-          if (key.getKind() == Key.Kind.ArrowDown) {
-            t.applySGR(Terminal.SGR.ENTER_BLINK);
-            putString(r,c,t,text2,Terminal.Color.WHITE);
-            t.applySGR(Terminal.SGR.EXIT_BLINK);
-            } else {
-            }
-          }*/
         endGame(terminal);
-      }
-
-      if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-          running = false;
-          //escaping the game
+        putString(0,32,terminal,"Score: " + game.getScore());
+        putString(20,32,terminal,"Press SPACE to Select");
+        if (endSelect == 0){
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,40,terminal,"Restart Game");
+          putString(20,42,terminal,"Exit");
+        }
+        if (endSelect == 1){
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          putString(20,40,terminal,"Restart Game");
+          putString(20,42,terminal,"Exit");
+        }
+        if (endSelect == 2){
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,40,terminal,"Restart Game");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          putString(20,42,terminal,"Exit");
+        }
+        if (endSelect == 3){
+          putString(20,36,terminal,"No more moves! Use Powerup to Coninue Game?");
+          putString(20,38,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,40,terminal,"Restart Game");
+          terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+          putString(20,42,terminal,"Exit");
+          terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+        }
+        if (key != null){
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect + (key.getKind() == Key.Kind.ArrowDown));
+          if (key.getKind() == Key.Kind.ArrowDown){
+            putString(0,34,terminal,"                                                                                 ");
+            if (endSelect == 3){
+              endSelect = 0;
+            } else {
+              endSelect++;
+            }
+          }
+          if (key.getKind() == Key.Kind.ArrowUp){
+            putString(0,34,terminal,"                                                                                 ");
+            if (endSelect == 0){
+              endSelect = 3;
+            } else {
+              endSelect--;
+            }
+          }
+          if (key.getCharacter() == ' '){
+            if (endSelect == 0){
+              if (game.getScore()<100){
+                putString(0,34,terminal,"                                                                                 ");
+                putString(0,34,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
+              }
+              else{
+                terminal.clearScreen();
+                int roll=(int)(Math.random()*100)%2;
+                if(roll==0){
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseRow(roll);
+                  putString(0,34,terminal,"                                                                                ");
+                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+                }else{
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseCol(roll);
+                }
+                if(!aEmpty){
+                  gg=game.BlockOver(a);
+                }
+                if(!bEmpty){
+                  gg=game.BlockOver(b);
+                }
+                if(!cEmpty){
+                  gg=game.BlockOver(c);
+                }
+                if(!aEmpty&&!bEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(b);
+                }
+                if(!bEmpty&&!cEmpty){
+                  gg=game.BlockOver(b)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty&&!bEmpty){
+                  gg=game.GameOver(a,b,c);
+                }
+                refreshBoard(terminal,game);
+                putString(58,7, terminal, "                            ");
+                putString(58,7, terminal, ""+game.getScore());
+                mode = 1;
+              }
+            }
+            if (endSelect == 1){
+              if (game.getScore()<300){
+                putString(0,34,terminal,"                                                                                 ");
+                putString(0,34,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
+              }
+              //delete powerup won't work if score is less than 300
+              else{
+                terminal.clearScreen();
+                a = new emptyBlock();
+                b = new emptyBlock();
+                c = new emptyBlock();
+                putBlock(terminal,a.toString(), 1,a.getColor());
+                putBlock(terminal,b.toString(), 2,b.getColor());
+                putBlock(terminal,c.toString(), 3,c.getColor());
+                a = game.generateBlock();
+                aEmpty = false;
+                b = game.generateBlock();
+                bEmpty = false;
+                c = game.generateBlock();
+                cEmpty = false;
+                putBlock(terminal,a.toString(), 1,a.getColor());
+                putBlock(terminal,b.toString(), 2,b.getColor());
+                putBlock(terminal,c.toString(), 3,c.getColor());
+                game.powerUps(1);
+                putString(58,7, terminal, "                            ");
+                putString(58,7, terminal, ""+game.getScore());
+                gg=game.GameOver(a,b,c);
+                numBlocks = 3;
+                refreshBoard(terminal, game);
+                mode = 1;
+              }
+              //score is high enough to get a newly generated block with score and gg calculated
+            }
+            if (endSelect == 2){
+              terminal.clearScreen();
+              mode = 0;
+              numBlocks = 0;
+              game = new Board();
+              selectedBlock = 1;
+              aEmpty = true;
+              bEmpty = true;
+              cEmpty = true;
+              blockOnBoard = false;
+              temp=game.getBoard();
+              lastSecond = 0;
+            }
+            if (endSelect == 3){
+              running = false;
+              terminal.clearScreen();
+              terminal.exitPrivateMode();
+            }
+          }
         }
       }
     }
