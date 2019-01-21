@@ -578,9 +578,6 @@ public class Game{
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
               }
-<<<<<<< HEAD
-
-=======
             }
             if(key.getCharacter() == ' '){
               int roll=(int)(Math.random()*100)%2;
@@ -596,7 +593,6 @@ public class Game{
                 putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
               }
             }
->>>>>>> 597a53f6ed36c70f484ef44d9dbb7e1b1de439b1
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
