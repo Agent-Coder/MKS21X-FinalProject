@@ -5,13 +5,19 @@ Instructions:
 ******Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program******
 
 1) Type javac -cp lanterna.jar:. Game.java to compile and java -cp lanterna.jar:. Game to start the program
-2) Press ENTER to start the game
+2) Follow the instructions on the START SCREEN to select a game mode
+      a) ENDLESS MODE - You will have unlimited time to play the game. The game ends when you run out of places to place a block and your score is not high enough to continue
+      b) SURVIVAL MODE - You have 200 seconds to score as high as you can while. Running out of places to put a block down results in a GAME OVER
 3) Use LEFT and RIGHT arrow keys to select a block
 4) Press UP arrow key to move the selected block onto the board
 5) Use UP DOWN LEFT RIGHT arrow keys to move the block around on the board
 6) Press ENTER to place the block on the board
-7) Press TAB at any time to restart the game
+7) Press n or c keys to use a powerup
+      a) n - Use 300 points to get a new selection of blocks
+      b) c - Use 100 points to randomly clear a row or a column
+7) Press TAB to restart the game
 8) Press ESC to quit the game
+9) On the END SCREEN, use UP and DOWN arrows to change options and SPACEBAR to select your option
 
 Logs:
 
@@ -87,7 +93,7 @@ I hard coded the Strings for the word "GAME OVER" for the end screen and started
 AC;01-17-19;
 I worked on revising the prototype and recreated the UML diagram as we added major changes to our project (our diagram is now quite big). I also finished printing the end screen onto lanterna and created a helper function called putLetter to condense the code. Finally, I added minor changes to the instructions to run the program in this README.
 
-AZ;01-17-19; 
+AZ;01-17-19;
 I worked on the endgame again because I found a few cases where the game ended to early and also realized we need an undo thing to make the endgame work because the endgame is when there are no possible moves so if the playet chooses the wrong block, he can't end game because the block won't fit but the other on in his selection will. Also, we need to do something about the text "You have reached the edged of the board" because it continues to appear even after we are not on the edge of the board.
 
 AZ;01-18-19;
@@ -95,7 +101,12 @@ I worked on undo and it works for the selection block being redrawn and undo the
 
 AZ;01-19-19;
 I finished the undo and it works completely. I also created the powerup of having a new selection of blocks which works fully. I also finished the endgame.
- 
+
+AC;1-20-19;
+Today I worked on extra features. I added an extra mode in which the plater tries to score as high as they can within 200 seconds. I am also working on an end screen that will allow the player to restart if they want to or use their points to have another chance. I did some debugging by deleting methods and fixing typos.
+
 AZ;01-20-19;
 I finished the second powerups which deletes a random row or column and also commented things and then tried to put audio but failed. I also added some new instructions for the player.
 
+AC;01-21-19;
+I finished up the end screen and created two different ones for the two different modes. I decided to make the timed mode survival mode instead so if the player runs out of places to put a block, the game ends and the player does not have a choice to use a powerup to get back to the game, even if they still have time left. I also made some minor changes to how the start screen looks and the messages on the game screen. Finally, I updated the instructions for the game.
