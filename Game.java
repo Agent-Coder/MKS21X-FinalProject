@@ -638,6 +638,14 @@ public class Game{
           }
           putString(0,45,terminal,"["+key.getCharacter() +"]" + (key.getCharacter() == '1'));
         }
+
+        if (key != null){
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            running = false;
+            //escaping the game
+          }
+        }
       }
 
       if (mode == 3){
@@ -690,18 +698,21 @@ public class Game{
             }
           }
           if (key.getKind() == Key.Kind.Enter){
+            if (endSelect == 0){
 
+            }
+            if (endSelect == 1){
+
+            }
+            if (endSelect == 2){
+
+            }
+            if (endSelect == 3){
+
+            }
           }
         }
         endGame(terminal);
-      }
-
-      if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-          running = false;
-          //escaping the game
-        }
       }
     }
   }
