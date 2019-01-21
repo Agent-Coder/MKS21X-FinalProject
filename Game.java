@@ -642,10 +642,12 @@ public class Game{
         int endSelect = 0;
         if (endSelect == 0){
           terminal.applySGR(Terminal.SGR.ENTER_BLINK);
-          putString(20,34,terminal,texts[endSelect]);
+          putString(20,34,terminal,"No more moves! Use Powerup to Coninue Game?");
           terminal.applySGR(Terminal.SGR.EXIT_BLINK);
+          putString(20,36,terminal,"Pay 300 points for New Selection of Blocks");
+          putString(20,38,terminal,"No, Restart Game");
+          putString(20,40,terminal,"No, End Game");
         }
-        String[] texts = endMenu(terminal, size, 0);
         if (key != null){
           putString(0,45,terminal,"["+key.getCharacter() +"]" + endSelect);
           if (key.getKind() == Key.Kind.ArrowDown){
@@ -655,7 +657,7 @@ public class Game{
               endSelect++;
             }
           }
-          if (key.getKind() == Key.Kind.ArrowDown){
+          if (key.getKind() == Key.Kind.ArrowUp){
 
           }
           if (key.getKind() == Key.Kind.Enter){
