@@ -540,6 +540,7 @@ public class Game{
                 putString(58,7, terminal, ""+game.getScore());
               }
             }
+
             if(key.getCharacter() == ' '){
               int roll=(int)(Math.random()*100)%2;
               if(roll==0){
@@ -699,16 +700,97 @@ public class Game{
           }
           if (key.getKind() == Key.Kind.Enter){
             if (endSelect == 0){
-
+              if (game.getScore()<100){
+                putString(0,23,terminal,"                                                                                 ");
+                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
+              }
+              else{
+                int roll=(int)(Math.random()*100)%2;
+                if(roll==0){
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseRow(roll);
+                  putString(0,23,terminal,"                                                                                ");
+                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
+                }else{
+                  roll=(int)(Math.random()*100)%10;
+                  game.eraseCol(roll);
+                  putString(0,23,terminal,"                                                                                ");
+                  putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
+                }
+                if(!aEmpty){
+                  gg=game.BlockOver(a);
+                }
+                if(!bEmpty){
+                  gg=game.BlockOver(b);
+                }
+                if(!cEmpty){
+                  gg=game.BlockOver(c);
+                }
+                if(!aEmpty&&!bEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(b);
+                }
+                if(!bEmpty&&!cEmpty){
+                  gg=game.BlockOver(b)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty&&!bEmpty){
+                  gg=game.GameOver(a,b,c);
+                }
+                refreshBoard(terminal,game);
+                putString(58,7, terminal, "                            ");
+                putString(58,7, terminal, ""+game.getScore());
+                mode = 1;
+              }
             }
             if (endSelect == 1){
-
+              if (game.getScore()<300){
+                putString(0,23,terminal,"                                                                                 ");
+                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase New Selection Power-up: 300");
+              }
+              //delete powerup won't work if score is less than 300
+              else{
+                a = new emptyBlock();
+                b = new emptyBlock();
+                c = new emptyBlock();
+                putBlock(terminal,a.toString(), 1,a.getColor());
+                putBlock(terminal,b.toString(), 2,b.getColor());
+                putBlock(terminal,c.toString(), 3,c.getColor());
+                a = game.generateBlock();
+                aEmpty = false;
+                b = game.generateBlock();
+                bEmpty = false;
+                c = game.generateBlock();
+                cEmpty = false;
+                putBlock(terminal,a.toString(), 1,a.getColor());
+                putBlock(terminal,b.toString(), 2,b.getColor());
+                putBlock(terminal,c.toString(), 3,c.getColor());
+                game.powerUps(1);
+                putString(58,7, terminal, "                            ");
+                putString(58,7, terminal, ""+game.getScore());
+                gg=game.GameOver(a,b,c);
+                numBlocks = 3;
+                mode = 1;
+              }
+              //score is high enough to get a newly generated block with score and gg calculated
             }
             if (endSelect == 2){
-
+              terminal.clearScreen();
+              mode = 0;
+              numBlocks = 0;
+              game = new Board();
+              selectedBlock = 1;
+              aEmpty = true;
+              bEmpty = true;
+              cEmpty = true;
+              blockOnBoard = false;
+              temp=game.getBoard();
+              lastSecond = 0;
             }
             if (endSelect == 3){
-
+              terminal.exitPrivateMode();
+              running = false;
             }
           }
         }
