@@ -242,10 +242,10 @@ public class Board {
               s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press BackSpace to Choose Different Block)\n";
             }
             else if(c==3){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press 1 to Use 300 points to Purchase New Set of Blocks)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press n to Use 300 points to Purchase New Set of Blocks)\n";
             }
             else if(c==2){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press 2 to Use 100 points to Purchase Random Row/Column Clear)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press c to Use 100 points to Purchase Random Row/Column Clear)\n";
             }
             else{
             s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
