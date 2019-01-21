@@ -2,19 +2,19 @@
 
 Instructions:
 
-******Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program******
+**Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program**
 
 1) Type javac -cp lanterna.jar:. Game.java to compile and java -cp lanterna.jar:. Game to start the program
 2) Follow the instructions on the START SCREEN to select a game mode
-      \na) ENDLESS MODE - You will have unlimited time to play the game. The game ends when you run out of places to place a block and your score is not high enough to continue
-      \nb) SURVIVAL MODE - You have 200 seconds to score as high as you can while. Running out of places to put a block down results in a GAME OVER
+      - ENDLESS MODE - You will have unlimited time to play the game. The game ends when you run out of places to place a block and your score is not high enough to continue
+      - SURVIVAL MODE - You have 200 seconds to score as high as you can while. Running out of places to put a block down results in a GAME OVER
 3) Use LEFT and RIGHT arrow keys to select a block
 4) Press UP arrow key to move the selected block onto the board
 5) Use UP DOWN LEFT RIGHT arrow keys to move the block around on the board
 6) Press ENTER to place the block on the board
 7) Press n or c keys to use a powerup
-      \na) n - Use 300 points to get a new selection of blocks
-      \n) c - Use 100 points to randomly clear a row or a column
+      - n - Use 300 points to get a new selection of blocks
+      - c - Use 100 points to randomly clear a row or a column
 7) Press TAB to restart the game
 8) Press ESC to quit the game
 9) On the END SCREEN, use UP and DOWN arrows to change options and SPACEBAR to select your option
