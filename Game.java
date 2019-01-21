@@ -36,8 +36,10 @@ public class Game{
     String text = "1010!";
     String text2 = "Press 1 for ENDLESS MODE";
     String text3 = "Press 2 for SURVIVAL MODE";
+    String text4 = "Project by AA Batteries";
+    String text5 = "Press ESC to QUIT";
     int r = s.getColumns()/2 - text.length()/2;
-    int c = 0;
+    int c = 2;
 
     putString(r,c,t,text,Terminal.Color.WHITE);
     r = s.getColumns()/2 - text2.length()/2;
@@ -47,6 +49,14 @@ public class Game{
     r = s.getColumns()/2 - text3.length()/2;
     c = 15;
     putString(r,c,t,text3,Terminal.Color.WHITE);
+    t.applySGR(Terminal.SGR.EXIT_BLINK);
+    r = s.getColumns()/2 - text4.length()/2;
+    c = 4;
+    putString(r,c,t,text4,Terminal.Color.WHITE);
+    r = s.getColumns()/2 - text5.length()/2;
+    c = 26;
+    t.applySGR(Terminal.SGR.ENTER_BLINK);
+    putString(r,c,t,text5,Terminal.Color.WHITE);
     t.applySGR(Terminal.SGR.EXIT_BLINK);
   }
 //draws starting screen before game appears
@@ -263,6 +273,13 @@ public class Game{
             tStart = System.currentTimeMillis(); //timer starts
             terminal.clearScreen();
   					mode = 2;
+          }
+          if (key != null){
+            if (key.getKind() == Key.Kind.Escape) {
+              terminal.exitPrivateMode();
+              running = false;
+              //escaping the game
+            }
           }
 				}
       }
