@@ -256,7 +256,7 @@ public class Game{
     while(running){
 
 			terminal.applyForegroundColor(Terminal.Color.WHITE);
-      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+      terminal.applyBackgroundColor(Terminal.Color.GREEN);
 
 
       Key key = terminal.readInput();
