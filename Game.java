@@ -34,7 +34,8 @@ public class Game{
 //puts text at certain position on interval with color
   public static void drawStartingScreen(Terminal t, TerminalSize s){
     String text = "1010!";
-    String text2 = "Press ENTER to START GAME";
+    String text2 = "Press 1 for ENDLESS MODE";
+    String text3 = "Press 2 for TIMED MODE";
     int r = s.getColumns()/2 - text.length()/2;
     int c = 0;
 
@@ -43,6 +44,9 @@ public class Game{
     c = 10;
     t.applySGR(Terminal.SGR.ENTER_BLINK);
     putString(r,c,t,text2,Terminal.Color.WHITE);
+    r = s.getColumns()/2 - text3.length()/2;
+    c = 15;
+    putString(r,c,t,text3,Terminal.Color.WHITE);
     t.applySGR(Terminal.SGR.EXIT_BLINK);
   }
 //draws starting screen before game appears
@@ -257,16 +261,19 @@ public class Game{
       if (mode == 0) {
         drawStartingScreen(terminal, size);
         if (key != null){
-          if (key.getKind() == Key.Kind.Enter) {
+          if (key.getCharacter() == '1') {
             terminal.clearScreen();
   					mode = 1;
+          }
+          if (key.getCharacter() == '2') {
+            terminal.clearScreen();
+  					mode = 2;
           }
 				}
       }
 //the starting screen before entering into game
 
-      if (mode == 1){
-        //in game
+      if (mode == 1 || mode == 2){
         if (numBlocks == 0){
           a = game.generateBlock();
           aEmpty = false;
