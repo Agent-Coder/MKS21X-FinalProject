@@ -594,8 +594,8 @@ public class Game{
             }
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You have placed a block");
+                //putString(0,23,terminal,"                                                                                ");
+                //putString(0,23,terminal,"You have placed a block");
                 if (game.checkRows()){
                   putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You cleared a row");
@@ -672,8 +672,6 @@ public class Game{
         }
       }
     }
-
   }
   //looping thorugh and adding the layout of the obard for background
-}
 }
