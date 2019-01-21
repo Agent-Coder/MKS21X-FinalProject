@@ -496,69 +496,7 @@ public class Game{
               theChosenOne=new emptyBlock();
             }
 //backspace erases the chosen block on the board and makes it appear on the selection block again
-<<<<<<< HEAD
 
-=======
-            if(key.getCharacter() == '2'){
-              if (game.getScore()<100){
-                putString(0,23,terminal,"                                                                                 ");
-                putString(0,23,terminal,"Sorry! Your score is not high enough to purchase Random Row/Column Clear: 100");
-              }
-              else{
-                int roll=(int)(Math.random()*100)%2;
-                if(roll==0){
-                  roll=(int)(Math.random()*100)%10;
-                  game.eraseRow(roll);
-                  putString(0,23,terminal,"                                                                                ");
-                  putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
-                }else{
-                  roll=(int)(Math.random()*100)%10;
-                  game.eraseCol(roll);
-                  putString(0,23,terminal,"                                                                                ");
-                  putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
-                }
-                if(!aEmpty){
-                  gg=game.BlockOver(a);
-                }
-                if(!bEmpty){
-                  gg=game.BlockOver(b);
-                }
-                if(!cEmpty){
-                  gg=game.BlockOver(c);
-                }
-                if(!aEmpty&&!bEmpty){
-                  gg=game.BlockOver(a)&&game.BlockOver(b);
-                }
-                if(!bEmpty&&!cEmpty){
-                  gg=game.BlockOver(b)&&game.BlockOver(c);
-                }
-                if(!aEmpty&&!cEmpty){
-                  gg=game.BlockOver(a)&&game.BlockOver(c);
-                }
-                if(!aEmpty&&!cEmpty&&!bEmpty){
-                  gg=game.GameOver(a,b,c);
-                }
-                refreshBoard(terminal,game);
-                putString(58,7, terminal, "                            ");
-                putString(58,7, terminal, ""+game.getScore());
-              }
-            }
-
-            if(key.getCharacter() == ' '){
-              int roll=(int)(Math.random()*100)%2;
-              if(roll==0){
-                roll=(int)(Math.random()*100)%10;
-                game.eraseRow(roll);
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
-              }else{
-                roll=(int)(Math.random()*100)%10;
-                game.eraseCol(roll);
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
-              }
-            }
->>>>>>> endscreen
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
@@ -769,6 +707,7 @@ public class Game{
                   roll=(int)(Math.random()*100)%10;
                   game.eraseCol(roll);
                 }
+                startGame(terminal, game, a, b, c);
                 if(!aEmpty){
                   gg=game.BlockOver(a);
                 }
@@ -790,7 +729,6 @@ public class Game{
                 if(!aEmpty&&!cEmpty&&!bEmpty){
                   gg=game.GameOver(a,b,c);
                 }
-                refreshBoard(terminal,game);
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
                 mode = 1;
@@ -804,6 +742,7 @@ public class Game{
               //delete powerup won't work if score is less than 300
               else{
                 terminal.clearScreen();
+                refreshBoard(terminal, game);
                 a = new emptyBlock();
                 b = new emptyBlock();
                 c = new emptyBlock();
@@ -824,7 +763,6 @@ public class Game{
                 putString(58,7, terminal, ""+game.getScore());
                 gg=game.GameOver(a,b,c);
                 numBlocks = 3;
-                refreshBoard(terminal, game);
                 mode = 1;
               }
               //score is high enough to get a newly generated block with score and gg calculated
