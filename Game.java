@@ -200,19 +200,17 @@ public class Game{
     putLetter(t, 24, 16, V);
     putLetter(t, 48, 16, E);
     putLetter(t, 72, 16, R);
-    putString(36, 40,t,"Press Esc to exit game");
+    //putString(36, 40,t,"Press Esc to exit game");
   }
   //printing of screen after game ends
-  public static void endMenu(Terminal t,TerminalSize s){
-    int r = s.getColumns()/2 - "No more moves! Use Powerup to Coninue Game?".length()/2;
-    int c = 0;
+  public static void endMenu(Terminal t, TerminalSize s, int score){
+    int r = 20;
+    int c = 34;
 
     putString(r,c,t,"No more moves! Use Powerup to Coninue Game?",Terminal.Color.WHITE);
-    t.applySGR(Terminal.SGR.ENTER_BLINK);
-    putString(r,c+1,t,"Pay 300 points for New Selection of Blocks",Terminal.Color.WHITE);
-    t.applySGR(Terminal.SGR.EXIT_BLINK);
-    putString(r,c+2,t,"No, Restart Game",Terminal.Color.WHITE);
-    putString(r,c+3,t,"No, End Game",Terminal.Color.WHITE);
+    putString(r,c+2,t,"Pay 300 points for New Selection of Blocks",Terminal.Color.WHITE);
+    putString(r,c+4,t,"No, Restart Game",Terminal.Color.WHITE);
+    putString(r,c+6,t,"No, End Game",Terminal.Color.WHITE);
   }
 
   public static void main(String[] args) {
@@ -248,7 +246,7 @@ public class Game{
 		terminal.setCursorVisible(false);
 
     boolean running = true;
-    int mode = 0;
+    int mode = 3;
 
     long tStart = 0; //starting time variable
     long lastSecond = 0; //second counter for timed mode
@@ -651,16 +649,16 @@ public class Game{
       }
 
       if (mode == 3){
-        /*endMenu(terminal);
+        endMenu(terminal, size, game.getScore());
+        int select = 1;
+        if (select == 1){
+          t.applySGR(Terminal.SGR.ENTER_BLINK);
+
+          t.applySGR(Terminal.SGR.ENTER_BLINK);
+        }
         if (key != null){
-          int blink=1;
-          if (key.getKind() == Key.Kind.ArrowDown) {
-            t.applySGR(Terminal.SGR.ENTER_BLINK);
-            putString(r,c,t,text2,Terminal.Color.WHITE);
-            t.applySGR(Terminal.SGR.EXIT_BLINK);
-            } else {
-            }
-          }*/
+          if
+        }
         endGame(terminal);
       }
 
