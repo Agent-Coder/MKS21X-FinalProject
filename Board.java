@@ -184,6 +184,24 @@ public class Board {
       this.spotCount+=10;
     }
     //clears the filled column and adds appropriate score and spot count
+    public void eraseRow(int i){
+      for (int j = 0; j < board[0].length; j++){
+        if(board[i][j]!=null){
+        board[i][j] = null;
+        this.spotCount++;
+       }
+      }
+      this.score-=100;
+    }
+    public void eraseCol(int i){
+      for (int j = 0; j < board.length; j++){
+        if(board[j][i]!=null){
+        board[j][i] = null;
+        this.spotCount++;
+       }
+      }
+      this.score-=100;
+    }
     public boolean BlockGameOver(Block a){
       if (this.spotCount<a.getNumSquare()){
         return true;
