@@ -249,6 +249,10 @@ public class Game{
     boolean running = true;
     int mode = 0;
 
+    long tStart = System.currentTimeMillis();
+		long lastSecond = 0;
+    //timer for timed mode
+
     while(running){
 
 			terminal.applyForegroundColor(Terminal.Color.WHITE);
@@ -592,6 +596,16 @@ public class Game{
           //escaping the game
         }
       }
+
+      long tEnd = System.currentTimeMillis(); //starting timer
+			long millis = tEnd - tStart;
+			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
+			if(millis/1000 > lastSecond){
+				lastSecond = millis / 1000;
+				//one second has passed.
+				putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
+
+			}
     }
 
   }
