@@ -552,6 +552,28 @@ public class Game{
                   putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
                 }
+                if(!aEmpty){
+                  gg=game.BlockOver(a);
+                }
+                if(!bEmpty){
+                  gg=game.BlockOver(b);
+                }
+                if(!cEmpty){
+                  gg=game.BlockOver(c);
+                }
+                if(!aEmpty&&!bEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(b);
+                }
+                if(!bEmpty&&!cEmpty){
+                  gg=game.BlockOver(b)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty&&!bEmpty){
+                  gg=game.GameOver(a,b,c);
+                }
+                refreshBoard(terminal,game);
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
               }
