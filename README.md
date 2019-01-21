@@ -2,7 +2,7 @@
 
 Instructions:
 
-******Please Maximize Your Terminal Before Running This Program******
+******Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program******
 
 1) Type javac -cp lanterna.jar:. Game.java to compile and java -cp lanterna.jar:. Game to start the program
 2) Press ENTER to start the game
@@ -92,3 +92,10 @@ I worked on the endgame again because I found a few cases where the game ended t
 
 AZ;01-18-19;
 I worked on undo and it works for the selection block being redrawn and undo the move but on the physical board, it is not erased completely though you can't see it.
+
+AZ;01-19-19;
+I finished the undo and it works completely. I also created the powerup of having a new selection of blocks which works fully. I also finished the endgame.
+ 
+AZ;01-20-19;
+I finished the second powerups which deletes a random row or column and also commented things and then tried to put audio but failed. I also added some new instructions for the player.
+
