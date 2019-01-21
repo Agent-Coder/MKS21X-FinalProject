@@ -236,19 +236,19 @@ public class Board {
               s=s+"|   |   |   |   |   |   |   |   |   |   |           SCORE:"+this.getScore()+"\n";
             }
             else if(c==5){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press Tab to RESTART)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           Press Tab to RESTART or ESC to EXIT\n";
             }
             else if(c==4){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press BackSpace to Choose Different Block)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           Press BackSpace to Choose Different Block\n";
             }
             else if(c==3){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press n to Use 300 points to Purchase New Set of Blocks)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           Press n to Use 300 points to Purchase New Set of Blocks\n";
             }
             else if(c==2){
-              s=s+"|   |   |   |   |   |   |   |   |   |   |           (Press c to Use 100 points to Purchase Random Row/Column Clear)\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |           Press c to Use 100 points to Purchase Random Row/Column Clear\n";
             }
             else{
-            s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
+              s=s+"|   |   |   |   |   |   |   |   |   |   |\n";
           }
           c--;
       }
