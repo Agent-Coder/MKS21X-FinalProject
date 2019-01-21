@@ -578,20 +578,7 @@ public class Game{
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
               }
-            if(key.getCharacter() == ' '){
-              int roll=(int)(Math.random()*100)%2;
-              if(roll==0){
-                roll=(int)(Math.random()*100)%10;
-                game.eraseRow(roll);
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You used 100 points to clear Row "+(roll+1));
-              }else{
-                roll=(int)(Math.random()*100)%10;
-                game.eraseCol(roll);
-                putString(0,23,terminal,"                                                                                ");
-                putString(0,23,terminal,"You used 100 points to clear Column "+(roll+1));
-              }
-            }
+
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
                 putString(0,23,terminal,"                                                                                ");
@@ -644,9 +631,7 @@ public class Game{
 //enter permanently places block in position unless there is already part of a block underneath it then it outputs message
 
           }
-          putString(0,45,terminal,"["+key.getCharacter() +"]");
-
-          putString(0,45,terminal,"["+key.getCharacter() +"]" + selectedBlock);
+          putString(0,45,terminal,"["+key.getCharacter() +"]" + blockOnBoard);
         }
       }
 
