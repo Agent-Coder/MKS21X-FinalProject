@@ -523,13 +523,25 @@ public class Game{
                 numBlocks--;
                 blockOnBoard = false;
                 if(!aEmpty){
-                  gg=gg&&game.BlockOver(a);
+                  gg=game.BlockOver(a);
                 }
                 if(!bEmpty){
-                  gg=gg&&game.BlockOver(b);
+                  gg=game.BlockOver(b);
                 }
                 if(!cEmpty){
-                  gg=gg&&game.BlockOver(c);
+                  gg=game.BlockOver(c);
+                }
+                if(!aEmpty&&!bEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(b);
+                }
+                if(!bEmpty&&!cEmpty){
+                  gg=game.BlockOver(b)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty){
+                  gg=game.BlockOver(a)&&game.BlockOver(c);
+                }
+                if(!aEmpty&&!cEmpty&&!bEmpty){
+                  gg=game.GameOver(a,b,c)
                 }
               } else {
                 putString(0,23,terminal,"                                                                                ");
