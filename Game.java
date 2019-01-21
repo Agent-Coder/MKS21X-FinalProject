@@ -578,6 +578,7 @@ public class Game{
                 putString(58,7, terminal, "                            ");
                 putString(58,7, terminal, ""+game.getScore());
               }
+            }
             if(key.getCharacter() == ' '){
               int roll=(int)(Math.random()*100)%2;
               if(roll==0){
@@ -594,8 +595,8 @@ public class Game{
             }
             if (key.getKind() == Key.Kind.Enter) {
               if (placeBlockOnBoard(game, theChosenOne, blockX, blockY)){
-                //putString(0,23,terminal,"                                                                                ");
-                //putString(0,23,terminal,"You have placed a block");
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You have placed a block");
                 if (game.checkRows()){
                   putString(0,23,terminal,"                                                                                ");
                   putString(0,23,terminal,"You cleared a row");
