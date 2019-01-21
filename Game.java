@@ -278,6 +278,9 @@ public class Game{
 //the starting screen before entering into game
 
       if (mode == 1 || mode == 2){
+        if (mode == 2){
+          putString(52,2,terminal,"Seconds since start of program: "+lastSecond);
+        }
         if (numBlocks == 0){
           a = game.generateBlock();
           aEmpty = false;
@@ -599,12 +602,9 @@ public class Game{
 
       long tEnd = System.currentTimeMillis(); //starting timer
 			long millis = tEnd - tStart;
-			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
 			if(millis/1000 > lastSecond){
 				lastSecond = millis / 1000;
 				//one second has passed.
-				putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-
 			}
     }
 
