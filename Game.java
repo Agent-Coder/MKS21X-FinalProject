@@ -203,7 +203,7 @@ public class Game{
     //putString(36, 40,t,"Press Esc to exit game");
   }
   //printing of screen after game ends
-  public static void endMenu(Terminal t, TerminalSize s, int score){
+  public static String[] endMenu(Terminal t, TerminalSize s, int score){
     int r = 20;
     int c = 34;
 
@@ -211,6 +211,13 @@ public class Game{
     putString(r,c+2,t,"Pay 300 points for New Selection of Blocks",Terminal.Color.WHITE);
     putString(r,c+4,t,"No, Restart Game",Terminal.Color.WHITE);
     putString(r,c+6,t,"No, End Game",Terminal.Color.WHITE);
+
+    String[] texts = new String[4];
+    texts[0] = "No more moves! Use Powerup to Coninue Game?";
+    texts[1] = "Pay 300 points for New Selection of Blocks";
+    texts[2] = "No, Restart Game";
+    texts[3] = "No, End Game";
+    return texts;
   }
 
   public static void main(String[] args) {
@@ -649,15 +656,13 @@ public class Game{
       }
 
       if (mode == 3){
-        endMenu(terminal, size, game.getScore());
-        int select = 1;
-        if (select == 1){
-          t.applySGR(Terminal.SGR.ENTER_BLINK);
-
-          t.applySGR(Terminal.SGR.ENTER_BLINK);
-        }
+        int endSelect = 0;
+        String[] texts = endMenu(terminal, size, 0);
+        terminal.applySGR(Terminal.SGR.ENTER_BLINK);
+        putString(20,34,terminal,texts[endSelect]);
+        terminal.applySGR(Terminal.SGR.EXIT_BLINK);
         if (key != null){
-          if
+          //if
         }
         endGame(terminal);
       }
