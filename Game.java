@@ -550,6 +550,8 @@ public class Game{
                 if(!aEmpty&&!cEmpty&&!bEmpty){
                   gg=game.GameOver(a,b,c);
                 }
+                putString(0,23,terminal,"                                                                                ");
+                putString(0,23,terminal,"You have placed a block");
               } else {
                 putString(0,23,terminal,"                                                                                ");
                 putString(0,23,terminal,"Block cannot be placed here");
