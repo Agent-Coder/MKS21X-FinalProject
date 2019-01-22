@@ -111,3 +111,6 @@ I finished the second powerups which deletes a random row or column and also com
 
 AC;01-21-19;
 I finished up the end screen and created two different ones for the two different modes. I decided to make the timed mode survival mode instead so if the player runs out of places to put a block, the game ends and the player does not have a choice to use a powerup to get back to the game, even if they still have time left. I also made some minor changes to how the start screen looks and the messages on the game screen. Finally, I updated the instructions for the game and played around with the README syntax.
+
+AZ;01-21-19;
+I went over the whole game and began debugging certain parts of the code such as the score updates for survival mode. I also deleted uneccesary code and then invited a bunch of my friends to test the game and look for possible bugs. I tried to make an sh script but it keeps on saying access denied so in the end I deleted it. Lastly, I updated parts of the Readme.
