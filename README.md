@@ -3,7 +3,7 @@
 ### Instructions:
 
 *Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program*
-
+**Delete all class files before compiling double check that it has compiled all files**
 1) Type javac -cp lanterna.jar:. Game.java to compile and java -cp lanterna.jar:. Game to start the program
 2) Follow the instructions on the START SCREEN to select a game mode
       - ENDLESS MODE - You will have unlimited time to play the game. The game ends when you run out of places to place a block and your score is not high enough to continue
