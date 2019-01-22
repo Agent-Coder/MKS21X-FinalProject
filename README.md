@@ -2,7 +2,7 @@
 
 ### Introduction
 
-We decieded to recreate the game 1010! on the terminal!
+We decided to recreate the game 1010! on the terminal!
 
 ### Instructions:
 
