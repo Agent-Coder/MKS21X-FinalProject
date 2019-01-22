@@ -296,7 +296,7 @@ public class Game{
 	  if((200 - lastSecond)<10){
 	  putString(52,2,terminal,"Time Left: "+"00"+(200 - lastSecond));
 	  }
-	  else if((200 - lastSecond)<100){ 
+	  else if((200 - lastSecond)<100){
 	  putString(52,2,terminal,"Time Left: "+"0"+(200 - lastSecond));
 	  }
 	  else{
@@ -562,8 +562,8 @@ public class Game{
                 putString(0,23,terminal,"                                                                                ");
                 putString(0,23,terminal,"Block cannot be placed here");
               }
-                putString(58,7, terminal, "                            ");
-                putString(58,7, terminal, ""+game.getScore());
+                putString(59,7, terminal, "                            ");
+                putString(59,7, terminal, ""+game.getScore());
                 if(gg){
                   terminal.clearScreen();
                   if (mode == 1){
@@ -600,8 +600,8 @@ public class Game{
               putBlock(terminal,b.toString(), 2,b.getColor());
               putBlock(terminal,c.toString(), 3,c.getColor());
               game.powerUps(1);
-              putString(58,7, terminal, "                            ");
-              putString(58,7, terminal, ""+game.getScore());
+              putString(59,7, terminal, "                            ");
+              putString(59,7, terminal, ""+game.getScore());
               gg=game.GameOver(a,b,c);
               numBlocks = 3;
             }
@@ -647,8 +647,8 @@ public class Game{
                 gg=game.GameOver(a,b,c);
               }
               refreshBoard(terminal,game);
-              putString(58,7, terminal, "                            ");
-              putString(58,7, terminal, ""+game.getScore());
+              putString(59,7, terminal, "                            ");
+              putString(59,7, terminal, ""+game.getScore());
             }
           }
           //putString(0,45,terminal,"["+key.getCharacter() +"]" + (key.getCharacter() == '1'));
@@ -757,8 +757,8 @@ public class Game{
                 if(!aEmpty&&!cEmpty&&!bEmpty){
                   gg=game.GameOver(a,b,c);
                 }
-                putString(58,7, terminal, "                            ");
-                putString(58,7, terminal, ""+game.getScore());
+                putString(59,7, terminal, "                            ");
+                putString(59,7, terminal, ""+game.getScore());
                 mode = 1;
               }
             }
@@ -787,8 +787,8 @@ public class Game{
                 putBlock(terminal,b.toString(), 2,b.getColor());
                 putBlock(terminal,c.toString(), 3,c.getColor());
                 game.powerUps(1);
-                putString(58,7, terminal, "                            ");
-                putString(58,7, terminal, ""+game.getScore());
+                putString(59,7, terminal, "                            ");
+                putString(59,7, terminal, ""+game.getScore());
                 gg=game.GameOver(a,b,c);
                 numBlocks = 3;
                 mode = 1;
