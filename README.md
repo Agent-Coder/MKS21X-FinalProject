@@ -4,7 +4,7 @@
 
 We decided to recreate the game 1010! on the terminal!
 
-### Instructions:
+### Instructions
 
 *Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program*
 
@@ -24,7 +24,7 @@ We decided to recreate the game 1010! on the terminal!
 8) Press ESC to quit the game
 9) On the END SCREEN, use UP and DOWN arrows to change options and SPACEBAR to select your option
 
-### Logs:
+### Logs
 
 AC;01-03-19;
 I worked on writing the Square class and finished all of the methods we initially decided to write. I also changed some private methods to public methods.
