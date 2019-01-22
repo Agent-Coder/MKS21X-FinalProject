@@ -1,6 +1,6 @@
 # MKS21X-FinalProject
 
-### Introduction
+### Description
 
 We decided to recreate the game 1010! on the terminal!
 
