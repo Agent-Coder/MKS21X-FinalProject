@@ -1,5 +1,9 @@
 # MKS21X-FinalProject
 
+### Introduction
+
+We decieded to recreate the game 1010! on the terminal!
+
 ### Instructions:
 
 *Please Maximize Your Terminal And Set Your Terminal to have a Black Background Before Running This Program*
