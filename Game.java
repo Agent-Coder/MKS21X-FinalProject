@@ -293,6 +293,7 @@ public class Game{
           //one second has passed.
         }
         if (mode == 2){
+	  putString(52,2,terminal,"Time Left:          ");	
           putString(52,2,terminal,"Time Left: "+ (200 - lastSecond));
           if (lastSecond >= 200){
             mode = 4;
